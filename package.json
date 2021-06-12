@@ -5,7 +5,7 @@
   "author": "Aiden Bai",
   "license": "MIT",
   "scripts": {
-    "start": "next",
+    "dev": "next",
     "build": "next build"
   },
   "dependencies": {
@@ -13,6 +13,8 @@
     "next-images": "^1.7.0",
     "nextra": "^0.4.3",
     "nextra-theme-docs": "^1.1.5",
+    "prism-react-renderer": "^1.2.1",
+    "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }

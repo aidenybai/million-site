@@ -10,14 +10,27 @@ export default {
   customSearch: null, // customizable, you can use algolia for example
   darkMode: true,
   footer: true,
-  footerText: '© 2021 Aiden Bai, William Lane',
+  footerText: `© ${new Date().getFullYear()} Aiden Bai, William Lane`,
   footerEditOnGitHubLink: true, // will link to the docs repo
-  logo: <>
-    &nbsp;<span><img style={{ height: '30px' }} src={'https://raw.githubusercontent.com/millionjs/million/main/.github/assets/logo.svg'} /></span>
-  </>,
-  head: <>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="<1kb virtual DOM - it's fast!" />
-    <meta name="og:title" content="Million" />
-  </>
-}
+  logo: (
+    <>
+      <img
+        className="md:inline object-contain hidden"
+        style={{ height: '2em' }}
+        src={'https://raw.githubusercontent.com/millionjs/million/main/.github/assets/icon.svg'}
+      />
+      <span className="ml-2 mr-2 font-bold hidden md:inline">million</span>
+      <span className="text-gray-600 font-normal hidden md:inline">
+        &lt;1kb virtual DOM - it's fast!
+      </span>
+    </>
+  ),
+  head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="<1kb virtual DOM - it's fast!" />
+      <meta name="og:title" content="Million" />
+      <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/millionjs/million/main/.github/assets/icon.svg" />
+    </>
+  ),
+};
