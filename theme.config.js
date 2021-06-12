@@ -1,5 +1,5 @@
 export default {
-  repository: 'https://github.com/millionjs/docs', // project repo
+  repository: 'https://github.com/millionjs/million', // project repo
   docsRepository: 'https://github.com/millionjs/docs', // docs repo
   branch: 'master', // branch of docs
   path: '/', // path of docs

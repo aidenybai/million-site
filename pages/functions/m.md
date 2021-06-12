@@ -51,7 +51,7 @@ const style = { color: 'black', 'font-weight': 'bold' };
 const vnode = m('div', { className, style }, ['Hello World']);
 ```
 
-```js
+```js highlight=4,5
 {
   tag: 'div',
   props: {
@@ -72,7 +72,7 @@ import { m, _ } from 'million';
 const vnode = m('svg');
 ```
 
-```js
+```js highlight=4
 {
   tag: 'svg',
   props: {
@@ -89,4 +89,13 @@ Most of the time, the diffing and patching process is fast enough, but when deal
 import { m } from 'million';
 
 const vnode = m('div', { key: 'foo' }, ['Hello World']);
+```
+
+```js highlight=5
+{
+  tag: 'div',
+  props: {},
+  children: ['Hello World'],
+  key: 'foo'
+}
 ```

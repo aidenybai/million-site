@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 ### &lt;1kb virtual DOM - it's fast!
 
