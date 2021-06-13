@@ -23,11 +23,9 @@ const vnode = m('div', { id: 'app' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN *
 
 Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended.**
 
-| Flag                 | Value |
-| -------------------- | ----- |
-| `NO_CHILDREN`        | `0`   |
-| `ONLY_TEXT_CHILDREN` | `1`   |
-| `ANY_CHILDREN`       | `2`   |
+- `NO_CHILDREN`: 0
+- `ONLY_TEXT_CHILDREN`: 1
+- `ANY_CHILDREN`: 2
 
 ## `undefined` values
 
