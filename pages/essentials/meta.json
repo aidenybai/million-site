@@ -1,4 +1,5 @@
 {
   "installation": "Installation",
-  "virtual-dom": "Virtual DOM"
+  "virtual-dom": "Virtual DOM",
+  "benchmarks": "Benchmarks"
 }
