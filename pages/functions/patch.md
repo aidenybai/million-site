@@ -6,7 +6,7 @@ The `patch` function adjusts the DOM content with a new VNode. It accepts an HTM
 import { m, patch } from 'million';
 
 const el = document.createElement('div');
-const vnode = m('div', { id: 'app' }, ['Hello World']);
+const vnode = m('div', { id: 'app' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN */);
 
 patch(el, vnode);
 ```
