@@ -29,12 +29,12 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 
 ## `undefined` values
 
-You can import the `_` shorthand for `undefined`. It is highly recommended you provide this even though it it optional to ensure monomorphic calls, allowing the V8 engine to optimize your code.
+It is highly recommended you provide the `undefined` value even though it it optional to ensure monomorphic calls, allowing the V8 engine to optimize your code.
 
 ```js
-import { m, _ } from 'million';
+import { m } from 'million';
 
-const vnode = m('div', _, _, 0 /* NO_CHILDREN */);
+const vnode = m('div', undefined, undefined, 0 /* NO_CHILDREN */);
 ```
 
 ```js
@@ -79,9 +79,9 @@ const vnode = m(
 SVGs need to be preprocessed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
-import { m, svg, _ } from 'million';
+import { m, svg } from 'million';
 
-const vnode = svg(m('svg', _, _, 0));
+const vnode = svg(m('svg', undefined, undefined, 0));
 ```
 
 ```js highlight=4
