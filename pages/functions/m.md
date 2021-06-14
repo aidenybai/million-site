@@ -1,11 +1,11 @@
-# `m(tag, props?, children?)`
+# `m(tag, props?, children?, flag?)`
 
-It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, and an optional array of children.
+It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag
 
 ```js
 import { m } from 'million';
 
-const vnode = m('div', { id: 'app' }, ['Hello World']);
+const vnode = m('div', { id: 'app' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN */);
 ```
 
 ```js
@@ -14,41 +14,52 @@ const vnode = m('div', { id: 'app' }, ['Hello World']);
   props: {
     id: 'app'
   },
-  children: ['Hello World']
+  children: ['Hello World'],
+  flag: 1 /* ONLY_TEXT_CHILDREN */
 }
 ```
 
+## Flags
+
+Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended.**
+
+- `NO_CHILDREN`: 0
+- `ONLY_TEXT_CHILDREN`: 1
+- `ANY_CHILDREN`: 2
+
 ## `undefined` values
 
-You can import the `_` shorthand for `undefined`.
+You can import the `_` shorthand for `undefined`. It is highly recommended you provide this even though it it optional to ensure monomorphic calls, allowing the V8 engine to optimize your code.
 
 ```js
 import { m, _ } from 'million';
 
-// No props, but has children
-const vnode = m('div', _, ['Hello World']);
+const vnode = m('div', _, _, 0 /* NO_CHILDREN */);
 ```
 
 ```js
 {
   tag: 'div',
-  children: ['Hello World']
+  flag: 0 /* NO_CHILDREN */
 }
 ```
 
 ## `className` and `style` props
 
-The `className` and `style` props are handled automatically by the `m` function. Internally, it uses the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
+The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
 
 ```js
-import { m, _ } from 'million';
+import { m, className, style } from 'million';
 
-const className = { class1: true, class2: false, class3: 1 + 1 === 2 };
-// 'class1 class3'
-const style = { color: 'black', 'font-weight': 'bold' };
-// 'color:black;font-weight:bold'
-
-const vnode = m('div', { className, style }, ['Hello World']);
+const vnode = m(
+  'div',
+  {
+    className: className({ class1: true, class2: false, class3: 1 + 1 === 2 }),
+    style: style({ color: 'black', 'font-weight': 'bold' }),
+  },
+  ['Hello World'],
+  1 /* ONLY_TEXT_CHILDREN */,
+);
 ```
 
 ```js highlight=4,5
@@ -58,18 +69,19 @@ const vnode = m('div', { className, style }, ['Hello World']);
     className: 'class1 class3',
     style: 'color:black;font-weight:bold'
   },
-  children: ['Hello World']
+  children: ['Hello World'],
+  flag: 1 /* ONLY_TEXT_CHILDREN */
 }
 ```
 
 ## SVG support
 
-SVGs are automatically handled by the `m` function. Internally, it uses the `ns` function to add `ns` props to the element and all of the children of that element.
+SVGs need to be preprocessed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
-import { m, _ } from 'million';
+import { m, svg, _ } from 'million';
 
-const vnode = m('svg');
+const vnode = svg(m('svg', _, _, 0));
 ```
 
 ```js highlight=4
@@ -88,7 +100,7 @@ Most of the time, the diffing and patching process is fast enough, but when deal
 ```js
 import { m } from 'million';
 
-const vnode = m('div', { key: 'foo' }, ['Hello World']);
+const vnode = m('div', { key: 'foo' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN */);
 ```
 
 ```js highlight=5
@@ -96,6 +108,7 @@ const vnode = m('div', { key: 'foo' }, ['Hello World']);
   tag: 'div',
   props: {},
   children: ['Hello World'],
-  key: 'foo'
+  key: 'foo',
+  flag: 1 /* ONLY_TEXT_CHILDREN */
 }
 ```

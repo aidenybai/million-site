@@ -1,3 +1,3 @@
 # Million Documentation
 
-[**-> Go to Million repo**](https://github.com/millionjs/million)
+[**→ Go to Million repo**](https://github.com/millionjs/million)
