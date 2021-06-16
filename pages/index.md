@@ -20,7 +20,7 @@ patch(app, m('div', { id: 'app' }, ['Goodbye World']));
 
 See the demo below:
 
-<iframe frameBorder="0" width="100%" height="500px" src="https://replit.com/@aidenybai/million-demo#script.js?embed=true"></iframe>
+<iframe frameBorder="0" width="100%" height="500px" src="https://replit.com/@aidenybai/million-demo#script.js?lite=true"></iframe>
 
 ## Resources & Contributing Back
 
