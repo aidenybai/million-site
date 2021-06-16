@@ -79,7 +79,7 @@ createElement(m('div', { id: 'app' }, ['Hello World']));
 
 The `patch` function takes an existing DOM element, old virtual node, and new virtual node. This won't necessarily be the most performant implementation, but this is just for demonstration purposes.
 
-We'll need to diff the two virtual nodes, then replace out the element when needed. An example implementation of the `patch` helper function is below:
+We'll need to diff the two virtual nodes, then replace out the element when needed. We do this by first determining whether one of the virtual nodes is a text, or a string, and replacing it if the old and new virtual nodes do not equate each other. Otherwise, we can safely assume both are virtual elements. After that, we diff the tag and props, and replace the element if the tag has changed. We then iterate over the children and recursively patch if a child is a virtual element. An example implementation of the `patch` helper function is below:
 
 ```js
 const patch = (el, oldVNode, newVNode) => {
@@ -118,13 +118,15 @@ patch(el, oldVNode, newVNode);
 **Notes:**
 
 - The old virtual node must always model the DOM element until after it is patched.
-- Generally speaking, applications aren't directly written with these methods, rather they are abstracted out into components and JSX for simplicity.
+- Generally speaking, applications aren't directly written with these methods, rather they should be abstracted out into components and JSX for simplicity.
 - This is not the same as Million's implementation, rather it is a demonstration to better allow you to understand how the virtual DOM works.
 
 ## So... What's unique about Million then?
 
-Million provides two major improvements: fast text interpolation, keyed virtual nodes, compiler flags.
+Million provides five major improvements: granular patching, fewer iterative passes, fast text interpolation, keyed virtual nodes, compiler flags.
 
+- **Granular patching:** Instead of just replacing the entire element when there is a difference in props or children, only the necessary props are changed.
+- **Fewer iterative passes:** Million attempts to reduce the amount of passes during diffing, allowing for better time and space complexity.
 - **Fast text interpolation:** Instead of replacing text nodes with DOM methods, Million uses compiler flags to set the `textContent` of elements to boost performance.
-- **Keyed virtual elements:** This allows for the patching algorithm to skip nodes if the new virtual element key is the same as the old one.
-- **Compiler Flags:** This allows for the patching algorithm to skip condition branches, boosting performance.
+- **Keyed virtual elements:** This allows for the patching algorithm to skip nodes if the new virtual element key is the same as the old one, minimizing the amount of unnecessary work.
+- **Compiler Flags:** This allows for the patching algorithm to skip condition branches, meaning less work is done.
