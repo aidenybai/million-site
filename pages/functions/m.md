@@ -3,9 +3,9 @@
 It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag
 
 ```js
-import { m } from 'million';
+import { m, VFlags } from 'million';
 
-const vnode = m('div', { id: 'app' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN */);
+const vnode = m('div', { id: 'app' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN);
 ```
 
 ```js
@@ -32,9 +32,9 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 It is highly recommended you provide the `undefined` value even though it it optional to ensure monomorphic calls, allowing the V8 engine to optimize your code.
 
 ```js
-import { m } from 'million';
+import { m, VFlags } from 'million';
 
-const vnode = m('div', undefined, undefined, 0 /* NO_CHILDREN */);
+const vnode = m('div', undefined, undefined, VFlags.NO_CHILDREN);
 ```
 
 ```js
@@ -49,7 +49,7 @@ const vnode = m('div', undefined, undefined, 0 /* NO_CHILDREN */);
 The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
 
 ```js
-import { m, className, style } from 'million';
+import { m, className, style, VFlags } from 'million';
 
 const vnode = m(
   'div',
@@ -58,7 +58,7 @@ const vnode = m(
     style: style({ color: 'black', 'font-weight': 'bold' }),
   },
   ['Hello World'],
-  1 /* ONLY_TEXT_CHILDREN */,
+  VFlags.ONLY_TEXT_CHILDREN,
 );
 ```
 
@@ -79,9 +79,9 @@ const vnode = m(
 SVGs need to be preprocessed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
-import { m, svg } from 'million';
+import { m, svg, VFlags } from 'million';
 
-const vnode = svg(m('svg', undefined, undefined, 0));
+const vnode = svg(m('svg', undefined, undefined, VFlags.NO_CHILDREN));
 ```
 
 ```js highlight=4
@@ -90,6 +90,7 @@ const vnode = svg(m('svg', undefined, undefined, 0));
   props: {
     ns: 'http://www.w3.org/2000/svg'
   },
+  flag: 0 /* NO_CHILDREN */
 }
 ```
 
@@ -98,9 +99,9 @@ const vnode = svg(m('svg', undefined, undefined, 0));
 Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed.
 
 ```js
-import { m } from 'million';
+import { m, VFlags } from 'million';
 
-const vnode = m('div', { key: 'foo' }, ['Hello World'], 1 /* ONLY_TEXT_CHILDREN */);
+const vnode = m('div', { key: 'foo' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN);
 ```
 
 ```js highlight=5
