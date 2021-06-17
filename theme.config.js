@@ -10,7 +10,7 @@ export default {
   customSearch: null, // customizable, you can use algolia for example
   darkMode: true,
   footer: true,
-  footerText: `© ${new Date().getFullYear()} Aiden Bai, William Lane`,
+  footerText: `© ${new Date().getFullYear()} Aiden Bai, William Lane et al.`,
   footerEditOnGitHubLink: true, // will link to the docs repo
   logo: (
     <>

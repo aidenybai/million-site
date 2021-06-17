@@ -4,23 +4,32 @@
 
 Current Virtual DOM implementations are inadequate—Ranging from overcomplicated to abandoned, most are unusable without sacrificing raw performance and size. Million aims to fix this, providing a library-agnostic Virtual DOM to serve as the core for Javascript libraries.
 
-## Hello World Example
+## Clicker Game Example
 
-Below is an extremely simple implementation of a Hello World page using Million.
+Below is an extremely simple implementation of a clicker app using Million.
 
 ```js
 import { m, createElement, patch } from 'million';
 
-// Initialize app
-const app = createElement(m('div', { id: 'app' }, ['Hello World']));
+let clicks = 0;
+const app = createElement(
+  m(
+    'button',
+    {
+      id: 'app',
+      onclick: () => {
+        patch(app, m('button', { id: 'app' }, [String(++clicks)]));
+      },
+    },
+    [String(clicks)],
+  ),
+);
 document.body.appendChild(app);
-// Patch content
-patch(app, m('div', { id: 'app' }, ['Goodbye World']));
 ```
 
 See the demo below:
 
-<iframe frameBorder="0" width="100%" height="500px" src="https://replit.com/@aidenybai/million-demo#script.js?lite=true"></iframe>
+<iframe frameBorder="0" width="100%" height="500px" src="https://replit.com/@aidenybai/million-demo?embed=true"></iframe>
 
 ## Resources & Contributing Back
 
@@ -39,7 +48,3 @@ We expect all Million contributors to abide by the terms of our [Code of Conduct
 Million takes heavy inspiration from [React](https://github.com/facebook/react), and believes in the core philosophies and values behind [Lucia](https://github.com/aidenybai/lucia) and [Inferno](https://github.com/infernojs/inferno). Feel free to check them out if you interested in an alternative library to use.
 
 _Why is it called "Million"? The name originated with the goal of being able to handle [1M+ ops/sec for benchmarks](https://github.com/millionjs/million/tree/main/benchmarks)_
-
-## License
-
-Million is [MIT-licensed](https://github.com/millionjs/million/tree/main/LICENSE) open-source software by [Aiden Bai](https://github.com/aidenybai), [William Lane](https://github.com/willdoescode), [et al.](https://github.com/millionjs/million/graphs/contributors)
