@@ -6,6 +6,8 @@ The virtual DOM is a tree of virtual nodes that represents what the DOM looks li
 
 The reasoning behind this is because modification and access of DOM nodes is computationally expensive. A diff between virtual nodes, accessing the DOM only for modification, is the premise of virtual DOM. It avoids the DOM as much as possible, favoring plain JavaScript objects instead, making reading and writing much cheaper.
 
+![](https://raw.githubusercontent.com/millionjs/docs/master/.github/assets/vdom.png)
+
 ## How does it work?
 
 The Million virtual DOM contains three main functions: `m`, `createElement`, `patch`. To completely understand how virtual DOM works, let's try and create our own rudimentary virtual DOM based off of these functions (**~7 minutes read time**).
