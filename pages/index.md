@@ -11,20 +11,11 @@ Below is an extremely simple implementation of a clicker app using Million.
 ```js
 import { m, createElement, patch } from 'million';
 
-let clicks = 0;
-const app = createElement(
-  m(
-    'button',
-    {
-      id: 'app',
-      onclick: () => {
-        patch(app, m('button', { id: 'app' }, [String(++clicks)]));
-      },
-    },
-    [String(clicks)],
-  ),
-);
+// Initialize app
+const app = createElement(m('div', { id: 'app' }, ['Hello World']));
 document.body.appendChild(app);
+// Patch content
+patch(app, m('div', { id: 'app' }, ['Goodbye World']));
 ```
 
 See the demo below:
