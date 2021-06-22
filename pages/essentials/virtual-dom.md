@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The virtual DOM is a tree of virtual nodes that represents what the DOM looks like. virtual nodes are light, stateless, and are JavaScript objects that only contain necessary fields. virtual nodes can be assembled into trees, and "diffed" to make pinpoint changes to the DOM.
+The virtual DOM is a tree of virtual nodes that represents what the DOM looks like. virtual nodes are light, stateless, and are strings or JavaScript objects that only contain necessary fields. Virtual nodes can be assembled into trees, and "diffed" to make pinpoint changes to the DOM.
 
 The reasoning behind this is because modification and access of DOM nodes is computationally expensive. A diff between virtual nodes, accessing the DOM only for modification, is the premise of virtual DOM. It avoids the DOM as much as possible, favoring plain JavaScript objects instead, making reading and writing much cheaper.
 
@@ -32,7 +32,7 @@ const m = (tag, props, children) => ({
 });
 ```
 
-This way, we can construct virtual nodes easily:
+This way, we can construct virtual elements easily:
 
 ```js
 m('div', { id: 'app' }, ['Hello World']);
@@ -48,7 +48,7 @@ m('div', { id: 'app' }, ['Hello World']);
 
 The `createElement` function turns a virtual node into a real DOM element. This is important because we'll be using this in our `patch` function and the user may also use it to initialize their application.
 
-We'll need to programmatically create a new detached DOM element, then iterate over the virtual element props while adding them to the DOM element, and finally iterating over the children, initialling them as well. An example implementation of the `createElement` helper function is below:
+We'll need to programmatically create a new detached DOM element, then iterate over the virtual element props while adding them to the DOM element, and finally iterating over the children, initializing them as well. An example implementation of the `createElement` helper function is below:
 
 ```js
 const createElement = vnode => {
@@ -110,6 +110,7 @@ This way, we can patch DOM elements based on virtual nodes easily:
 const oldVNode = m('div', { id: 'app' }, ['Hello World']);
 const newVNode = m('div', { id: 'app' }, ['Goodbye World']);
 const el = createElement(oldVNode);
+// <div id="app">Hello World</div>
 
 patch(el, oldVNode, newVNode);
 // el will become: <div id="app">Goodbye World</div>
