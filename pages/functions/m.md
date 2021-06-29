@@ -1,9 +1,9 @@
-# `m(tag, props?, children?, flag?, action?)`
+# `m(tag, props?, children?, flag?)`
 
-It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, an optional array of children, an optional flag, and an optional action.
+It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
 
 ```js
-import { m, VFlags, VActions } from 'million';
+import { m, VFlags } from 'million';
 
 const vnode = m('div', { id: 'app' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN);
 ```
@@ -26,16 +26,6 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 - `NO_CHILDREN`: 0
 - `ONLY_TEXT_CHILDREN`: 1
 - `ANY_CHILDREN`: 2
-
-## Actions
-
-Actions allow for the `patch` function to optimize DOM modifications. They are optional, but are **highly recommended if you deal with `ANY_CHILDREN` a lot.** They are formatted as: `[action: VActions, numberOfNodes: number]`.
-
-- `INSERT_TOP`: 0
-- `INSERT_BOTTOM`: 1
-- `DELETE_TOP`: 2
-- `DELETE_BOTTOM`: 3
-- `ANY_ACTION`: 4
 
 ## `undefined` values
 
@@ -89,7 +79,7 @@ const vnode = m(
 SVGs need to be preprocessed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
-import { m, svg, VFlags, VActions } from 'million';
+import { m, svg, VFlags } from 'million';
 
 const vnode = svg(m('svg', undefined, undefined, VFlags.NO_CHILDREN));
 ```

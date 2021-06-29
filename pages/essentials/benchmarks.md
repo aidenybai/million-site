@@ -17,4 +17,4 @@
   - baseline: 1,027,381 ops/sec ±8.00%
 
 - To test them yourself, go to the [**Million benchmarks website**](https://million-benchmarks.netlify.app/)
-- To see the source code, check out the [**`benchmarks` directory in GitHub**](https://github.com/millionjs/million/tree/main/benchmarks)
+- To see the source code, check out the [**`benchmarks` directory in GitHub**](https://github.com/aidenybai/million/tree/main/benchmarks)
