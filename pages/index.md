@@ -4,9 +4,9 @@
 
 Current Virtual DOM implementations are inadequate—Ranging from overcomplicated to abandoned, most are unusable without sacrificing raw performance and size. Million aims to fix this, providing a library-agnostic Virtual DOM to serve as the core for Javascript libraries.
 
-## Clicker Game Example
+## Hello World Example
 
-Below is an extremely simple implementation of a clicker app using Million.
+Below is an extremely simple implementation of a Hello World app using Million.
 
 ```js
 import { m, createElement, patch } from 'million';
