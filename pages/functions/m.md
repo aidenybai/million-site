@@ -15,7 +15,7 @@ const vnode = m('div', { id: 'app' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN
     id: 'app'
   },
   children: ['Hello World'],
-  flag: 1 /* ONLY_TEXT_CHILDREN */
+  flag: 1 << 1 /* ONLY_TEXT_CHILDREN */
 }
 ```
 
@@ -40,7 +40,7 @@ const vnode = m('div', undefined, undefined, VFlags.NO_CHILDREN);
 ```js
 {
   tag: 'div',
-  flag: 0 /* NO_CHILDREN */
+  flag: 1 << 0 /* NO_CHILDREN */
 }
 ```
 
@@ -70,7 +70,7 @@ const vnode = m(
     style: 'color:black;font-weight:bold'
   },
   children: ['Hello World'],
-  flag: 1 /* ONLY_TEXT_CHILDREN */
+  flag: 1 << 1 /* ONLY_TEXT_CHILDREN */
 }
 ```
 
@@ -90,7 +90,7 @@ const vnode = svg(m('svg', undefined, undefined, VFlags.NO_CHILDREN));
   props: {
     ns: 'http://www.w3.org/2000/svg'
   },
-  flag: 0 /* NO_CHILDREN */
+  flag: 1 << 0 /* NO_CHILDREN */
 }
 ```
 
@@ -110,6 +110,6 @@ const vnode = m('div', { key: 'foo' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDRE
   props: {},
   children: ['Hello World'],
   key: 'foo',
-  flag: 1 /* ONLY_TEXT_CHILDREN */
+  flag: 1 << 1 /* ONLY_TEXT_CHILDREN */
 }
 ```
