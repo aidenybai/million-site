@@ -11,6 +11,8 @@ You can leverage [Flags](/functions/m#flags) and [Deltas](/functions/m#deltas) t
 import { m, patch } from 'million';
 
 const el = document.createElement('div');
+
+document.body.appendChild(el);
 const vnode1 = m('div', { id: 'app' }, ['Hello World']);
 
 patch(el, vnode1);
