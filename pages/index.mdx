@@ -1,0 +1,64 @@
+---
+title: Introduction
+---
+
+import Callout from 'nextra-theme-docs/callout';
+import Bleed from 'nextra-theme-docs/bleed';
+import Features from '../components/features';
+import Image from 'next/image';
+
+<style jsx global>{`
+  body {
+    background-image: radial-gradient(#ddd 1px, transparent 0), radial-gradient(#ddd 1px, transparent
+          0);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+  }
+  .dark body {
+    background-image: radial-gradient(#333 1px, transparent 0), radial-gradient(#333 1px, transparent
+          0);
+  }
+  /* img[alt='Million Logo'] {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  } */
+`}</style>
+
+![Million Logo](https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/banner.svg)
+
+<Features />
+
+Current Virtual DOM implementations are inadequate—Ranging from overcomplicated to abandoned, most are unusable without sacrificing raw performance and size. Million aims to fix this, providing a library-agnostic Virtual DOM to serve as the core for Javascript libraries.
+
+<Callout emoji="✅">
+  With Million, you get the <b>declarativity</b> and <b>flexibility</b> of the Virtual DOM, while
+  leveraging the
+  <b>performance</b> of compiler-aware optimizations.
+</Callout>
+
+## Overview
+
+```jsx
+import { m, createElement, patch } from 'million';
+
+// Initialize app
+const app = createElement(m('div', { id: 'app' }, ['Hello World']));
+document.body.appendChild(app);
+// Patch content
+patch(app, m('div', { id: 'app' }, ['Goodbye World']));
+```
+
+In this example, a virtual node is constructed and a HTMLElement (`<div id="app">Hello World</div>`) is created out of it. The HTMLElement is attached to the live page, and then patched (updated) using a virtual node (`<div id="app">Goodbye World</div>`).
+
+## Resources & Contributing Back
+
+Looking for the docs? Check the [documentation](https://million.js.org) out.
+
+Have a question about Million? Post it on the [GitHub Discussions](https://github.com/aidenybai/million/discussions) and ask the community for help.
+
+Find a bug? Head over to our [issue tracker](https://github.com/aidenybai/million/issues) and we'll do our best to help. We love pull requests, too!
+
+We expect all Million contributors to abide by the terms of our [Code of Conduct](https://github.com/aidenybai/million/blob/main/.github/CODE_OF_CONDUCT.md).
+
+[**→ Start contributing on GitHub**](https://github.com/aidenybai/million/blob/main/.github/CONTRIBUTING.md)

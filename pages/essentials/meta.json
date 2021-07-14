@@ -1,5 +1,6 @@
 {
   "installation": "Installation",
   "virtual-dom": "Virtual DOM",
-  "benchmarks": "Benchmarks"
+  "benchmarks": "Benchmarks",
+  "compiler-level-optimizations": "Compiler-Level Optimizations"
 }

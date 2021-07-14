@@ -51,7 +51,7 @@ The `createElement` function turns a virtual node into a real DOM element. This 
 We'll need to programmatically create a new detached DOM element, then iterate over the virtual element props while adding them to the DOM element, and finally iterating over the children, initializing them as well. An example implementation of the `createElement` helper function is below:
 
 ```js
-const createElement = vnode => {
+const createElement = (vnode) => {
   if (typeof vnode === 'string') {
     return document.createTextNode(vnode); // Catch if vnode is just text
   }
@@ -62,7 +62,7 @@ const createElement = vnode => {
     });
   }
   if (vnode.children) {
-    vnode.children.forEach(child => {
+    vnode.children.forEach((child) => {
       el.appendChild(createElement(child));
     });
   }
@@ -133,3 +133,4 @@ Million provides five major improvements: granular patching, fewer iterative pas
 - **Fast text interpolation:** Instead of replacing text nodes with DOM methods, Million uses compiler flags to set the `textContent` of elements to boost performance.
 - **Keyed virtual elements:** This allows for the patching algorithm to skip nodes if the new virtual element key is the same as the old one, minimizing the amount of unnecessary work.
 - **Compiler Flags:** This allows for the patching algorithm to skip condition branches, meaning less work is done.
+- **Delta Units:** Microactions can be preprogrammed to skip diffing children all together, resulting in a better time complexity and while being easily leveraged by a compiler.

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "next": "^10.0.9",
-    "nextra": "^0.4.3",
+    "nextra": "^1.0.0-beta.2",
     "nextra-theme-docs": "^1.1.5",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.23.0",
