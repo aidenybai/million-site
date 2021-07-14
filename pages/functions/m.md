@@ -126,7 +126,6 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`VFlags.ANY_CHILDREN`: `1 << 2`**\
-
   If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
 
   ```js
