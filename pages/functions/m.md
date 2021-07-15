@@ -153,7 +153,7 @@ Deltas are a way for the compile-time to optimize runtime operations by providin
 
 There are three types of delta operations: `INSERT`, `UPDATE`, and `DELETE`. You can provide a specified index to select the position of the vnode's children to be inserted, updated, or deleted.
 
-- `INSERT` is used to add children before a selected index.\
+- `INSERT` is used to add children at a selected index.\
   **Syntax:** `INSERT(index)`\
   **Example:** `INSERT(0)`
 
