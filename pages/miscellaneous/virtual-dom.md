@@ -1,4 +1,4 @@
-# Virtual DOM
+# Understanding Virtual DOM
 
 ## Introduction
 
