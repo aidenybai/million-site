@@ -1,5 +1,6 @@
 {
   "m": "m",
   "createElement": "createElement",
-  "patch": "patch"
+  "patch": "patch",
+  "schedule": "schedule"
 }

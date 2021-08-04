@@ -3,7 +3,7 @@
 **Syntax:** `m(tag, props?, children?, flag?, delta?)`\
 **Example:** `m('div', { id: 'app' }, ['Hello World'])`
 
-It is recommended that you use `m` to create vnodes. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
+It is recommended that you use `m` to create a VNode. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
 
 ```js
 import { m, VFlags } from 'million';
