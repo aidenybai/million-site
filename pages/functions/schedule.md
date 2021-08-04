@@ -15,15 +15,13 @@ const el = document.createElement('div');
 document.body.appendChild(el);
 const vnode1 = m('div', { id: 'app' }, ['Hello World']);
 
-setInterval(() => {
-  schedule(() => {
-    patch(el, vnode1);
-  });
-}, 1);
+schedule(() => {
+  patch(el, vnode1);
+});
 
-setInterval(() => {
-  schedule(() => {
-    patch(el, vnode1);
-  }, true); // Optionally, you can assign a scheduled task to be important, so that it is invoked immediately and called with requestAnimationFrame()
-}, 1);
+const vnode2 = m('div', { id: 'app' }, ['Goodbye World']);
+
+schedule(() => {
+  patch(el, vnode2);
+}, true); // Optionally, you can assign a scheduled task to be important, so that it is invoked immediately and called with requestAnimationFrame()
 ```
