@@ -23,5 +23,7 @@ const vnode2 = m('div', { id: 'app' }, ['Goodbye World']);
 
 schedule(() => {
   patch(el, vnode2);
-}, true); // Optionally, you can assign a scheduled task to be important, so that it is invoked immediately and called with requestAnimationFrame()
+}, true); 
+// Optionally, you can assign a scheduled task to be important
+// so that it is invoked immediately and called with requestAnimationFrame()
 ```
