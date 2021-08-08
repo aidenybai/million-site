@@ -147,6 +147,36 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   }
   ```
 
+- **`VFlags.ONLY_KEYED_CHILDREN`: `1 << 3`**\
+  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m(
+    'div',
+    undefined,
+    [
+      m('p', { key: 'foo' }, ['foo']),
+      m('p', { key: 'bar' }, ['bar']),
+      m('p', { key: 'foo' }, ['baz']),
+    ],
+    VFlags.ONLY_KEYED_CHILDREN,
+  );
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: [
+      m('p', { key: 'foo' }, ['foo']),
+      m('p', { key: 'bar' }, ['bar']),
+      m('p', { key: 'foo' }, ['baz']),
+    ],
+    flag: 1 << 3 /* VFlags.ONLY_KEYED_CHILDREN */,
+  }
+  ```
+
 ## Deltas
 
 Deltas are a way for the compile-time to optimize runtime operations by providing a set of predefined operations. This is useful for cases where you are patching a large amount of children, or when you have a large amount of props.
