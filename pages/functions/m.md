@@ -148,24 +148,54 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`VFlags.ONLY_KEYED_CHILDREN`: `1 << 3`**\
-  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons.
+  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
+
+  For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
+
+  ```js highlight=7,8,9,10
+  oldVNodeChildren:
+    A,
+    B,
+    C,
+
+  newVNodeChildren:
+    X,
+    A,
+    B,
+    C,
+  ```
+
+  However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
+
+  ```js highlight=7
+  oldVNodeChildren:
+    A,
+    B,
+    C,
+
+  newVNodeChildren:
+    X,
+    A,
+    B,
+    C,
+  ```
+
+  So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
 
   ```js
   import { m, VFlags } from 'million';
 
+  const list = ['foo', 'bar', 'baz'];
+
   const vnode = m(
     'div',
     undefined,
-    [
-      m('p', { key: 'foo' }, ['foo']),
-      m('p', { key: 'bar' }, ['bar']),
-      m('p', { key: 'foo' }, ['baz']),
-    ],
+    list.map((item) => m('p', { key: item }, [item])),
     VFlags.ONLY_KEYED_CHILDREN,
   );
   ```
 
-  ```js highlight=4
+  ```js highlight=8
   {
     tag: 'div',
     children: [
