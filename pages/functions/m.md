@@ -6,7 +6,7 @@
 It is recommended that you use `m` to create a VNode. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
 
 ```js
-import { m, VFlags } from 'million';
+import { m } from 'million';
 
 const vnode = m('div', { id: 'app' }, ['Hello World']);
 ```
@@ -26,7 +26,7 @@ const vnode = m('div', { id: 'app' }, ['Hello World']);
 The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
 
 ```js
-import { m, className, style, VFlags } from 'million';
+import { m, className, style } from 'million';
 
 const vnode = m(
   'div',
@@ -51,10 +51,10 @@ const vnode = m(
 
 ## SVG support
 
-processed using the `svg` function to add `ns` props to the element and all of the children of that element.
+SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
-import { m, svg, VFlags } from 'million';
+import { m, svg } from 'million';
 
 const vnode = svg(m('svg'));
 ```
@@ -68,12 +68,32 @@ const vnode = svg(m('svg'));
 }
 ```
 
+## Attributes support
+
+Most of the time, using props alright. But if you use attribute-specific features like `data-` and `aria-`, using the attributes prop will be necessary.
+
+```js
+import { m } from 'million';
+
+const vnode = m('div', { attributes: { 'data-foo': 'bar' } });
+```
+
+```js highlight=3,4,5
+{
+  tag: 'svg',
+  attributes: {
+    'data-foo': 'bar'
+  }
+  props: {},
+}
+```
+
 ## Optimization via keys
 
 Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed.
 
 ```js
-import { m, VFlags } from 'million';
+import { m } from 'million';
 
 const vnode = m('div', { key: 'foo' }, ['Hello World']);
 ```
