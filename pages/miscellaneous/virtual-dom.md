@@ -134,3 +134,9 @@ Million provides five major improvements: granular patching, fewer iterative pas
 - **Keyed virtual elements:** This allows for the patching algorithm to skip nodes if the new virtual element key is the same as the old one, minimizing the amount of unnecessary work.
 - **Compiler Flags:** This allows for the patching algorithm to skip condition branches, meaning less work is done.
 - **Delta Units:** Microactions can be preprogrammed to skip diffing children all together, resulting in a better time complexity and while being easily leveraged by a compiler.
+
+<center style={{ marginTop: '30px' }}>
+  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
+    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
+  </a>
+</center>

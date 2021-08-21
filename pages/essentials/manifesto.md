@@ -26,3 +26,9 @@ The future of the Virtual DOM is not destruction of the Virtual DOM, rather it i
 
 > I recently had the opportunity to chat with [@rauchg](https://twitter.com/rauchg) about Million.js as well as some of my thoughts on the current state of Virtual DOM. He explained to me that optimization of the Virtual DOM was only a facet of the next phase of web frameworks. This includes how we can improve development mode experience, tree-shaking and bundle size, etc.
 > aggressive tree shaking - reduce bundle size. I highly recommend you to check out his [Twitter](https://twitter.com/rauchg) and [blog](https://rauchg.com/), as he has so much valuable insight into the industry and how impact can and needs to be made.
+
+<center style={{ marginTop: '30px' }}>
+  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
+    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
+  </a>
+</center>

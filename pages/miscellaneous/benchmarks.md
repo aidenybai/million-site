@@ -26,3 +26,9 @@ To see the source code, check out the [**`benchmarks` directory in GitHub**](htt
 - virtual-dom: 356,429 ops/sec ±6.03%
 - vanilla: 19,306 ops/sec ±11.23%
 - baseline: 1,027,381 ops/sec ±8.00%
+
+<center style={{ marginTop: '30px' }}>
+  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
+    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
+  </a>
+</center>

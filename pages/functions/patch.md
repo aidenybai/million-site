@@ -23,3 +23,9 @@ const vnode2 = m('div', { id: 'app' }, ['Goodbye World']);
 patch(el, vnode2);
 // document.body.innerHTML = '<div id="app">Hello World</div>' -> '<div id="app">Goodbye World</div>'
 ```
+
+<center style={{ marginTop: '30px' }}>
+  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
+    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
+  </a>
+</center>
