@@ -21,9 +21,3 @@ document.body.appendChild(el);
 ## `OLD_VNODE_FIELD` property
 
 The `OLD_VNODE_FIELD` property is a global export on the Million namesplace, as is automatically attached to the new HTMLElement for reference during the patching process. You can disable this by setting the `attachField` parameter to false, if you are able to manage the old VNode state yourself.
-
-<center style={{ marginTop: '30px' }}>
-  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
-    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
-  </a>
-</center>

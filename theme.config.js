@@ -10,7 +10,26 @@ export default {
   customSearch: null, // customizable, you can use algolia for example
   darkMode: true,
   footer: true,
-  footerText: `© ${new Date().getFullYear()} Aiden Bai`,
+  footerText: (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
+      MIT {new Date().getFullYear()} © Aiden Bai.
+      <div style={{ marginLeft: 20 }}>
+        <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
+          <img
+            style={{ height: 30, filter: 'invert(100)', opacity: 0.8 }}
+            src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg"
+            alt="Vercel"
+          />
+        </a>
+      </div>
+    </div>
+  ),
   footerEditOnGitHubLink: true, // will link to the docs repo
   logo: (
     <>

@@ -46,9 +46,3 @@ This is by far the simplest way to get started with Million. Include the followi
 ```
 
 That's it! Million is now available for use inside your page.
-
-<center style={{ marginTop: '30px' }}>
-  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
-    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
-  </a>
-</center>

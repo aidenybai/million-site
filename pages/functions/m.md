@@ -90,7 +90,7 @@ const vnode = m('div', { attributes: { 'data-foo': 'bar' } });
 
 ## Optimization via keys
 
-Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed.
+Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`VFlags.ONLY_KEYED_CHILDREN`](#flags).
 
 ```js
 import { m } from 'million';
@@ -263,9 +263,3 @@ const vnode = m('div', undefined, ['Hello World'], undefined, [INSERT(0), UPDATE
   ]
 }
 ```
-
-<center style={{ marginTop: '30px' }}>
-  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank">
-    <img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel" />
-  </a>
-</center>

@@ -1,0 +1,94 @@
+# Using JSX
+
+The following declaration style:
+
+```jsx
+const HelloWorld = <p>Hello World</p>;
+```
+
+is called JSX, and it is a syntax extension to JavaScript. Much like React, you can use JSX with Million.js to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+
+JSX produces Million VNodes. Below, you can find how to integrate JSX in your own project.
+
+## Babel
+
+We recommend using the [`@babel/plugin-transform-react-jsx`](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx/) with Babel for JSX transforms. Babel can easily be used with other bundlers like Webpack, Parcel, or Rollup, or standalone. There are two main ways to transform your data, so choose the one that fits your project best.
+
+### Automatic runtime _(recommended)_
+
+Million.js provides an automatic JSX transform option through under `million/jsx-runtime`. Babel, by default, uses classic runtime, so you will need to explicitly state that you want automatic runtime. Additionally, you will need to specify an import source. It is not necessary to explicity import `million/jsx-runtime` with the automatic runtime.
+
+`index.jsx`
+
+```jsx
+const HelloWorld = <p>Hello World</p>;
+```
+
+`.babelrc`
+
+```json
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "runtime": "automatic",
+        "importSource": "million"
+      }
+    ]
+  ]
+}
+```
+
+### Classic runtime
+
+If the automatic runtime does not work for you, or you want more fine-grained control, you should use the classic runtime. You'll need to define the `pragma` and `pragmaFrag` fields with the imports from the `million/jsx-runtime`, as shown below. This is often more cumbersome, as you'll need to import `million/jsx-runtime` at every file you use JSX (if you use an IDE it may appear as an unused variable).
+
+`index.jsx`
+
+```jsx
+import { jsx, Fragment } from 'million/jsx-runtime'; // This is required
+
+const HelloWorld = <p>Hello World</p>;
+```
+
+`.babelrc`
+
+```json
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "runtime": "classic",
+        "pragma": "jsx",
+        "pragmaFrag": "Fragment"
+      }
+    ]
+  ]
+}
+```
+
+## Vite
+
+Bundlers that depend on [esbuild](https://esbuild.github.io), such as Vite, do not support or plan to implement `jsx-runtime` at the moment. To "emulate" the automatic runtime of Babel, Vite provides the `jsxInject` field, which automatically injects the import statement. Note that esbuild has a slightly different syntax than vite, and you should [refer to the docs](https://esbuild.github.io/content-types/#auto-import-for-jsx) for more information.
+
+`index.jsx`
+
+```jsx
+const HelloWorld = <p>Hello World</p>;
+```
+
+`vite.config.js`
+
+```js
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  esbuild: {
+    jsxFactory: 'jsx',
+    jsxFragment: 'Fragment',
+    jsxInject: `import { jsx, Fragment } from 'million/jsx-runtime'`,
+  },
+});
+```

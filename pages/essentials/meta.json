@@ -1,6 +1,4 @@
 {
   "installation": "Installation",
-  "manifesto": "Manifesto",
-  "virtual-dom": "Understanding Virtual DOM",
-  "benchmarks": "Benchmarks"
+  "using-jsx": "Using JSX"
 }
