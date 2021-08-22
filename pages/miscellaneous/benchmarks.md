@@ -4,25 +4,4 @@ To test them yourself, go to the [**Million benchmarks website**](https://millio
 
 To see the source code, check out the [**`benchmarks` directory in GitHub**](https://github.com/aidenybai/million/tree/main/benchmarks)
 
-![](https://raw.githubusercontent.com/millionjs/docs/master/.github/assets/graph.png)
-
-### `text-interop`
-
-- million: 1,275,852 ops/sec ±6.33%
-- virtual-dom: 341,239 ops/sec ±5.09%
-- vanilla: 24,974 ops/sec ±9.21%
-- baseline: 1,264,249 ops/sec ±7.34%
-
-### `list-render`
-
-- million: 12,262 ops/sec ±8.60%
-- virtual-dom: 8,466 ops/sec ±4.18%
-- vanilla: 3,417 ops/sec ±8.91%
-- baseline: 13,216 ops/sec ±11.83%
-
-### `conditional-render`
-
-- million: 1,013,634 ops/sec ±11.69%
-- virtual-dom: 356,429 ops/sec ±6.03%
-- vanilla: 19,306 ops/sec ±11.23%
-- baseline: 1,027,381 ops/sec ±8.00%
+![Benchmarks Graph](https://raw.githubusercontent.com/millionjs/docs/master/.github/assets/graph.png)
