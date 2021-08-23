@@ -12,7 +12,9 @@ JSX produces Million VNodes. Below, you can find how to integrate JSX in your ow
 
 ## Babel
 
-We recommend using the [`@babel/plugin-transform-react-jsx`](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx/) with Babel for JSX transforms. Babel can easily be used with other bundlers like Webpack, Parcel, or Rollup, or standalone. There are two main ways to transform your data, so choose the one that fits your project best.
+We recommend using the [`babel-preset-million`](https://www.npmjs.com/package/babel-preset-million) preset with Babel for JSX transforms. Babel can easily be used with other bundlers like Webpack, Parcel, or Rollup, or standalone.
+
+Alternatively, you can manually configure your JSX transform using [`@babel/plugin-transform-react-jsx`](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx/).There are two main ways to transform your data, so choose the one that fits your project best.
 
 ### Automatic runtime _(recommended)_
 
