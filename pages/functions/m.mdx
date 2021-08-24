@@ -109,7 +109,12 @@ const vnode = m('div', { key: 'foo' }, ['Hello World']);
 
 ## Flags
 
-Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time. Note that flags will be ignored if the generated vnode is provided as the previous vnode during a `patch` call.
+Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
+
+<Callout emoji="✅">
+  Flags will be ignored if the generated vnode is provided as the previous vnode during a `patch`
+  call.
+</Callout>
 
 - **`VFlags.NO_CHILDREN`: `1 << 0`**\
   If your element has no children, you can set this flag to skip the children diffing entirely.
