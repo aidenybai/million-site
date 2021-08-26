@@ -74,26 +74,6 @@ const vnode = svg(m('svg'));
 }
 ```
 
-## Attributes support
-
-Most of the time, using props alright. But if you use attribute-specific features like `data-` and `aria-`, using the attributes prop will be necessary.
-
-```js
-import { m } from 'million';
-
-const vnode = m('div', { attributes: { 'data-foo': 'bar' } });
-```
-
-```js highlight=3,4,5
-{
-  tag: 'svg',
-  attributes: {
-    'data-foo': 'bar'
-  }
-  props: {},
-}
-```
-
 ## Optimization via keys
 
 Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`VFlags.ONLY_KEYED_CHILDREN`](#flags).
@@ -117,7 +97,7 @@ const vnode = m('div', { key: 'foo' }, ['Hello World']);
 
 Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
 
-<Callout emoji="✅">
+<Callout emoji="ℹ️">
   Flags will be ignored if the generated vnode is provided as the previous vnode during a `patch`
   call.
 </Callout>
