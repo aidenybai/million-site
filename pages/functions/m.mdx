@@ -102,7 +102,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   call.
 </Callout>
 
-- **`VFlags.NO_CHILDREN`: `1 << 0`**\
+- **`VFlags.NO_CHILDREN`: `0`**\
   If your element has no children, you can set this flag to skip the children diffing entirely.
 
   ```js
@@ -115,11 +115,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: [],
-    flag: 1 << 0 /* VFlags.NO_CHILDREN */,
+    flag: 0 /* VFlags.NO_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_TEXT_CHILDREN`: `1 << 1`**\
+- **`VFlags.ONLY_TEXT_CHILDREN`: `1`**\
   If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
 
   ```js
@@ -132,11 +132,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: ['Hello ', 'World!'],
-    flag: 1 << 1 /* VFlags.ONLY_TEXT_CHILDREN */,
+    flag: 1 /* VFlags.ONLY_TEXT_CHILDREN */,
   }
   ```
 
-- **`VFlags.ANY_CHILDREN`: `1 << 2`**\
+- **`VFlags.ANY_CHILDREN`: `2`**\
   If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
 
   ```js
@@ -154,11 +154,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-    flag: 1 << 2 /* VFlags.ANY_CHILDREN */,
+    flag: 2 /* VFlags.ANY_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_KEYED_CHILDREN`: `1 << 3`**\
+- **`VFlags.ONLY_KEYED_CHILDREN`: `3`**\
   If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
   For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
@@ -214,7 +214,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
       m('p', { key: 'bar' }, ['bar']),
       m('p', { key: 'foo' }, ['baz']),
     ],
-    flag: 1 << 3 /* VFlags.ONLY_KEYED_CHILDREN */,
+    flag: 3 /* VFlags.ONLY_KEYED_CHILDREN */,
   }
   ```
 
@@ -249,8 +249,8 @@ const vnode = m('div', undefined, ['Hello World'], undefined, [INSERT(0), UPDATE
   tag: 'div',
   children: ['Hello World'],
   delta: [
-    [1 << 0 /* VDeltaOperationTypes.INSERT */, 0],
-    [1 << 1 /* VDeltaOperationTypes.UPDATE */, 0],
+    [0 /* VDeltaOperationTypes.INSERT */, 0],
+    [1 /* VDeltaOperationTypes.UPDATE */, 0],
   ]
 }
 ```
