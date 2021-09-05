@@ -136,29 +136,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   }
   ```
 
-- **`VFlags.ANY_CHILDREN`: `2`**\
-  If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
-
-  ```js
-  import { m, VFlags } from 'million';
-
-  const vnode = m(
-    'div',
-    undefined,
-    ['Here is my button: ', m('button', undefined, ['Hi!'])],
-    VFlags.ANY_CHILDREN,
-  );
-  ```
-
-  ```js highlight=4
-  {
-    tag: 'div',
-    children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-    flag: 2 /* VFlags.ANY_CHILDREN */,
-  }
-  ```
-
-- **`VFlags.ONLY_KEYED_CHILDREN`: `3`**\
+- **`VFlags.ONLY_KEYED_CHILDREN`: `2`**\
   If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
   For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
@@ -214,7 +192,29 @@ Flags allow for the `patch` function to optimize condition branches. They are op
       m('p', { key: 'bar' }, ['bar']),
       m('p', { key: 'foo' }, ['baz']),
     ],
-    flag: 3 /* VFlags.ONLY_KEYED_CHILDREN */,
+    flag: 2 /* VFlags.ONLY_KEYED_CHILDREN */,
+  }
+  ```
+
+- **`VFlags.ANY_CHILDREN`: `3`**\
+  If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m(
+    'div',
+    undefined,
+    ['Here is my button: ', m('button', undefined, ['Hi!'])],
+    VFlags.ANY_CHILDREN,
+  );
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
+    flag: 3 /* VFlags.ANY_CHILDREN */,
   }
   ```
 
