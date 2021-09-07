@@ -55,6 +55,26 @@ const vnode = m(
 }
 ```
 
+## Kebab props helper
+
+Generally, the values of `className` and `style` props are objects in kebab-case. However, if you want to use camelCase for props, you can use the `kebab` function to convert the value to a kebab-case prop.
+
+```js
+import { m, style, kebab } from 'million';
+
+const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
+```
+
+```js highlight=4
+{
+  tag: 'div',
+  props: {
+    style: 'color:black;font-weight:bold'
+  },
+  children: ['Hello World'],
+}
+```
+
 ## SVG support
 
 SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
