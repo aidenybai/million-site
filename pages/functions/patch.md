@@ -3,7 +3,7 @@
 **Syntax:** `patch(element, newVnode, prevVNode?, workQueue = [], commit = (callback) => callback())`\
 **Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
 
-The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode.
+The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode. It also returns the resulting HTMLElement or Text.
 
 You can leverage [Flags](/functions/m#flags) and [Deltas](/functions/m#deltas) to improve the performance of patch calls by reducing the need to diff children by improving time complexity.
 
