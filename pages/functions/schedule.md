@@ -8,9 +8,10 @@ The `schedule` function adjusts the DOM content with a new VNode. It accepts a c
 Scheduling is generally used to induce incremental rendering, or the ability to split rendering work into chunks and spread it out over multiple frames. Generally, you want to use it if you are repeating a certain patches many times, or you want to debounce an operation.
 
 ```js
-import { m, patch, schedule } from 'million';
+import { m, patch, schedule, createElement } from 'million';
 
-const el = document.createElement('div');
+const vnode0 = m('div');
+const el = createElement(vnode0);
 
 document.body.appendChild(el);
 const vnode1 = m('div', { id: 'app' }, ['Hello World']);
