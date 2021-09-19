@@ -8,10 +8,10 @@ const Vercel = ({ height = 20 }) => (
 );
 
 export default {
-  repository: 'https://github.com/aidenybai/million', // project repo
-  docsRepository: 'https://github.com/millionjs/docs', // docs repo
-  branch: 'master', // branch of docs
-  path: '/', // path of docs
+  github: 'https://github.com/aidenybai/million',
+  docsRepositoryBase: 'https://github.com/millionjs/docs',
+  branch: 'master',
+  path: '/',
   titleSuffix: ' – Million',
   nextLinks: true,
   prevLinks: true,
