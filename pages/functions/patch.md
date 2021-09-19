@@ -47,7 +47,7 @@ patch(el, vnode1, vnode0, [() => console.log('Starting work')], schedule);
 
 You can use the `init` function to create your own custom patch functions. The `init` function accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**`init` Syntax:** `init([propsDriver, childrenDriver, yourOwnDriver])`
+**`init` Syntax:** `init([propsDriver, childrenDriver, yourOwnDriver])`\
 **`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return workStack }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
