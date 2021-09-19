@@ -45,16 +45,17 @@ patch(el, vnode1, vnode0, [() => console.log('Starting work')], schedule);
 
 ## Custom patch functions
 
-You can use the `init` function to create your own custom patch functions. The `init` function accepts a `patchProps` function, `patchChildren` function, and a rest parameter with `effects` to run, and returns a custom `patch` function.
+You can use the `init` function to create your own custom patch functions. The `init` function accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**Syntax:** `init(patchProps, patchChildren, ...effects)`
+**`init` Syntax:** `init([propsDriver, childrenDriver, yourOwnDriver])`
+**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return workStack }`
 
-This function is extremely useful when you need to add unique or unpredictable behavior to your patch functions, such as additional effects to run after the patch.
+If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
 
 ```js
-import { m, init, patchProps, patchChildren, createElement } from 'million';
+import { m, init, propsDriver, childrenDriver, createElement } from 'million';
 
-const myCustomPatch = init(patchProps, patchChildren);
+const myCustomPatch = init([propsDriver, childrenDriver]);
 
 const vnode0 = m('div');
 const el = createElement(vnode0);
