@@ -45,17 +45,17 @@ patch(el, vnode1, vnode0, [() => console.log('Starting work')], schedule);
 
 ## Custom patch functions
 
-You can use the `init` function to create your own custom patch functions. The `init` function accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+You can use the `compose` function to create your own custom patch functions. The `compose` function accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**`init` Syntax:** `init([propsDriver, childrenDriver, yourOwnDriver])`\
+**`compose` Syntax:** `compose([propsDriver, childrenDriver, yourOwnDriver])`\
 **`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return workStack }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
 
 ```js
-import { m, init, propsDriver, childrenDriver, createElement } from 'million';
+import { m, compose, propsDriver, childrenDriver, createElement } from 'million';
 
-const myCustomPatch = init([propsDriver, childrenDriver]);
+const myCustomPatch = compose([propsDriver, childrenDriver]);
 
 const vnode0 = m('div');
 const el = createElement(vnode0);
