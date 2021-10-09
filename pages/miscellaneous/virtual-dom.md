@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The virtual DOM is a tree of virtual nodes that represents what the DOM looks like. virtual nodes are light, stateless, and are strings or JavaScript objects that only contain necessary fields. Virtual nodes can be assembled into trees, and "diffed" to make pinpoint changes to the DOM.
+The virtual DOM is a tree of virtual nodes that represents what the DOM looks like. Virtual nodes are light, stateless, and are strings or JavaScript objects that only contain necessary fields. Virtual nodes can be assembled into trees, and "diffed" to make pinpoint changes to the DOM.
 
 The reasoning behind this is because modification and access of DOM nodes is computationally expensive. A diff between virtual nodes, accessing the DOM only for modification, is the premise of virtual DOM. It avoids the DOM as much as possible, favoring plain JavaScript objects instead, making reading and writing much cheaper.
 
