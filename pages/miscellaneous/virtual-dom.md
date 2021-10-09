@@ -25,7 +25,7 @@ The `m` function is a helper function that creates virtual elements. A virtual e
 An example implementation of the `m` helper function is below:
 
 ```js
-const m = (tag, props, children) => ({
+const m = (tag, props = {}, children = []) => ({
   tag,
   props,
   children,
@@ -52,20 +52,18 @@ We'll need to programmatically create a new detached DOM element, then iterate o
 
 ```js
 const createElement = (vnode) => {
-  if (typeof vnode === 'string') {
-    return document.createTextNode(vnode); // Catch if vnode is just text
-  }
+  if (typeof vnode === 'string') return document.createTextNode(vnode);
+
   const el = document.createElement(vnode.tag);
-  if (vnode.props) {
-    Object.entries(vnode.props).forEach(([name, value]) => {
-      el[name] = value;
-    });
+
+  for (const propName in vnode.props) {
+    el[propName] = vnode.props[propName];
   }
-  if (vnode.children) {
-    vnode.children.forEach((child) => {
-      el.appendChild(createElement(child));
-    });
+
+  for (const child of vnode.children) {
+    el.appendChild(createElement(child));
   }
+
   return el;
 };
 ```
@@ -84,24 +82,27 @@ The `patch` function takes an existing DOM element, old virtual node, and new vi
 We'll need to diff the two virtual nodes, then replace out the element when needed. We do this by first determining whether one of the virtual nodes is a text, or a string, and replacing it if the old and new virtual nodes do not equate each other. Otherwise, we can safely assume both are virtual elements. After that, we diff the tag and props, and replace the element if the tag has changed. We then iterate over the children and recursively patch if a child is a virtual element. An example implementation of the `patch` helper function is below:
 
 ```js
-const patch = (el, oldVNode, newVNode) => {
-  const replace = () => el.replaceWith(createElement(newVNode));
-  if (!newVNode) return el.remove();
-  if (!oldVNode) return el.appendChild(createElement(newVNode));
-  // Handle text case
+const patch = (el, newVNode, oldVNode) => {
+  if (!newVNode && newVNode !== '') return el.remove();
   if (typeof oldVNode === 'string' || typeof newVNode === 'string') {
-    if (oldVNode !== newVNode) return replace();
+    if (oldVNode !== newVNode) return el.replaceWith(createElement(newVNode));
   } else {
-    // Diff tag
-    if (oldVNode.tag !== newVNode.tag) return replace();
-    // Diff props
-    if (!oldVNode.props?.some((prop) => oldVNode.props?[prop] === newVNode.props?[prop])) return replace();
-    // Diff children
-    [...el.childNodes].forEach((child, i) => {
-      patch(child, oldVNode.children?[i], newVNode.children?[i]);
-    });
+    if (oldVNode?.tag !== newVNode.tag) {
+      return el.replaceWith(createElement(newVNode));
+    }
+
+    if (oldVNode) {
+      for (const propName in oldVNode.props) {
+        if (oldVNode.props[propName] === newVNode.props[propName])
+          return el.replaceWith(createElement(newVNode));
+      }
+
+      for (let i = el.childNodes.length - 1; i >= 0; i--) {
+        patch(el.childNodes[i], newVNode.children[i], oldVNode.children[i]);
+      }
+    }
   }
-}
+};
 ```
 
 This way, we can patch DOM elements based on virtual nodes easily:
@@ -126,11 +127,12 @@ patch(el, oldVNode, newVNode);
 
 ## So... What's unique about Million then?
 
-Million provides five major improvements: granular patching, fewer iterative passes, fast text interpolation, keyed virtual nodes, compiler flags.
+Million provides many major improvements: granular patching, fewer iterative passes, fast text interpolation, keyed virtual nodes, compiler flags, deltas, batching, and scheduling.
 
 - **Granular patching:** Instead of just replacing the entire element when there is a difference in props or children, only the necessary props are changed.
 - **Fewer iterative passes:** Million attempts to reduce the amount of passes during diffing, allowing for better time and space complexity.
 - **Fast text interpolation:** Instead of replacing text nodes with DOM methods, Million uses compiler flags to set the `textContent` of elements to boost performance.
 - **Keyed virtual elements:** This allows for the patching algorithm to skip nodes if the new virtual element key is the same as the old one, minimizing the amount of unnecessary work.
 - **Compiler Flags:** This allows for the patching algorithm to skip condition branches, meaning less work is done.
-- **Delta Units:** Microactions can be preprogrammed to skip diffing children all together, resulting in a better time complexity and while being easily leveraged by a compiler.
+- **Deltas:** Microactions can be preprogrammed to skip diffing children all together, resulting in a better time complexity and while being easily leveraged by a compiler.
+- **Batching & Scheduling:** Batching together DOM manipulations is baked in by default, and task scheduling is composable for your own uses.
