@@ -65,7 +65,7 @@ If the automatic runtime does not work for you, or you want more fine-grained co
 `index.jsx`
 
 ```jsx
-import { jsx, Fragment } from 'million/jsx-runtime'; // This is required
+import { h, Fragment } from 'million/jsx-runtime'; // This is required
 
 const HelloWorld = <p>Hello World</p>;
 ```
@@ -79,7 +79,7 @@ const HelloWorld = <p>Hello World</p>;
       "@babel/plugin-transform-react-jsx",
       {
         "runtime": "classic",
-        "pragma": "jsx",
+        "pragma": "h",
         "pragmaFrag": "Fragment"
       }
     ]
@@ -109,9 +109,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   esbuild: {
-    jsxFactory: 'jsx',
+    jsxFactory: 'h',
     jsxFragment: 'Fragment',
-    jsxInject: `import { jsx, Fragment } from 'million/jsx-runtime'`,
+    jsxInject: `import { h, Fragment } from 'million/jsx-runtime'`,
   },
 });
 ```
