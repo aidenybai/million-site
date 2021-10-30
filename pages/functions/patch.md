@@ -52,3 +52,27 @@ const vnode1 = m('div', { id: 'app' }, ['Hello World']);
 
 myCustomPatch(el, vnode1);
 ```
+
+## Writing your own drivers
+
+Below is an example template for your own custom driver:
+
+```js
+const customDriver =
+  (drivers = []) =>
+  (el, newVNode, oldVNode, workStack = []) => {
+    /**
+     * `drivers` can add another optional layer of composibility, you can run the drivers
+     * by passing the same `drivers[i](el, newVNode, oldVNode, workStack)`, or a manipulated
+     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, workStack)`.
+     * The great thing about sub-drivers is you can run them anywhere you want inside the driver!
+     */
+
+    return {
+      el,
+      newVNode,
+      oldVNode,
+      workStack,
+    };
+  };
+```
