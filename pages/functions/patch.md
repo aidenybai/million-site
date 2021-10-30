@@ -25,37 +25,24 @@ patch(el, vnode2);
 // document.body.innerHTML = '<div id="app">Hello World</div>' -> '<div id="app">Goodbye World</div>'
 ```
 
-## Manipulating Work
-
-You can specify the `workStack` array and `commit` function to allow fine grained control over the mutation of the DOM. The workStack is an array of callbacks, and you can explicitly provide callbacks to run before the computed operations. You can also specify a `commit` function, which is a function that runs the callbacks in `workStack`. Generally, you should use this for some sort of scheduling, such as with the [`schedule`](/functions/schedule) function.
-
-```js
-import { m, patch, schedule, createElement } from 'million';
-
-const vnode0 = m('div');
-const el = createElement(vnode0);
-
-document.body.appendChild(el);
-const vnode1 = m('div', { id: 'app' }, ['Hello World']);
-
-patch(el, vnode1, vnode0, [() => console.log('Starting work')], schedule);
-// stdout -> 'Starting work'
-// Every unit of work is scheduled now
-```
-
 ## Custom patch functions
 
-You can use the `compose` function to create your own custom patch functions. The `compose` function accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+You can use the `compose` driver to create your own custom patch functions. The `compose` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**`compose` Syntax:** `compose([propsDriver, childrenDriver, yourOwnDriver])`\
-**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return workStack }`
+**`compose` Syntax:** `compose([childrenDriver(), propsDriver(), yourOwnDriver([anotherDriver()])])`\
+**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return { el, newVNode, oldVNode, workStack } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
 
 ```js
-import { m, compose, propsDriver, childrenDriver, createElement } from 'million';
+import { m, compose, propsDriver, childrenDriver, createElement, flushWorkStack } from 'million';
 
-const myCustomPatch = compose([propsDriver, childrenDriver]);
+const myCustomPatch = (el, newVNode, oldVNode, workStack = []): DOMNode => {
+  const composeDriver = compose([childrenDriver(), propsDriver()]);
+  const data = composeDriver(el, newVNode, oldVNode, workStack);
+  flushWorkStack(data.workStack);
+  return data.el;
+};
 
 const vnode0 = m('div');
 const el = createElement(vnode0);
