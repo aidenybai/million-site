@@ -122,7 +122,42 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   call.
 </Callout>
 
-- **`VFlags.NO_CHILDREN`: `0`**\
+- **`VFlags.REPLACE_NODE`**\
+  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a vnode.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, ['Please hard replace me'], VFlags.REPLACE_NODE);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Please hard replace me'],
+    flag: /* VFlags.REPLACE_NODE */,
+  }
+  ```
+
+- **`VFlags.IGNORE_NODE`**\
+
+  This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, ['Please ignore me'], VFlags.IGNORE_NODE);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Please ignore me'],
+    flag: /* VFlags.IGNORE_NODE */,
+  }
+  ```
+
+- **`VFlags.NO_CHILDREN`**\
   If your element has no children, you can set this flag to skip the children diffing entirely.
 
   ```js
@@ -135,11 +170,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: [],
-    flag: 0 /* VFlags.NO_CHILDREN */,
+    flag: /* VFlags.NO_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_TEXT_CHILDREN`: `1`**\
+- **`VFlags.ONLY_TEXT_CHILDREN`**\
   If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
 
   ```js
@@ -152,11 +187,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: ['Hello ', 'World!'],
-    flag: 1 /* VFlags.ONLY_TEXT_CHILDREN */,
+    flag: /* VFlags.ONLY_TEXT_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_KEYED_CHILDREN`: `2`**\
+- **`VFlags.ONLY_KEYED_CHILDREN`**\
   If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
   For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
@@ -212,11 +247,11 @@ Flags allow for the `patch` function to optimize condition branches. They are op
       m('p', { key: 'bar' }, ['bar']),
       m('p', { key: 'foo' }, ['baz']),
     ],
-    flag: 2 /* VFlags.ONLY_KEYED_CHILDREN */,
+    flag: /* VFlags.ONLY_KEYED_CHILDREN */,
   }
   ```
 
-- **`VFlags.ANY_CHILDREN`: `3`**\
+- **`VFlags.ANY_CHILDREN`**\
   If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
 
   ```js
@@ -234,7 +269,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-    flag: 3 /* VFlags.ANY_CHILDREN */,
+    flag: /* VFlags.ANY_CHILDREN */,
   }
   ```
 
