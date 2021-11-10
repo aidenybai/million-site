@@ -27,20 +27,20 @@ patch(el, vnode2);
 
 ## Custom patch functions
 
-You can use the `compose` driver to create your own custom patch functions. The `compose` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+You can use drivers to create your own custom patch functions. The `Driver.Node` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**`compose` Syntax:** `compose([childrenDriver(), propsDriver(), yourOwnDriver([anotherDriver()])])`\
-**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack) => { ...; return { el, newVNode, oldVNode, workStack } }`
+**Driver Syntax:** `Driver.Node([Driver.Children(), Driver.Props(), yourOwnDriver([anotherDriver()])])`\
+**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack, driver) => { ...; return { el, newVNode, oldVNode, workStack, driver } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
 
 ```js
-import { m, compose, propsDriver, childrenDriver, createElement, flushWorkStack } from 'million';
+import { m, Driver, createElement, flush } from 'million';
 
 const myCustomPatch = (el, newVNode, oldVNode, workStack = []): DOMNode => {
-  const composeDriver = compose([childrenDriver(), propsDriver()]);
-  const data = composeDriver(el, newVNode, oldVNode, workStack);
-  flushWorkStack(data.workStack);
+  const diff = Driver.Node([Driver.Children(), Driver.Props()]);
+  const data = diff(el, newVNode, oldVNode, workStack);
+  flush(data.workStack);
   return data.el;
 };
 
@@ -60,11 +60,11 @@ Below is an example template for your own custom driver:
 ```js
 const customDriver =
   (drivers = []) =>
-  (el, newVNode, oldVNode, workStack = []) => {
+  (el, newVNode, oldVNode, workStack = [], driver) => {
     /**
      * `drivers` can add another optional layer of composibility, you can run the drivers
-     * by passing the same `drivers[i](el, newVNode, oldVNode, workStack)`, or a manipulated
-     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, workStack)`.
+     * by passing the same `drivers[i](el, newVNode, oldVNode, workStack, driver)`, or a manipulated
+     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, workStack, driver)`.
      * The great thing about sub-drivers is you can run them anywhere you want inside the driver!
      */
 
@@ -73,6 +73,7 @@ const customDriver =
       newVNode,
       oldVNode,
       workStack,
+      driver,
     };
   };
 ```
