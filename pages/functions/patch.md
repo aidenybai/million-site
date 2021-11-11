@@ -27,18 +27,18 @@ patch(el, vnode2);
 
 ## Custom patch functions
 
-You can use drivers to create your own custom patch functions. The `Driver.Node` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+You can use drivers to create your own custom patch functions. The `node()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**Driver Syntax:** `Driver.Node([Driver.Children(), Driver.Props(), yourOwnDriver([anotherDriver()])])`\
+**Driver Syntax:** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
 **`VDriver` Signature:** `(el, newVNode, oldVNode, workStack, driver) => { ...; return { el, newVNode, oldVNode, workStack, driver } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
 
 ```js
-import { m, Driver, createElement, flush } from 'million';
+import { m, node, children, props, createElement, flush } from 'million';
 
 const myCustomPatch = (el, newVNode, oldVNode, workStack = []): DOMNode => {
-  const diff = Driver.Node([Driver.Children(), Driver.Props()]);
+  const diff = node([children(), props()]);
   const data = diff(el, newVNode, oldVNode, workStack);
   flush(data.workStack);
   return data.el;
