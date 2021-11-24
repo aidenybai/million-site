@@ -31,7 +31,6 @@ export default {
       </span>
     </a>
   ),
-  unstable_stork: true,
   footerEditOnGitHubLink: true, // will link to the docs repo
   floatTOC: true,
   logo: (
