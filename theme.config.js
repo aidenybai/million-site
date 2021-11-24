@@ -16,7 +16,6 @@ export default {
   nextLinks: true,
   prevLinks: true,
   search: true,
-  customSearch: null, // customizable, you can use algolia for example
   darkMode: true,
   footer: true,
   footerText: (
@@ -32,7 +31,9 @@ export default {
       </span>
     </a>
   ),
+  unstable_stork: true,
   footerEditOnGitHubLink: true, // will link to the docs repo
+  floatTOC: true,
   logo: (
     <>
       <img
@@ -40,7 +41,7 @@ export default {
         style={{ height: '2em' }}
         src={'https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/icon.svg'}
       />
-      <span className="ml-2 mr-2 font-bold hidden md:inline">Million</span>
+      <span className="ml-2 mr-2 font-extrabold hidden md:inline">Million</span>
       <span className="text-gray-600 font-normal hidden md:inline">
         &lt;1kb <span className="italic">compiler-augmented</span> virtual DOM. It's fast!
       </span>

@@ -4,7 +4,6 @@ title: Introduction
 
 import Callout from 'nextra-theme-docs/callout';
 import Bleed from 'nextra-theme-docs/bleed';
-import Features from '../components/features';
 import Image from 'next/image';
 
 <style jsx global>{`
@@ -27,7 +26,13 @@ import Image from 'next/image';
 
 ![Million Logo](https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/logo.svg)
 
-<Features />
+<Bleed full>
+  <div className="mx-auto max-w-full w-[880px] text-center px-4 mb-10">
+    <p className="text-lg mb-2 text-gray-600 md:!text-2xl">
+      &lt;1kb compiler-augmented virtual DOM. It's fast!
+    </p>
+  </div>
+</Bleed>
 
 Current Virtual DOM implementations are inadequate—Ranging from overcomplicated to abandoned, most are unusable without sacrificing raw performance and size. Million aims to fix this, providing a library-agnostic Virtual DOM to serve as the core for Javascript libraries that focus on precompilation and static analysis.
 

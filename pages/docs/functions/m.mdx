@@ -1,0 +1,311 @@
+---
+title: Using JSX
+---
+
+import Callout from 'nextra-theme-docs/callout';
+
+# `m`
+
+**Syntax:** `m(tag, props?, children?, flag?, delta?)`\
+**Example:** `m('div', { id: 'app' }, ['Hello World'])`
+
+It is recommended that you use `m` to create a VNode. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
+
+```js
+import { m } from 'million';
+
+const vnode = m('div', { id: 'app' }, ['Hello World']);
+```
+
+```js
+{
+  tag: 'div',
+  props: {
+    id: 'app'
+  },
+  children: ['Hello World'],
+}
+```
+
+## `className` and `style` props
+
+The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
+
+```js
+import { m, className, style } from 'million';
+
+const vnode = m(
+  'div',
+  {
+    className: className({ class1: true, class2: false, class3: 1 + 1 === 2 }),
+    style: style({ color: 'black', 'font-weight': 'bold' }),
+  },
+  ['Hello World'],
+);
+```
+
+```js highlight=4,5
+{
+  tag: 'div',
+  props: {
+    className: 'class1 class3',
+    style: 'color:black;font-weight:bold'
+  },
+  children: ['Hello World'],
+}
+```
+
+## Kebab props helper
+
+Generally, the values of `className` and `style` props are objects in kebab-case. However, if you want to use camelCase for the keys of these props, you can use the `kebab` function to convert the keys from camelCase to kebab-case.
+
+```js
+import { m, style, kebab } from 'million';
+
+const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
+```
+
+```js highlight=4
+{
+  tag: 'div',
+  props: {
+    style: 'color:black;font-weight:bold'
+  },
+  children: ['Hello World'],
+}
+```
+
+## SVG support
+
+SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
+
+```js
+import { m, svg } from 'million';
+
+const vnode = svg(m('svg'));
+```
+
+```js highlight=4
+{
+  tag: 'svg',
+  props: {
+    ns: 'http://www.w3.org/2000/svg'
+  },
+}
+```
+
+## Optimization via keys
+
+Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`VFlags.ONLY_KEYED_CHILDREN`](#flags).
+
+```js
+import { m } from 'million';
+
+const vnode = m('div', { key: 'foo' }, ['Hello World']);
+```
+
+```js highlight=5
+{
+  tag: 'div',
+  props: {},
+  children: ['Hello World'],
+  key: 'foo',
+}
+```
+
+## Flags
+
+Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
+
+<Callout emoji="ℹ️">
+  Flags will be ignored if the generated vnode is provided as the previous vnode during a `patch`
+  call.
+</Callout>
+
+- **`VFlags.IGNORE_NODE`**
+
+  This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, ['Please ignore me'], VFlags.IGNORE_NODE);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Please ignore me'],
+    flag: /* VFlags.IGNORE_NODE */,
+  }
+  ```
+
+- **`VFlags.REPLACE_NODE`**\
+  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a vnode.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, ['Please hard replace me'], VFlags.REPLACE_NODE);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Please hard replace me'],
+    flag: /* VFlags.REPLACE_NODE */,
+  }
+  ```
+
+- **`VFlags.NO_CHILDREN`**\
+  If your element has no children, you can set this flag to skip the children diffing entirely.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, [], VFlags.NO_CHILDREN);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: [],
+    flag: /* VFlags.NO_CHILDREN */,
+  }
+  ```
+
+- **`VFlags.ONLY_TEXT_CHILDREN`**\
+  If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m('div', undefined, ['Hello ', 'World!'], VFlags.ONLY_TEXT_CHILDREN);
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Hello ', 'World!'],
+    flag: /* VFlags.ONLY_TEXT_CHILDREN */,
+  }
+  ```
+
+- **`VFlags.ONLY_KEYED_CHILDREN`**\
+  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
+
+  For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
+
+  ```js highlight=7,8,9,10
+  oldVNodeChildren:
+    A,
+    B,
+    C,
+
+  newVNodeChildren:
+    X,
+    A,
+    B,
+    C,
+  ```
+
+  However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
+
+  ```js highlight=7
+  oldVNodeChildren:
+    A,
+    B,
+    C,
+
+  newVNodeChildren:
+    X,
+    A,
+    B,
+    C,
+  ```
+
+  So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const list = ['foo', 'bar', 'baz'];
+
+  const vnode = m(
+    'div',
+    undefined,
+    list.map((item) => m('p', { key: item }, [item])),
+    VFlags.ONLY_KEYED_CHILDREN,
+  );
+  ```
+
+  ```js highlight=8
+  {
+    tag: 'div',
+    children: [
+      m('p', { key: 'foo' }, ['foo']),
+      m('p', { key: 'bar' }, ['bar']),
+      m('p', { key: 'foo' }, ['baz']),
+    ],
+    flag: /* VFlags.ONLY_KEYED_CHILDREN */,
+  }
+  ```
+
+- **`VFlags.ANY_CHILDREN`**\
+  If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
+
+  ```js
+  import { m, VFlags } from 'million';
+
+  const vnode = m(
+    'div',
+    undefined,
+    ['Here is my button: ', m('button', undefined, ['Hi!'])],
+    VFlags.ANY_CHILDREN,
+  );
+  ```
+
+  ```js highlight=4
+  {
+    tag: 'div',
+    children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
+    flag: /* VFlags.ANY_CHILDREN */,
+  }
+  ```
+
+## Deltas
+
+Deltas are a way for the compile-time to optimize runtime operations by providing a set of predefined operations. This is useful for cases where you are performing consistent, predictable operations at a high interval, low payload situation.
+
+There are three types of delta operations: `INSERT`, `UPDATE`, and `DELETE`. You can provide a specified index to select the position of the vnode's children to be inserted, updated, or deleted.
+
+- `INSERT` is used to add children at a selected index.\
+  **Syntax:** `INSERT(index)`\
+  **Example:** `INSERT(0)`
+
+- `UPDATE` is used to replace children at a selected index.\
+  **Syntax:** `UPDATE(index)`\
+  **Example:** `UPDATE(0)`
+
+- `DELETE` is used to remove children at a selected index.\
+  **Syntax:** `DELETE(index)`\
+  **Example:** `DELETE(0)`
+
+You can load these operations into a delta, or an array. You can pass them inside the `m` function.
+
+```js
+import { m, INSERT, UPDATE, DELETE } from 'million';
+
+const vnode = m('div', undefined, ['Hello World'], undefined, [INSERT(0), UPDATE(0)]);
+```
+
+```js highlight=5,6
+{
+  tag: 'div',
+  children: ['Hello World'],
+  delta: [
+    [0 /* VDeltaOperationTypes.INSERT */, 0],
+    [1 /* VDeltaOperationTypes.UPDATE */, 0],
+  ]
+}
+```
