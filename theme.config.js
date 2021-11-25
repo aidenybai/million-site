@@ -11,8 +11,12 @@ export default {
   github: 'https://github.com/aidenybai/million',
   docsRepositoryBase: 'https://github.com/millionjs/docs',
   titleSuffix: ' – Million',
+  nextLinks: true,
+  prevLinks: true,
   search: true,
-  footerText: () => (
+  customSearch: null,
+  darkMode: true,
+  footerText: (
     <a
       rel="noopener"
       className="inline-flex items-center no-underline text-current font-semibold"
@@ -27,7 +31,7 @@ export default {
   ),
   footerEditOnGitHubLink: true, // will link to the docs repo
   floatTOC: true,
-  logo: () => (
+  logo: (
     <>
       <img
         className="md:inline object-contain hidden"
@@ -40,7 +44,7 @@ export default {
       </span>
     </>
   ),
-  head: () => (
+  head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="<1kb virtual DOM - it's fast!" />
