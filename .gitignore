@@ -2,3 +2,4 @@ node_modules
 .next
 build
 .pnpm-debug.log
+yarn-error.log
