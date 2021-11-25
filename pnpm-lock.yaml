@@ -6,6 +6,7 @@ specifiers:
   nextra: ^1.1.0
   nextra-theme-docs: ^1.2.6
   postcss: ^8.3.11
+  prismjs: ^1.25.0
   react: ^17.0.2
   react-dom: ^17.0.2
   tailwindcss: ^2.2.19
@@ -14,6 +15,7 @@ dependencies:
   next: 12.0.4_react-dom@17.0.2+react@17.0.2
   nextra: 1.1.0_react@17.0.2
   nextra-theme-docs: 1.2.6_f195614718841b3c14a81ac95268ce58
+  prismjs: 1.25.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -3428,6 +3430,10 @@ packages:
       react: '>=0.14.9'
     dependencies:
       react: 17.0.2
+    dev: false
+
+  /prismjs/1.25.0:
+    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
     dev: false
 
   /process-nextick-args/2.0.1:
