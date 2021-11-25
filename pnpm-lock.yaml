@@ -2,12 +2,10 @@ lockfileVersion: 5.3
 
 specifiers:
   autoprefixer: ^10.4.0
-  next: ^12.0.4
+  next: ^12.0.3
   nextra: ^1.1.0
   nextra-theme-docs: ^1.2.6
-  postcss: ^8.4.1
-  prism-react-renderer: ^1.2.1
-  prismjs: ^1.25.0
+  postcss: ^8.3.11
   react: ^17.0.2
   react-dom: ^17.0.2
   tailwindcss: ^2.2.19
@@ -16,8 +14,6 @@ dependencies:
   next: 12.0.4_react-dom@17.0.2+react@17.0.2
   nextra: 1.1.0_react@17.0.2
   nextra-theme-docs: 1.2.6_f195614718841b3c14a81ac95268ce58
-  prism-react-renderer: 1.2.1_react@17.0.2
-  prismjs: 1.25.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -63,7 +59,7 @@ packages:
     resolution: {integrity: sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.4
+      regenerator-runtime: 0.13.9
     dev: false
 
   /@babel/runtime/7.16.3:
@@ -3432,10 +3428,6 @@ packages:
       react: '>=0.14.9'
     dependencies:
       react: 17.0.2
-    dev: false
-
-  /prismjs/1.25.0:
-    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
     dev: false
 
   /process-nextick-args/2.0.1:
