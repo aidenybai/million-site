@@ -1,30 +1,26 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@mdx-js/loader': ^2.0.0-rc.2
   autoprefixer: ^10.4.0
   next: ^12.0.4
   nextra: ^1.1.0
   nextra-theme-docs: ^1.2.6
-  postcss: ^8.4.1
-  prismjs: ^1.25.0
+  postcss: ^8.4.3
   react: ^17.0.2
   react-dom: ^17.0.2
   tailwindcss: ^2.2.19
 
 dependencies:
-  '@mdx-js/loader': 2.0.0-rc.2
   next: 12.0.4_react-dom@17.0.2+react@17.0.2
   nextra: 1.1.0_react@17.0.2
   nextra-theme-docs: 1.2.6_f195614718841b3c14a81ac95268ce58
-  prismjs: 1.25.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  autoprefixer: 10.4.0_postcss@8.4.1
-  postcss: 8.4.1
-  tailwindcss: 2.2.19_343577c3dd31b4e787406ab8c6576ff6
+  autoprefixer: 10.4.0_postcss@8.4.3
+  postcss: 8.4.3
+  tailwindcss: 2.2.19_bb6c3d31c32fe82322dca7a24f4bed2f
 
 packages:
 
@@ -529,7 +525,7 @@ packages:
     hasBin: true
     dev: false
 
-  /autoprefixer/10.4.0_postcss@8.4.1:
+  /autoprefixer/10.4.0_postcss@8.4.3:
     resolution: {integrity: sha512-7FdJ1ONtwzV1G43GDD0kpVMn/qbiNqyOPMFTX5nRffI+7vgWoFEc6DcXOxHJxrWNDXrZh18eDsZjvZGUljSRGA==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -541,7 +537,7 @@ packages:
       fraction.js: 4.1.2
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.1
+      postcss: 8.4.3
       postcss-value-parser: 4.1.0
     dev: true
 
@@ -668,7 +664,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001283
       colorette: 1.4.0
-      electron-to-chromium: 1.4.2
+      electron-to-chromium: 1.4.4
       escalade: 3.1.1
       node-releases: 1.1.77
     dev: false
@@ -679,7 +675,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001283
-      electron-to-chromium: 1.4.2
+      electron-to-chromium: 1.4.4
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -909,18 +905,18 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
-  /color-string/1.6.0:
-    resolution: {integrity: sha512-c/hGS+kRWJutUBEngKKmk4iH3sD59MBkoxVapS/0wgpCz2u7XsNloxknyvBhzwEs1IbV36D9PwqLPJ2DTu3vMA==}
+  /color-string/1.7.4:
+    resolution: {integrity: sha512-nVdUvPVgZMpRQad5dcsCMOSB5BXLljklTiaxS6ehhKxDsAI5sD7k5VmFuBt1y3Rlym8uulc/ANUN/bMWtBu6Sg==}
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
     dev: true
 
-  /color/4.0.1:
-    resolution: {integrity: sha512-rpZjOKN5O7naJxkH2Rx1sZzzBgaiWECc6BYXjeCE6kF0kcASJYbUq02u7JqIHwCb/j3NhV+QhRL2683aICeGZA==}
+  /color/4.0.2:
+    resolution: {integrity: sha512-fSu0jW2aKQG2FHlDywqdFPdabJHsUdZ0xabSt3wFZdcgRKtLnUHs19nUtuFuLGVMFhINGgfZEIjbUOsGZXGu7Q==}
     dependencies:
       color-convert: 2.0.1
-      color-string: 1.6.0
+      color-string: 1.7.4
     dev: true
 
   /colorette/1.4.0:
@@ -1250,8 +1246,8 @@ packages:
     resolution: {integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=}
     dev: false
 
-  /electron-to-chromium/1.4.2:
-    resolution: {integrity: sha512-SxHMmlSvpT83M/MLxTXQBqfqo3bK+UOk6Uup6w1paX86l+af1xwwTMLlyK3xJwE3Kq8/QnecuFKmnmRlAUJCXw==}
+  /electron-to-chromium/1.4.4:
+    resolution: {integrity: sha512-teHtgwcmVcL46jlFvAaqjyiTLWuMrUQO1JqV303JKB4ysXG6m8fXSFhbjal9st0r9mNskI22AraJZorb1VcLVg==}
 
   /elliptic/6.5.4:
     resolution: {integrity: sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==}
@@ -3369,7 +3365,7 @@ packages:
     engines: {node: '>=10.0'}
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.1
+      postcss: 8.4.3
     dev: true
 
   /postcss-load-config/3.1.0:
@@ -3386,13 +3382,13 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /postcss-nested/5.0.6_postcss@8.4.1:
+  /postcss-nested/5.0.6_postcss@8.4.3:
     resolution: {integrity: sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.1
+      postcss: 8.4.3
       postcss-selector-parser: 6.0.6
     dev: true
 
@@ -3421,8 +3417,8 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /postcss/8.4.1:
-    resolution: {integrity: sha512-WqLs/TTzXdG+/A4ZOOK9WDZiikrRaiA+eoEb/jz2DT9KUhMNHgP7yKPO8vwi62ZCsb703Gwb7BMZwDzI54Y2Ag==}
+  /postcss/8.4.3:
+    resolution: {integrity: sha512-d5gVKo8ekrircqHOQNvSQk8dhGOuAfu1iP6dzfAlnAmcu7EBJ9cFuZG8B1KZK362aaEO3L1H+WM3ny9xQ29tFw==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.1.30
@@ -3446,10 +3442,6 @@ packages:
       react: '>=0.14.9'
     dependencies:
       react: 17.0.2
-    dev: false
-
-  /prismjs/1.25.0:
-    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
     dev: false
 
   /process-nextick-args/2.0.1:
@@ -3498,7 +3490,7 @@ packages:
     dependencies:
       commander: 6.2.1
       glob: 7.2.0
-      postcss: 8.4.1
+      postcss: 8.4.3
       postcss-selector-parser: 6.0.6
     dev: true
 
@@ -4099,7 +4091,7 @@ packages:
       has-flag: 4.0.0
     dev: false
 
-  /tailwindcss/2.2.19_343577c3dd31b4e787406ab8c6576ff6:
+  /tailwindcss/2.2.19_bb6c3d31c32fe82322dca7a24f4bed2f:
     resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -4108,11 +4100,11 @@ packages:
       postcss: ^8.0.9
     dependencies:
       arg: 5.0.1
-      autoprefixer: 10.4.0_postcss@8.4.1
+      autoprefixer: 10.4.0_postcss@8.4.3
       bytes: 3.1.1
       chalk: 4.1.2
       chokidar: 3.5.2
-      color: 4.0.1
+      color: 4.0.2
       cosmiconfig: 7.0.1
       detective: 5.2.0
       didyoumean: 1.2.2
@@ -4129,10 +4121,10 @@ packages:
       node-emoji: 1.11.0
       normalize-path: 3.0.0
       object-hash: 2.2.0
-      postcss: 8.4.1
+      postcss: 8.4.3
       postcss-js: 3.0.3
       postcss-load-config: 3.1.0
-      postcss-nested: 5.0.6_postcss@8.4.1
+      postcss-nested: 5.0.6_postcss@8.4.3
       postcss-selector-parser: 6.0.6
       postcss-value-parser: 4.1.0
       pretty-hrtime: 1.0.3
