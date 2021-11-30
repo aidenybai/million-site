@@ -16,6 +16,7 @@ export default {
   search: true,
   customSearch: null,
   darkMode: true,
+  unstable_stork: true,
   footerText: (
     <a
       rel="noopener"
