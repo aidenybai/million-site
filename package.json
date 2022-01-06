@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "next": "^12.0.4",
-    "nextra": "^2.0.0-beta.5",
-    "nextra-theme-docs": "^2.0.0-beta.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
+    "nextra": "^2.0.0-alpha.2",
+    "nextra-theme-docs": "^2.0.0-alpha.2",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19"
   }

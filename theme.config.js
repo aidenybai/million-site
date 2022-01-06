@@ -16,11 +16,10 @@ export default {
   search: true,
   customSearch: null,
   darkMode: true,
-  unstable_stork: true,
   footerText: (
     <a
       rel="noopener"
-      className="inline-flex items-center no-underline text-current font-semibold"
+      className="w-full inline-flex items-center no-underline text-current font-semibold"
       href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
       target="_blank"
     >
