@@ -8,10 +8,6 @@
     "title": "Docs",
     "type": "nav"
   },
-  "benchmarks": {
-    "title": "Benchmarks",
-    "type": "nav"
-  },
   "blog": {
     "title": "Blog",
     "type": "nav"
