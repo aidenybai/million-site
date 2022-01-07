@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "nextra": "^2.0.0-alpha.2",
+    "nextra": "^2.0.0-alpha.4",
     "nextra-theme-docs": "^2.0.0-alpha.2",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19"
