@@ -11,10 +11,11 @@ export default {
   github: 'https://github.com/aidenybai/million',
   docsRepositoryBase: 'https://github.com/millionjs/docs',
   titleSuffix: ' – Million',
+  feedbackLink: 'Question? Give us feedback →',
+  feedbackLabels: 'feedback',
   nextLinks: true,
   prevLinks: true,
   search: true,
-  customSearch: null,
   darkMode: true,
   footerText: (
     <a
@@ -31,6 +32,8 @@ export default {
   ),
   footerEditOnGitHubLink: true, // will link to the docs repo
   floatTOC: true,
+  unstable_stork: true,
+  unstable_flexsearch: false,
   logo: (
     <>
       <img

@@ -4,7 +4,7 @@ specifiers:
   autoprefixer: ^10.4.0
   next: ^12.0.4
   nextra: ^2.0.0-alpha.4
-  nextra-theme-docs: ^2.0.0-alpha.2
+  nextra-theme-docs: ^2.0.0-alpha.4
   postcss: ^8.4.4
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -18,7 +18,7 @@ dependencies:
 devDependencies:
   autoprefixer: 10.4.0_postcss@8.4.4
   nextra: 2.0.0-alpha.4_react@17.0.2
-  nextra-theme-docs: 2.0.0-alpha.2_f195614718841b3c14a81ac95268ce58
+  nextra-theme-docs: 2.0.0-alpha.4_f195614718841b3c14a81ac95268ce58
   postcss: 8.4.4
   tailwindcss: 2.2.19_6b4e3d148bdcb715d5f821ed0a9c268b
 
@@ -3308,8 +3308,8 @@ packages:
       - webpack
     dev: false
 
-  /nextra-theme-docs/2.0.0-alpha.2_f195614718841b3c14a81ac95268ce58:
-    resolution: {integrity: sha512-80rGVsqytWQg+OAg6haqGQpBJoaQcY5A2BhesoSo/97IIumXLY8GR93MtxRiMY2Jp/o42eARhdC6z7DLe+GSAw==}
+  /nextra-theme-docs/2.0.0-alpha.4_f195614718841b3c14a81ac95268ce58:
+    resolution: {integrity: sha512-My2m4FZjmrUI+xcrsLXgw3p41VFT2hr5mEHJ9zMCGSVCUrOger35+iFysBG84Z4Cav4KygGqeu5esb+O/T1j0Q==}
     peerDependencies:
       next: '>=9.5.3'
       react: '>=16.13.1'
