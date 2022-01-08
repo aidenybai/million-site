@@ -32,8 +32,8 @@ export default {
   ),
   footerEditOnGitHubLink: true, // will link to the docs repo
   floatTOC: true,
-  unstable_stork: true,
-  unstable_flexsearch: false,
+  unstable_stork: false,
+  unstable_flexsearch: true,
   logo: (
     <>
       <img
