@@ -36,11 +36,7 @@ export default {
   unstable_flexsearch: true,
   logo: (
     <>
-      <img
-        className="md:inline object-contain hidden"
-        style={{ height: '2em' }}
-        src={'https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/icon.svg'}
-      />
+      <img className="md:inline object-contain hidden" style={{ height: '2em' }} src="/icon.svg" />
       <span className="ml-2 mr-2 font-extrabold hidden md:inline">Million</span>
       <span className="text-gray-600 font-normal hidden md:inline">
         &lt;1kb <span className="italic">compiler-augmented</span> virtual DOM. It's fast!
