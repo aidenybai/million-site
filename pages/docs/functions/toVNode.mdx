@@ -13,7 +13,7 @@ The `toVNode` function converts an HTMLElement or Text to a VNode. This is gener
 import { m, toVNode, patch } from 'million';
 
 const el = document.querySelector('#app');
-const vnode = m('div', { id: 'app' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN);
+const vnode = m('div', { id: 'app' }, ['Hello World'], Flags.ONLY_TEXT_CHILDREN);
 const oldVNode = toVNode(el);
 
 patch(el, vnode, oldVNode);

@@ -96,7 +96,7 @@ const vnode = svg(m('svg'));
 
 ## Optimization via keys
 
-Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`VFlags.ONLY_KEYED_CHILDREN`](#flags).
+Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`Flags.ONLY_KEYED_CHILDREN`](#flags).
 
 ```js
 import { m } from 'million';
@@ -122,75 +122,75 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   call.
 </Callout>
 
-- **`VFlags.IGNORE_NODE`**\
+- **`Flags.IGNORE_NODE`**\
   This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
-  const vnode = m('div', undefined, ['Please ignore me'], VFlags.IGNORE_NODE);
+  const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
   ```
 
   ```js highlight=4
   {
     tag: 'div',
     children: ['Please ignore me'],
-    flag: /* VFlags.IGNORE_NODE */,
+    flag: /* Flags.IGNORE_NODE */,
   }
   ```
 
-- **`VFlags.REPLACE_NODE`**\
+- **`Flags.REPLACE_NODE`**\
   If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a vnode.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
-  const vnode = m('div', undefined, ['Please hard replace me'], VFlags.REPLACE_NODE);
+  const vnode = m('div', undefined, ['Please hard replace me'], Flags.REPLACE_NODE);
   ```
 
   ```js highlight=4
   {
     tag: 'div',
     children: ['Please hard replace me'],
-    flag: /* VFlags.REPLACE_NODE */,
+    flag: /* Flags.REPLACE_NODE */,
   }
   ```
 
-- **`VFlags.NO_CHILDREN`**\
+- **`Flags.NO_CHILDREN`**\
   If your element has no children, you can set this flag to skip the children diffing entirely.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
-  const vnode = m('div', undefined, [], VFlags.NO_CHILDREN);
+  const vnode = m('div', undefined, [], Flags.NO_CHILDREN);
   ```
 
   ```js highlight=4
   {
     tag: 'div',
     children: [],
-    flag: /* VFlags.NO_CHILDREN */,
+    flag: /* Flags.NO_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_TEXT_CHILDREN`**\
+- **`Flags.ONLY_TEXT_CHILDREN`**\
   If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
-  const vnode = m('div', undefined, ['Hello ', 'World!'], VFlags.ONLY_TEXT_CHILDREN);
+  const vnode = m('div', undefined, ['Hello ', 'World!'], Flags.ONLY_TEXT_CHILDREN);
   ```
 
   ```js highlight=4
   {
     tag: 'div',
     children: ['Hello ', 'World!'],
-    flag: /* VFlags.ONLY_TEXT_CHILDREN */,
+    flag: /* Flags.ONLY_TEXT_CHILDREN */,
   }
   ```
 
-- **`VFlags.ONLY_KEYED_CHILDREN`**\
+- **`Flags.ONLY_KEYED_CHILDREN`**\
   If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
   For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
@@ -226,7 +226,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
   const list = ['foo', 'bar', 'baz'];
 
@@ -234,7 +234,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
     'div',
     undefined,
     list.map((item) => m('p', { key: item }, [item])),
-    VFlags.ONLY_KEYED_CHILDREN,
+    Flags.ONLY_KEYED_CHILDREN,
   );
   ```
 
@@ -246,21 +246,21 @@ Flags allow for the `patch` function to optimize condition branches. They are op
       m('p', { key: 'bar' }, ['bar']),
       m('p', { key: 'foo' }, ['baz']),
     ],
-    flag: /* VFlags.ONLY_KEYED_CHILDREN */,
+    flag: /* Flags.ONLY_KEYED_CHILDREN */,
   }
   ```
 
-- **`VFlags.ANY_CHILDREN`**\
+- **`Flags.ANY_CHILDREN`**\
   If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
 
   ```js
-  import { m, VFlags } from 'million';
+  import { m, Flags } from 'million';
 
   const vnode = m(
     'div',
     undefined,
     ['Here is my button: ', m('button', undefined, ['Hi!'])],
-    VFlags.ANY_CHILDREN,
+    Flags.ANY_CHILDREN,
   );
   ```
 
@@ -268,7 +268,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   {
     tag: 'div',
     children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-    flag: /* VFlags.ANY_CHILDREN */,
+    flag: /* Flags.ANY_CHILDREN */,
   }
   ```
 
@@ -276,26 +276,26 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 
 Deltas are a way for the compile-time to optimize runtime operations by providing a set of predefined operations. This is useful for cases where you are performing consistent, predictable operations at a high interval, low payload situation.
 
-There are three types of delta operations: `INSERT`, `UPDATE`, and `DELETE`. You can provide a specified index to select the position of the vnode's children to be inserted, updated, or deleted.
+There are three types of delta operations: `Delta.INSERT`, `Delta.UPDATE`, and `Delta.DELETE`. You can provide a specified index to select the position of the vnode's children to be inserted, updated, or deleted.
 
-- `INSERT` is used to add children at a selected index.\
-  **Syntax:** `INSERT(index)`\
-  **Example:** `INSERT(0)`
+- `Delta.INSERT` is used to add children at a selected index.\
+  **Syntax:** `Delta.INSERT(index)`\
+  **Example:** `IDelta.NSERT(0)`
 
-- `UPDATE` is used to replace children at a selected index.\
-  **Syntax:** `UPDATE(index)`\
-  **Example:** `UPDATE(0)`
+- `Delta.UPDATE` is used to replace children at a selected index.\
+  **Syntax:** `Delta.UPDATE(index)`\
+  **Example:** `Delta.UPDATE(0)`
 
-- `DELETE` is used to remove children at a selected index.\
-  **Syntax:** `DELETE(index)`\
-  **Example:** `DELETE(0)`
+- `Delta.DELETE` is used to remove children at a selected index.\
+  **Syntax:** `Delta.DELETE(index)`\
+  **Example:** `Delta.DELETE(0)`
 
 You can load these operations into a delta, or an array. You can pass them inside the `m` function.
 
 ```js
-import { m, INSERT, UPDATE, DELETE } from 'million';
+import { m, Delta } from 'million';
 
-const vnode = m('div', undefined, ['Hello World'], undefined, [INSERT(0), UPDATE(0)]);
+const vnode = m('div', undefined, ['Hello World'], undefined, [Delta.INSERT(0), Delta.UPDATE(0)]);
 ```
 
 ```js highlight="5,6"
@@ -303,8 +303,8 @@ const vnode = m('div', undefined, ['Hello World'], undefined, [INSERT(0), UPDATE
   tag: 'div',
   children: ['Hello World'],
   delta: [
-    [0 /* VDeltaOperationTypes.INSERT */, 0],
-    [1 /* VDeltaOperationTypes.UPDATE */, 0],
+    [0 /* DeltaTypes.INSERT */, 0],
+    [1 /* DeltaTypes.UPDATE */, 0],
   ]
 }
 ```

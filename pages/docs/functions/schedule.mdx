@@ -7,12 +7,22 @@ title: schedule
 **Syntax:** `schedule(callback)`\
 **Example:** `schedule(() => patch(el, m('div')))`
 
-The `schedule` function is used to schedule a flush or patch callback to prevent main thread blocking.
+The `schedule` function is used as a deferred commit function to prevent main thread blocking.
 
 Scheduling is generally used to induce incremental rendering, or the ability to split rendering work into chunks and spread it out over multiple frames. Generally, you want to use it if you are repeating a certain patches many times, or you want to debounce an operation.
 
 ```js
-import { m, patch, schedule, createElement } from 'million';
+import { m, diff, props, children, schedule, createElement } from 'million';
+
+const patch = (el, newVNode, oldVNode, effects = []): DOMNode => {
+  const diff = node([children(), props()]);
+  // async rendering
+  const data = diff(el, newVNode, oldVNode, effects, schedule);
+  for (let i = 0; i < effects.length; i++) {
+    effects[i]();
+  }
+  return data.el;
+};
 
 const vnode0 = m('div');
 const el = createElement(vnode0);

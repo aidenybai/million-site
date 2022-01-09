@@ -10,9 +10,9 @@ title: createElement
 The `createElement` function converts a VNode into a HTMLElement or Text. It accepts a VNode (VElement or string). This is generally used to initialize an root element to use as a reference during patching.
 
 ```js
-import { m, createElement, VFlags } from 'million';
+import { m, createElement, Flags } from 'million';
 
-const vnode = m('div', { id: 'app' }, ['Hello World'], VFlags.ONLY_TEXT_CHILDREN);
+const vnode = m('div', { id: 'app' }, ['Hello World'], Flags.ONLY_TEXT_CHILDREN);
 const el = createElement(vnode);
 
 document.body.appendChild(el);

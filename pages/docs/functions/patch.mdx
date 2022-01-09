@@ -4,7 +4,7 @@ title: patch
 
 # `patch`
 
-**Syntax:** `patch(element, newVnode, prevVNode?, workStack = [], commit = (callback) => callback())`\
+**Syntax:** `patch(element, newVnode, prevVNode?, effects = [], commit = (callback) => callback())`\
 **Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
 
 The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode. It also returns the resulting HTMLElement or Text.
@@ -34,17 +34,19 @@ patch(el, vnode2);
 You can use drivers to create your own custom patch functions. The `node()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
 **Driver Syntax:** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
-**`VDriver` Signature:** `(el, newVNode, oldVNode, workStack, driver) => { ...; return { el, newVNode, oldVNode, workStack, driver } }`
+**`Driver` Signature:** `(el, newVNode, oldVNode, effects, commit, driver) => { ...; return { el, newVNode, oldVNode, effects, commit, driver } }`
 
-If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `VDriver` and create your own drivers.
+If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
 
 ```js
 import { m, node, children, props, createElement, flush } from 'million';
 
-const myCustomPatch = (el, newVNode, oldVNode, workStack = []): DOMNode => {
+const myCustomPatch = (el, newVNode, oldVNode, effects = [], commit) => {
   const diff = node([children(), props()]);
-  const data = diff(el, newVNode, oldVNode, workStack);
-  flush(data.workStack);
+  const data = diff(el, newVNode, oldVNode, effects, commit);
+  for (let i = 0; i < effects.length; i++) {
+    effects[i]();
+  }
   return data.el;
 };
 
@@ -64,11 +66,11 @@ Below is an example template for your own custom driver:
 ```js
 const customDriver =
   (drivers = []) =>
-  (el, newVNode, oldVNode, workStack = [], driver) => {
+  (el, newVNode, oldVNode, effects = [], commit, driver) => {
     /**
      * `drivers` can add another optional layer of composibility, you can run the drivers
-     * by passing the same `drivers[i](el, newVNode, oldVNode, workStack, driver)`, or a manipulated
-     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, workStack, driver)`.
+     * by passing the same `drivers[i](el, newVNode, oldVNode, effects, commit, driver)`, or a manipulated
+     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, effects, commit, driver)`.
      * The great thing about sub-drivers is you can run them anywhere you want inside the driver!
      */
 
@@ -76,7 +78,8 @@ const customDriver =
       el,
       newVNode,
       oldVNode,
-      workStack,
+      effects,
+      commit,
       driver,
     };
   };
