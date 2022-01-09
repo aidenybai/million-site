@@ -9,7 +9,7 @@ const Vercel = ({ height = 20 }) => (
 
 export default {
   github: 'https://github.com/aidenybai/million',
-  docsRepositoryBase: 'https://github.com/millionjs/docs',
+  docsRepositoryBase: 'https://github.com/aidenybai/docs',
   titleSuffix: ' – Million',
   feedbackLink: 'Question? Give us feedback →',
   feedbackLabels: 'feedback',
