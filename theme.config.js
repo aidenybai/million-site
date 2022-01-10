@@ -13,7 +13,7 @@ export default {
   footerText: (
     <a
       rel="noopener"
-      className="w-full inline-flex items-center no-underline text-current font-semibold"
+      className="w-full inline-flex items-center no-underline text-current font-semibold grayscale opacity-75 hover:opacity-100"
       href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
       target="_blank"
     >
