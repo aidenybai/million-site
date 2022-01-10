@@ -3,8 +3,8 @@ lockfileVersion: 5.3
 specifiers:
   autoprefixer: ^10.4.0
   next: ^12.0.4
-  nextra: ^2.0.0-alpha.9
-  nextra-theme-docs: ^2.0.0-alpha.9
+  nextra: ^2.0.0-alpha.11
+  nextra-theme-docs: ^2.0.0-alpha.11
   postcss: ^8.4.4
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -17,8 +17,8 @@ dependencies:
 
 devDependencies:
   autoprefixer: 10.4.0_postcss@8.4.4
-  nextra: 2.0.0-alpha.9_react@17.0.2
-  nextra-theme-docs: 2.0.0-alpha.9_f195614718841b3c14a81ac95268ce58
+  nextra: 2.0.0-alpha.11_react@17.0.2
+  nextra-theme-docs: 2.0.0-alpha.11_f195614718841b3c14a81ac95268ce58
   postcss: 8.4.4
   tailwindcss: 2.2.19_6b4e3d148bdcb715d5f821ed0a9c268b
 
@@ -3308,8 +3308,8 @@ packages:
       - webpack
     dev: false
 
-  /nextra-theme-docs/2.0.0-alpha.9_f195614718841b3c14a81ac95268ce58:
-    resolution: {integrity: sha512-FaQ7u56f9w3Yev7kquK7DVoX3QJObV8DIO2253MbgTYUgXdZpkau9BUafGqIVIcdnOciilLeR+CSprHDPwF6yg==}
+  /nextra-theme-docs/2.0.0-alpha.11_f195614718841b3c14a81ac95268ce58:
+    resolution: {integrity: sha512-kq54CMxmKYLVUNPq++gCWAJ94lw5Uw0bL0D4tzurDTn58zyEFs1a1CmgNDQ1b/tlPtAw4+CkLTk8kzYdXNx7PQ==}
     peerDependencies:
       next: '>=9.5.3'
       react: '>=16.13.1'
@@ -3336,8 +3336,8 @@ packages:
       - '@types/react'
     dev: true
 
-  /nextra/2.0.0-alpha.9_react@17.0.2:
-    resolution: {integrity: sha512-A/BueeJY2YZehvREZ+oXcZdwDc14M6vkvPDNIecqK1ttlDbNYaBUr2/8anhizVlWDy9BJFv/Y7LVCA/8fMukVA==}
+  /nextra/2.0.0-alpha.11_react@17.0.2:
+    resolution: {integrity: sha512-uyQ2mnwlzs5rF3j1LuF+sW5XK3AaZHdcEszmj8/5EVac40e8qCUGRH6GfSz61BaeHVm6LciSQ5JdfOKQbTEfzg==}
     peerDependencies:
       react: '>=16.13.1'
     dependencies:
