@@ -1,13 +1,14 @@
 import {
   AdjustmentsIcon,
+  CodeIcon,
   CursorClickIcon,
   DuplicateIcon,
   EyeIcon,
-  CodeIcon,
   LightningBoltIcon,
   PaperAirplaneIcon,
 } from '@heroicons/react/outline';
 import copy from 'copy-to-clipboard';
+import Head from 'next/head';
 import Link from 'next/link';
 import toast, { Toaster } from 'react-hot-toast';
 import { Container } from './Container';
@@ -53,6 +54,9 @@ export default function Page() {
   };
   return (
     <>
+      <Head>
+        <title>Million</title>
+      </Head>
       <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-5xl font-extrabold tracking-tighter leading-[1.1] sm:text-6xl lg:text-7xl xl:text-7xl">
           Supercharged Virtual DOM:
