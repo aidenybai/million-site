@@ -95,8 +95,8 @@ export default function Page() {
             Powered by
           </p>
 
-          <div className="grid grid-cols-2 gap-8 mt-6 md:grid-cols-1">
-            <div className="flex justify-center col-span-1 filter contrast-50 grayscale dark:opacity-50 md:col-span-2 lg:col-span-1">
+          <div className="mt-6">
+            <div className="flex justify-center filter contrast-50 grayscale dark:opacity-50">
               <Vercel />
             </div>
           </div>
