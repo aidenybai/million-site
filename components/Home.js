@@ -61,7 +61,7 @@ export default function Page() {
         <h1 className="text-center text-5xl font-extrabold tracking-tighter leading-[1.1] sm:text-6xl lg:text-7xl xl:text-7xl">
           Supercharged Virtual DOM:
           <br className="hidden lg:block" />
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-500">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600">
             Let's make UI libraries faster!
           </span>{' '}
         </h1>
