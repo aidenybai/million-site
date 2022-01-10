@@ -53,7 +53,7 @@ export default function Page() {
   };
   return (
     <>
-      <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white dark:bg-black ">
+      <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-5xl font-extrabold tracking-tighter leading-[1.1] sm:text-6xl lg:text-7xl xl:text-7xl">
           Supercharged Virtual DOM:
           <br className="hidden lg:block" />
@@ -85,7 +85,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="py-16 dark:bg-black ">
+      <div className="py-16">
         <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
           <p className="text-sm font-semibold tracking-wide text-center text-gray-400 text-opacity-50 uppercase dark:text-gray-500">
             Powered by
@@ -99,7 +99,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="relative dark:bg-black from-gray-50 to-gray-100">
+      <div className="relative from-gray-50 to-gray-100">
         <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
           <p className="text-4xl font-extrabold tracking-tight lg:text-5xl xl:text-6xl lg:text-center dark:text-white">
             Design Principles
