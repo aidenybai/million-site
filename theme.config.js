@@ -37,7 +37,7 @@ export default {
             <span className="mr-1">由</span>
             <span>
               <Vercel />
-            </span>
+            </span>{' '}
             驱动
           </a>
         );
@@ -49,11 +49,10 @@ export default {
             href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
             target="_blank"
           >
-            <span className="mr-1">由</span>
+            <span className="mr-1">Powered By</span>
             <span>
               <Vercel />
             </span>
-            驱动
           </a>
         );
     }
