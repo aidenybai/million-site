@@ -1,7 +1,7 @@
 import Vercel from './components/Vercel';
 
 export default {
-  github: 'https://github.com/aidenybai/million',
+  projectLink: 'https://github.com/aidenybai/million',
   docsRepositoryBase: 'https://github.com/aidenybai/docs',
   titleSuffix: ' – Million',
   feedbackLink: 'Question? Give us feedback →',
