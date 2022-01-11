@@ -4,12 +4,12 @@ title: patch
 
 # `patch`
 
-**Syntax:** `patch(element, newVnode, prevVNode?, effects = [], commit = (callback) => callback())`\
-**Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
+**语法：** `patch(element, newVnode, prevVNode?, effects = [], commit = (callback) => callback())`\
+**示例：** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
 
-The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode. It also returns the resulting HTMLElement or Text.
+`patch` 函数通过区分新 VNode 和旧 VNode 来确定精确更改来更新 DOM 内容。它接受一个 HTMLElement 或 Text、一个新的 VNode 和一个可选的先前 VNode。它还返回生成的 HTMLElement 或 Text。
 
-You can leverage [Flags](/functions/m#flags) and [Deltas](/functions/m#deltas) to improve the performance of patch calls by reducing the need to diff children by improving time complexity.
+您可以利用 [Flags](/functions/m#flags) 和 [Deltas](/functions/m#deltas) 通过提高时间复杂度来减少区分子项的需要来提高补丁调用的性能。
 
 ```js
 import { m, patch, createElement } from 'million';
@@ -29,14 +29,14 @@ patch(el, vnode2);
 // document.body.innerHTML = '<div id="app">Hello World</div>' -> '<div id="app">Goodbye World</div>'
 ```
 
-## Custom patch functions
+## 自定义补丁函数
 
-You can use drivers to create your own custom patch functions. The `node()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+您可以使用驱动程序来创建自己的自定义补丁功能。 `node()` 驱动程序接受一个驱动程序数组，这些驱动程序在对元素的全面修改进行修补后运行，并且可能需要进行更多精确修改。
 
-**Driver Syntax:** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
-**`Driver` Signature:** `(el, newVNode, oldVNode, effects, commit, driver) => { ...; return { el, newVNode, oldVNode, effects, commit, driver } }`
+**驱动语法：** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
+**`Driver` 签名：** `(el, newVNode, oldVNode, effects, commit, driver) => { ...;返回{ el，newVNode，oldVNode，效果，提交，驱动程序}}`
 
-If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
+如果您使用像 [VSCode](https://code.visualstudio.com/) 这样的 IDE，您可以查看如何创建“驱动程序”并创建自己的驱动程序的实现。
 
 ```js
 import { m, node, children, props, createElement, flush } from 'million';

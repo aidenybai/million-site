@@ -4,12 +4,12 @@ title: schedule
 
 # `schedule`
 
-**Syntax:** `schedule(callback)`\
-**Example:** `schedule(() => patch(el, m('div')))`
+**语法：** `schedule(callback)`\
+**示例：** `schedule(() => patch(el, m('div')))`
 
-The `schedule` function is used as a deferred commit function to prevent main thread blocking.
+`schedule` 函数用作延迟提交函数以防止主线程阻塞。
 
-Scheduling is generally used to induce incremental rendering, or the ability to split rendering work into chunks and spread it out over multiple frames. Generally, you want to use it if you are repeating a certain patches many times, or you want to debounce an operation.
+调度通常用于诱导增量渲染，或将渲染工作拆分为块并将其分散到多个帧上的能力。通常，如果您多次重复某个补丁，或者您想要去抖动操作，您想要使用它。
 
 ```js
 import { m, diff, props, children, schedule, createElement } from 'million';

@@ -1,15 +1,15 @@
 {
   "index": {
-    "title": "Introduction",
+    "title": "介绍",
     "type": "nav",
     "hidden": true
   },
   "docs": {
-    "title": "Docs",
+    "title": "介绍",
     "type": "nav"
   },
   "blog": {
-    "title": "Blog",
+    "title": "博客",
     "type": "nav"
   }
 }

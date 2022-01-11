@@ -4,10 +4,10 @@ title: createElement
 
 # `createElement`
 
-**Syntax:** `createElement(vnode, attachField = true)`\
-**Example:** `createElement(m('div'))`
+**语法：** `createElement(vnode, attachField = true)`\
+**示例：** `createElement(m('div'))`
 
-The `createElement` function converts a VNode into a HTMLElement or Text. It accepts a VNode (VElement or string). This is generally used to initialize an root element to use as a reference during patching.
+`createElement` 函数将 VNode 转换为 HTMLElement 或 Text。 它接受一个 VNode（VElement 或字符串）。 这通常用于初始化根元素以在修补期间用作参考。
 
 ```js
 import { m, createElement, Flags } from 'million';
@@ -22,6 +22,6 @@ document.body.appendChild(el);
 <div id="app">Hello World</div>
 ```
 
-## `OLD_VNODE_FIELD` property
+## `OLD_VNODE_FIELD` 属性
 
-The `OLD_VNODE_FIELD` property is a global export on the Million namesplace, as is automatically attached to the new HTMLElement for reference during the patching process. You can disable this by setting the `attachField` parameter to false, if you are able to manage the old VNode state yourself.
+`OLD_VNODE_FIELD` 属性是百万名址上的全局导出，它会自动附加到新的 HTMLElement 以供在修补过程中参考。 如果您能够自己管理旧的 VNode 状态，您可以通过将 `attachField` 参数设置为 false 来禁用此功能。

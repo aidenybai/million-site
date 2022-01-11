@@ -1,27 +1,27 @@
 ---
-title: Installation
+title: 安装
 ---
 
-# Installation
+＃ 安装
 
-There are 2 ways to include Million into your project:
+有两种方法可以将 Million 包含到您的项目中：
 
-- Importing it as a module
-- Including it from a `<script>` tag
+- 将其作为模块导入
+- 从 `<script>` 标签中包含它
 
-Million doesn't require build tools by default, but it is highly recommended you use NPM to install, especially if you are building a UI library.
+Million 默认情况下不需要构建工具，但强烈建议您使用 NPM 安装，尤其是在构建 UI 库时。
 
-## As a module
+## 作为一个模块
 
-If you use NPM to install Million, ensure that you use a bundler such as [Vite](https://vitejs.dev) or [Rollup](https://rollupjs.org/).
+如果您使用 NPM 安装 Million，请确保使用 [Vite](https://vitejs.dev) 或 [Rollup](https://rollupjs.org/) 等捆绑程序。
 
-Run the following command to install it.
+运行以下命令进行安装。
 
 ```sh
 npm install million
 ```
 
-Now, import Million into your source file like so:
+现在，将 Million 导入到您的源文件中，如下所示：
 
 ```js
 import {
@@ -32,9 +32,9 @@ import {
 } from 'million';
 ```
 
-## From a script tag
+## 来自脚本标签
 
-This is by far the simplest way to get started with Million. Include the following `<script>` tag in the head of your HTML page. Then, use a CDN like UNPKG and import million by ES Module.
+这是迄今为止最简单的开始使用 Million 的方法。在 HTML 页面的头部包含以下 `<script>` 标记。然后，使用类似 UNPKG 的 CDN 并通过 ES 模块导入百万。
 
 ```html
 <script type="module">
@@ -49,4 +49,4 @@ This is by far the simplest way to get started with Million. Include the followi
 </script>
 ```
 
-That's it! Million is now available for use inside your page.
+而已！百万现在可以在您的页面内使用。

@@ -6,10 +6,10 @@ import Callout from 'nextra-theme-docs/callout';
 
 # `m`
 
-**Syntax:** `m(tag, props?, children?, flag?, delta?)`\
-**Example:** `m('div', { id: 'app' }, ['Hello World'])`
+**语法：** `m(tag, props?, children?, flag?, delta?)`\
+**示例：** `m('div', { id: 'app' }, ['Hello World'])`
 
-It is recommended that you use `m` to create a VNode. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
+建议您使用 `m` 创建 VNode。它接受一个字符串形式的标签、一个可选的 props 对象、一个可选的子数组和一个可选的标志。
 
 ```js
 import { m } from 'million';
@@ -27,9 +27,9 @@ const vnode = m('div', { id: 'app' }, ['Hello World']);
 }
 ```
 
-## `className` and `style` props
+## `className` 和 `style` 道具
 
-The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
+`className` 和 `style` 属性需要使用 `className` 和 `style` 函数进行预处理，以将对象转换为字符串。类对象语法允许您根据布尔值切换类。样式对象语法允许您以干净的格式设置样式。
 
 ```js
 import { m, className, style } from 'million';
@@ -55,9 +55,9 @@ const vnode = m(
 }
 ```
 
-## Kebab props helper
+## Kebab 道具助手
 
-Generally, the values of `className` and `style` props are objects in kebab-case. However, if you want to use camelCase for the keys of these props, you can use the `kebab` function to convert the keys from camelCase to kebab-case.
+通常，`className` 和 `style` props 的值是 kebab-case 中的对象。但是，如果您想对这些 props 的键使用 camelCase，您可以使用 `kebab` 函数将键从 camelCase 转换为 kebab-case。
 
 ```js
 import { m, style, kebab } from 'million';
@@ -75,9 +75,9 @@ const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
 }
 ```
 
-## SVG support
+## SVG 支持
 
-SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
+使用 `svg` 函数处理 SVG 以将 `ns` 道具添加到元素和该元素的所有子元素。
 
 ```js
 import { m, svg } from 'million';
@@ -94,9 +94,9 @@ const vnode = svg(m('svg'));
 }
 ```
 
-## Optimization via keys
+## 按键优化
 
-Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`Flags.ONLY_KEYED_CHILDREN`](#flags).
+大多数情况下，diffing 和 patching 过程已经足够快了，但是在处理大量的 child 时，最好通过 key 提供运行时提示。您可以在道具下附加一个“钥匙”。修补后，如果更改了 `key`，它只会区分道具和孩子。要使用键进行更高级的运行时差异，请查看 [`Flags.ONLY_KEYED_CHILDREN`](#flags)。
 
 ```js
 import { m } from 'million';
@@ -113,17 +113,16 @@ const vnode = m('div', { key: 'foo' }, ['Hello World']);
 }
 ```
 
-## Flags
+## 标志
 
-Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
+标志允许 `patch` 函数优化条件分支。它们是可选的，但**强烈推荐**，因为它们使时间复杂度更加高效，并且可以在编译时预先计算。
 
 <Callout emoji="ℹ️">
-  Flags will be ignored if the generated vnode is provided as the previous vnode during a `patch`
-  call.
+  如果在 `patch` 期间生成的 vnode 作为前一个 vnode 提供，则标志将被忽略 称呼。
 </Callout>
 
 - **`Flags.IGNORE_NODE`**\
-  This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
+  当您确定不需要对节点执行任何修补时，应使用此标志。这对于优化交互区域内的静态区域很有用。
 
   ```js
   import { m, Flags } from 'million';
@@ -140,7 +139,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.REPLACE_NODE`**\
-  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a vnode.
+  如果您需要添加组功能，使用此标志可以让您完全跳过差异并硬替换 vnode。
 
   ```js
   import { m, Flags } from 'million';
@@ -157,7 +156,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.NO_CHILDREN`**\
-  If your element has no children, you can set this flag to skip the children diffing entirely.
+  如果您的元素没有子元素，则可以设置此标志以完全跳过子元素的差异。
 
   ```js
   import { m, Flags } from 'million';
@@ -174,7 +173,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.ONLY_TEXT_CHILDREN`**\
-  If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
+  如果你的元素只有文本子元素，你可以设置这个标志来跳过子元素的差异，并且只改变 HTMLElement 的 `textContent` 属性。
 
   ```js
   import { m, Flags } from 'million';
@@ -191,9 +190,9 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.ONLY_KEYED_CHILDREN`**\
-  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
+  如果您的元素只有带有键的 VElement 子元素，则可以将此标志设置为默认值以启用特殊差异。这允许更高性能的运行时差异，因为它可以利用键映射进行比较以进行更多精确修改。
 
-  For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
+  例如，在没有键控差异的情况下，每个节点都是线性差异的，有时会导致不必要的修改。如下所示，我们在 `newVNodeChildren` 的开头插入了一个 `X` 子节点，但所有节点都被修改了，因为前 3 个节点经过了差异和更新，最后一个节点被追加了。如果只在开头插入“X”，这可能会更有效。
 
   ```js highlight=7,8,9,10
   oldVNodeChildren:
@@ -208,7 +207,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
     C,
   ```
 
-  However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
+  但是，通过键控差异，我们可以看到更高性能的结果。如您所见，只有“X”被修改并在开始时插入，其他节点在比较期间被忽略。
 
   ```js highlight="7"
   oldVNodeChildren:
@@ -223,7 +222,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
     C,
   ```
 
-  So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
+  那么，如何启用此功能？一般来说，如果你的价值观中有独特的内容，你应该这样做。永远不要将数组中项目的索引或非唯一键提供给 VNode。
 
   ```js
   import { m, Flags } from 'million';
@@ -251,7 +250,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.ANY_CHILDREN`**\
-  If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
+  如果您的元素有混合或只有 VElement 子元素，您可以将此标志设置为默认为正常差异。通常，您不需要显式设置此标志，因为它是默认行为。
 
   ```js
   import { m, Flags } from 'million';
@@ -274,23 +273,23 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 
 ## Deltas
 
-Deltas are a way for the compile-time to optimize runtime operations by providing a set of predefined operations. This is useful for cases where you are performing consistent, predictable operations at a high interval, low payload situation.
+增量是编译时通过提供一组预定义操作来优化运行时操作的一种方式。这对于您在高间隔、低负载情况下执行一致、可预测的操作的情况很有用。
 
-There are three types of delta operations: `Delta.INSERT`, `Delta.UPDATE`, and `Delta.DELETE`. You can provide a specified index to select the position of the vnode's children to be inserted, updated, or deleted.
+增量操作共有三种类型：`Delta.INSERT`、`Delta.UPDATE` 和`Delta.DELETE`。您可以提供指定的索引来选择要插入、更新或删除的 vnode 子节点的位置。
 
-- `Delta.INSERT` is used to add children at a selected index.\
-  **Syntax:** `Delta.INSERT(index)`\
-  **Example:** `IDelta.NSERT(0)`
+- `Delta.INSERT` 用于在选定索引处添加子级。\
+  **语法：** `Delta.INSERT(index)`\
+  **示例：** `IDelta.NSERT(0)`
 
-- `Delta.UPDATE` is used to replace children at a selected index.\
-  **Syntax:** `Delta.UPDATE(index)`\
-  **Example:** `Delta.UPDATE(0)`
+- `Delta.UPDATE` 用于替换选定索引处的子项。\
+  **语法：** `Delta.UPDATE(index)`\
+  **示例：** `Delta.UPDATE(0)`
 
-- `Delta.DELETE` is used to remove children at a selected index.\
-  **Syntax:** `Delta.DELETE(index)`\
-  **Example:** `Delta.DELETE(0)`
+- `Delta.DELETE` 用于删除选定索引处的子项。\
+  **语法：** `Delta.DELETE(index)`\
+  **示例：** `Delta.DELETE(0)`
 
-You can load these operations into a delta, or an array. You can pass them inside the `m` function.
+您可以将这些操作加载到增量或数组中。您可以在 `m` 函数中传递它们。
 
 ```js
 import { m, Delta } from 'million';

@@ -1,6 +1,6 @@
 {
-  "getting-started": "Getting Started",
-  "installation": "Installation",
-  "using-jsx": "Using JSX",
-  "compiler": "Compiler"
+  "getting-started": "入门",
+  "installation": "安装",
+  "using-jsx": "使用 JSX",
+  "compiler": "编译器"
 }
