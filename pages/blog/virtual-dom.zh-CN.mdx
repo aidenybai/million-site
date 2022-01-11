@@ -1,0 +1,142 @@
+---
+title: Virtual DOM
+---
+
+# 理解虚拟 DOM
+
+## 介绍
+
+虚拟 DOM 是一棵虚拟节点树，表示 DOM 的样子。虚拟节点是轻量级、无状态的，并且是仅包含必要字段的字符串或 JavaScript 对象。虚拟节点可以组装成树，并“区分”以对 DOM 进行精确的更改。
+
+这背后的原因是因为 DOM 节点的修改和访问在计算上是昂贵的。虚拟节点之间的差异，访问 DOM 只是为了修改，是虚拟 DOM 的前提。它尽可能地避免使用 DOM，转而使用纯 JavaScript 对象，从而使读写成本更低。
+
+![](https://raw.githubusercontent.com/millionjs/docs/master/.github/assets/vdom.png)
+
+## 它是如何工作的？
+
+Million 虚拟 DOM 包含三个主要功能：`m`、`createElement`、`patch`。为了完全理解虚拟 DOM 的工作原理，让我们尝试根据这些功能创建我们自己的基本虚拟 DOM（**~7 分钟阅读时间**）。
+
+在开始之前，我们需要定义什么是虚拟节点。虚拟节点可以是 JavaScript 对象（虚拟元素）或字符串（文本）。
+
+---
+
+`m` 函数是创建虚拟元素的辅助函数。一个虚拟元素包含三个属性：
+
+- `tag`：将元素的标签名称存储为字符串。
+- `props`：将元素的属性/属性存储为对象。
+- `children`：将元素的虚拟节点子节点存储为数组。
+
+`m` 辅助函数的示例实现如下：
+
+```js
+const m = (tag, props = {}, children = []) => ({
+  tag,
+  props,
+  children,
+});
+```
+
+这样，我们可以很容易地构造虚拟元素：
+
+```js
+m('div', { id: 'app' }, ['Hello World']);
+// Is the same as:
+{
+  tag: 'div',
+  props: { id: 'app' },
+  children: ['Hello World']
+}
+```
+
+---
+
+`createElement` 函数将一个虚拟节点变成一个真实的 DOM 元素。这很重要，因为我们将在 `patch` 函数中使用它，并且用户也可以使用它来初始化他们的应用程序。
+
+我们需要以编程方式创建一个新的分离 DOM 元素，然后迭代虚拟元素道具，同时将它们添加到 DOM 元素，最后迭代子元素，同时初始化它们。 `createElement` 辅助函数的示例实现如下：
+
+```js
+const createElement = (vnode) => {
+  if (typeof vnode === 'string') return document.createTextNode(vnode);
+
+  const el = document.createElement(vnode.tag);
+
+  for (const propName in vnode.props) {
+    el[propName] = vnode.props[propName];
+  }
+
+  for (const child of vnode.children) {
+    el.appendChild(createElement(child));
+  }
+
+  return el;
+};
+```
+
+这样，我们可以轻松地将虚拟节点转换为 DOM 元素：
+
+```jsx
+createElement(m('div', { id: 'app' }, ['Hello World']));
+// Is the same as: <div id="app">Hello World</div>
+```
+
+---
+
+`patch` 函数接受一个现有的 DOM 元素、旧的虚拟节点和新的虚拟节点。这不一定是最高性能的实现，但这仅用于演示目的。
+
+我们需要区分两个虚拟节点，然后在需要时替换元素。为此，我们首先确定其中一个虚拟节点是文本还是字符串，如果新旧虚拟节点不相等则替换它。否则，我们可以放心地假设两者都是虚拟元素。之后，我们比较标签和道具，如果标签发生变化，则替换元素。然后我们遍历子元素并递归地修补子元素是否是虚拟元素。 `patch` 辅助函数的示例实现如下：
+
+```js
+const patch = (el, newVNode, oldVNode) => {
+  if (!newVNode && newVNode !== '') return el.remove();
+  if (typeof oldVNode === 'string' || typeof newVNode === 'string') {
+    if (oldVNode !== newVNode) return el.replaceWith(createElement(newVNode));
+  } else {
+    if (oldVNode?.tag !== newVNode.tag) {
+      return el.replaceWith(createElement(newVNode));
+    }
+
+    if (oldVNode) {
+      for (const propName in oldVNode.props) {
+        if (oldVNode.props[propName] === newVNode.props[propName])
+          return el.replaceWith(createElement(newVNode));
+      }
+
+      for (let i = el.childNodes.length - 1; i >= 0; i--) {
+        patch(el.childNodes[i], newVNode.children[i], oldVNode.children[i]);
+      }
+    }
+  }
+};
+```
+
+这样，我们可以轻松地基于虚拟节点修补 DOM 元素：
+
+```js
+const oldVNode = m('div', { id: 'app' }, ['Hello World']);
+const newVNode = m('div', { id: 'app' }, ['Goodbye World']);
+const el = createElement(oldVNode);
+// <div id="app">Hello World</div>
+
+patch(el, oldVNode, newVNode);
+// el will become: <div id="app">Goodbye World</div>
+```
+
+---
+
+**笔记：**
+
+- 旧的虚拟节点必须始终为 DOM 元素建模，直到它被修补。
+- 一般来说，应用程序不是直接用这些方法编写的，而是为了简单起见，应该将它们抽象成组件和 JSX。
+- 这与 Million 的实现不同，它是一个演示，让您更好地了解虚拟 DOM 是如何工作的。
+
+## 那么...那么 Million 有什么独特之处呢？
+
+Million 提供了许多重大改进：精细修补、更少的迭代次数、快速文本插值、键控虚拟节点、编译器标志、增量、批处理和调度。
+
+- **粒度补丁：** 当 props 或 children 有差异时，不是只替换整个元素，而是只更改必要的 props。
+- **更少的迭代次数：** 百万次尝试减少差异过程中的次数，从而提高时间和空间复杂性。
+- **快速文本插值：** Million 不是用 DOM 方法替换文本节点，而是使用编译器标志来设置元素的 `textContent` 以提高性能。
+- **带键的虚拟元素：** 如果新的虚拟元素密钥与旧的相同，这允许修补算法跳过节点，从而最大限度地减少不必要的工作量。
+- **编译器标志：** 这允许修补算法跳过条件分支，这意味着完成的工作更少。
+- **Deltas：** 微动作可以预编程以跳过所有不同的子级，从而提高时间复杂度，同时易于被编译器利用。
+- **批处理和调度：** 将 DOM 操作批处理在一起是默认烘焙的，并且任务调度是可组合的以供您自己使用。

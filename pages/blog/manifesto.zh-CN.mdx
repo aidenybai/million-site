@@ -1,0 +1,32 @@
+---
+title: 宣言
+---
+
+# 宣言
+
+＃＃ 过去的
+
+早在 JavaScript 首次出现的时候，直接 DOM 操作就被用来为静态网站引入交互性。最终，JavaScript 场景转向 MooTools 和 jQuery 等新技术，这有助于**将某些动作简化为简单、可重用的函数**。然而，还有一个紧迫的问题。
+
+尽管 Web 开发变得更容易，但扩展需要大量交互性的大型 Web 应用程序是困难的，因为操作通常是必要的并且难以组织。这导致了几个框架和库的兴起，尤其是 React。 React 旨在允许**声明式开发和组件化以可伸缩地组合用户界面**。为了实现这一点，React 背后的团队使用了虚拟 DOM 架构，其中计算和逻辑被推迟到算法来确定更改。这意味着开发人员只需要弄清楚标记的外观。
+
+React 帮助开创了广泛使用 JavaScript 来呈现 Web 应用程序，导致虚拟 DOM 架构在其他库中的兴起以及 JSX 等新技术的使用。
+
+＃＃ 展示
+
+如今，Web 应用程序的流行程度不容忽视。 JavaScript 和 React [无处不在](https://nextjs.org/showcase)，虚拟 DOM 架构被用于当今许多流行的库（React.js、Vue.js、Preact.js、Elm 等） . “纯 JavaScript 渲染”已经平息，因为 Webpack 等预处理器的开发已成为标准，引领了预处理器的发展，允许**跨浏览器兼容性（例如 Babel）、预渲染和 JAMstack 技术**。
+
+JavaScript 框架和库拥有完整的生态系统，围绕 React 的 Next.js 等工具增强了 Web 开发的完成方式。库开发人员正在慢慢意识到上一代开发人员为了开发人员体验而牺牲性能的重要性。这可以从 Svelte 的 ** 静态分析趋势** 中看出，它目前利用了大多数 Web 应用程序中普遍使用的捆绑程序。
+
+性能正在慢慢成为优先事项，但**像 React 这样依赖于虚拟 DOM 的技术基本上已经过时**，即使在 Next.js 中通过延迟加载和 ISR 进行了增量改进。
+
+＃＃ 未来
+
+背诵、重新发明和修补现有的东西很容易。由于 React 和 Virtual DOM 是 JavaScript 库空间中的一项骨干技术，因此像 Next.js 这样的前沿库利用它们在生态系统中的地位来开创[基于编译器的优化]（https://tomdale. net/2017/09/compilers-are-the-new-frameworks/)。虽然最直接的解决方案是放弃一切，将浏览器用作编译目标并执行一系列命令式操作，但虚拟 DOM 可以说带来了许多优势。它帮助我们编写声明式接口**无需模板，这意味着条件受限于 JavaScript 的限制**，以及 [许多其他好处](https://reactjs.org/blog/2013/06/05/why- react.html）。
+
+Virtual DOM 的未来不是对 Virtual DOM 的破坏，而是在利用静态分析和编译的同时**限制 Virtual DOM 的强大功能**的使用（[这是通过 Million.js 完成的]（https ://dev.to/aidenybai/million-js-the-future-of-virtual-dom-1e6d））。
+
+[→ 对 Million 有何不同感兴趣？](https://dev.to/aidenybai/million-js-the-future-of-virtual-dom-1e6d)
+
+> 我最近有机会与 [@rauchg](https://twitter.com/rauchg) 聊了聊关于 Million.js 以及我对 Virtual DOM 当前状态的一些想法。他向我解释说，虚拟 DOM 的优化只是 Web 框架下一阶段的一个方面。这包括我们如何改进开发模式体验、tree-shaking 和 bundle 大小等。
+> 激进的摇树 - 减少捆绑包的大小。我强烈建议您查看他的 [Twitter](https://twitter.com/rauchg) 和 [blog](https://rauchg.com/)，因为他对行业及其影响力有非常宝贵的见解可以而且需要制造。
