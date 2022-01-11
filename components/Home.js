@@ -110,10 +110,10 @@ export default function Page() {
             Design Principles
           </p>
           <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
-            Million is designed to be great for you as a UI library developer while being lean and
-            insanely performant.
+            Million is designed to be modern and easy to use while being lean and insanely
+            performant.
           </p>
-          <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
+          <div className="w-full grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
             {features.map((feature) => (
               <div
                 className="p-10 bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
