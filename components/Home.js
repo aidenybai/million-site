@@ -59,10 +59,11 @@ export default function Page() {
       </Head>
       <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
-          Together, lets make
+          Let's make
+          <br />
           <br className="hidden lg:block" />
           <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600">
-            UI libraries faster!
+            UI libraries <i>fast</i>!
           </span>{' '}
         </h1>
         <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-4xl sm:text-2xl md:text-3xl lg:text-4xl">
