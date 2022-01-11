@@ -4,4 +4,9 @@ const withNextra = require('nextra')({
   unstable_contentDump: true,
   unstable_staticImage: true,
 });
-module.exports = withNextra();
+module.exports = withNextra({
+  i18n: {
+    locales: ['en-US', 'zh-CN'],
+    defaultLocale: 'en-US',
+  },
+});
