@@ -31,9 +31,9 @@ patch(el, vnode2);
 
 ## Custom patch functions
 
-You can use drivers to create your own custom patch functions. The `node()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
+You can use drivers to create your own custom patch functions. The `useNode()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**Driver Syntax:** `node([useChildren(), useProps(), useDriver([useAnotherDriver()])])`\
+**Driver Syntax:** `useNode([useChildren(), useProps(), useDriver([useAnotherDriver()])])`\
 **`Driver` Signature:** `(el, newVNode, oldVNode, effects, commit, driver) => { ...; return { el, newVNode, oldVNode, effects, commit, driver } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
@@ -64,7 +64,7 @@ myCustomPatch(el, vnode1);
 Below is an example template for your own custom driver:
 
 ```js
-const customDriver =
+const useDriver =
   (drivers = []) =>
   (el, newVNode, oldVNode, effects = [], commit, driver) => {
     /**
