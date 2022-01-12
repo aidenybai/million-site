@@ -33,16 +33,16 @@ patch(el, vnode2);
 
 您可以使用驱动程序来创建自己的自定义补丁功能。 `node()` 驱动程序接受一个驱动程序数组，这些驱动程序在对元素的全面修改进行修补后运行，并且可能需要进行更多精确修改。
 
-**驱动语法：** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
+**驱动语法：** `node([useChildren(), useProps(), useDriver([useAnotherDriver()])])`\
 **`Driver` 签名：** `(el, newVNode, oldVNode, effects, commit, driver) => { ...;返回{ el，newVNode，oldVNode，效果，提交，驱动程序}}`
 
 如果您使用像 [VSCode](https://code.visualstudio.com/) 这样的 IDE，您可以查看如何创建“驱动程序”并创建自己的驱动程序的实现。
 
 ```js
-import { m, node, children, props, createElement, flush } from 'million';
+import { m, useNode, useChildren, useProps, createElement, flush } from 'million';
 
 const myCustomPatch = (el, newVNode, oldVNode, effects = [], commit) => {
-  const diff = node([children(), props()]);
+  const diff = useNode([useChildren(), useProps()]);
   const data = diff(el, newVNode, oldVNode, effects, commit);
   for (let i = 0; i < effects.length; i++) {
     effects[i]();

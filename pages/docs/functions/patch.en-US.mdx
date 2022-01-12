@@ -33,16 +33,16 @@ patch(el, vnode2);
 
 You can use drivers to create your own custom patch functions. The `node()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
-**Driver Syntax:** `node([children(), props(), yourOwnDriver([anotherDriver()])])`\
+**Driver Syntax:** `node([useChildren(), useProps(), useDriver([useAnotherDriver()])])`\
 **`Driver` Signature:** `(el, newVNode, oldVNode, effects, commit, driver) => { ...; return { el, newVNode, oldVNode, effects, commit, driver } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
 
 ```js
-import { m, node, children, props, createElement, flush } from 'million';
+import { m, useNode, useChildren, useProps, createElement, flush } from 'million';
 
 const myCustomPatch = (el, newVNode, oldVNode, effects = [], commit) => {
-  const diff = node([children(), props()]);
+  const diff = useNode([useChildren(), useProps()]);
   const data = diff(el, newVNode, oldVNode, effects, commit);
   for (let i = 0; i < effects.length; i++) {
     effects[i]();
