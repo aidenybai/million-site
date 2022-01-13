@@ -107,7 +107,7 @@ export default function Page() {
       <div className="relative from-gray-50 to-gray-100">
         <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
           <p className="text-4xl font-extrabold tracking-tight lg:text-5xl xl:text-6xl lg:text-center dark:text-white">
-            Design Principles
+            Why Million?
           </p>
           <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
             Million is designed to be modern and easy to use while being lean and insanely
