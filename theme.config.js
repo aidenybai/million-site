@@ -43,17 +43,19 @@ export default {
         );
       default:
         return (
-          <a
-            rel="noopener"
-            className="w-full inline-flex items-center no-underline text-current font-semibold grayscale opacity-75 hover:opacity-100"
-            href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
-            target="_blank"
-          >
-            <span className="mr-1">Powered By</span>
-            <span>
-              <Vercel />
-            </span>
-          </a>
+          <>
+            <a
+              rel="noopener"
+              className="w-full inline-flex items-center no-underline text-current font-semibold grayscale opacity-75 hover:opacity-100"
+              href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
+              target="_blank"
+            >
+              <span className="mr-1">Powered By</span>
+              <span>
+                <Vercel />
+              </span>
+            </a>
+          </>
         );
     }
   },

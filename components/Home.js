@@ -58,7 +58,7 @@ export default function Page() {
         <title>Million</title>
       </Head>
       <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
-        <h1 className="text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
+        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
@@ -104,36 +104,33 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="relative from-gray-50 to-gray-100">
-        <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
-          <p className="text-4xl font-extrabold tracking-tight lg:text-5xl xl:text-6xl lg:text-center dark:text-white">
-            Why Million?
-          </p>
-          <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
-            Million is designed to be modern and easy to use while being lean and insanely
-            performant.
-          </p>
-          <div className="w-full grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
-            {features.map((feature) => (
-              <div
-                className="p-10 bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
-                key={feature.name}
-              >
-                <div>
-                  <feature.icon
-                    className="h-8 w-8 dark:text-white  rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="mt-4">
-                  <h3 className="text-lg font-medium dark:text-white">{feature.name}</h3>
-                  <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
-                    {feature.description}
-                  </p>
-                </div>
+      <div className="px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
+        <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white">
+          Why Million?
+        </p>
+        <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
+          Million is designed to be modern and easy to use while being lean and insanely performant.
+        </p>
+        <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
+          {features.map((feature) => (
+            <div
+              className="p-10 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
+              key={feature.name}
+            >
+              <div>
+                <feature.icon
+                  className="h-8 w-8 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
+                  aria-hidden="true"
+                />
               </div>
-            ))}
-          </div>
+              <div className="mt-4">
+                <h3 className="text-lg font-medium dark:text-white">{feature.name}</h3>
+                <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <Container>
