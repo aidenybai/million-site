@@ -62,7 +62,7 @@ export default function Page() {
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 via-red-500 animate-gradient-x">
+          <span className="future inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500 via-red-500">
             into the future.
           </span>{' '}
         </h1>
