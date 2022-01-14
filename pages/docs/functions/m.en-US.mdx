@@ -44,7 +44,7 @@ const vnode = m(
 );
 ```
 
-```js highlight=4,5
+```js {4,5}
 {
   tag: 'div',
   props: {
@@ -65,7 +65,7 @@ import { m, style, kebab } from 'million';
 const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
 ```
 
-```js highlight=4
+```js {4}
 {
   tag: 'div',
   props: {
@@ -85,7 +85,7 @@ import { m, svg } from 'million';
 const vnode = svg(m('svg'));
 ```
 
-```js highlight=4
+```js {4}
 {
   tag: 'svg',
   props: {
@@ -104,7 +104,7 @@ import { m } from 'million';
 const vnode = m('div', { key: 'foo' }, ['Hello World']);
 ```
 
-```js highlight=5
+```js {5}
 {
   tag: 'div',
   props: {},
@@ -131,7 +131,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
   ```
 
-  ```js highlight=4
+  ```js {4}
   {
     tag: 'div',
     children: ['Please ignore me'],
@@ -148,7 +148,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   const vnode = m('div', undefined, ['Please hard replace me'], Flags.REPLACE_NODE);
   ```
 
-  ```js highlight=4
+  ```js {4}
   {
     tag: 'div',
     children: ['Please hard replace me'],
@@ -165,7 +165,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   const vnode = m('div', undefined, [], Flags.NO_CHILDREN);
   ```
 
-  ```js highlight=4
+  ```js {4}
   {
     tag: 'div',
     children: [],
@@ -182,7 +182,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   const vnode = m('div', undefined, ['Hello ', 'World!'], Flags.ONLY_TEXT_CHILDREN);
   ```
 
-  ```js highlight=4
+  ```js {4}
   {
     tag: 'div',
     children: ['Hello ', 'World!'],
@@ -195,7 +195,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 
   For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
 
-  ```js highlight=7,8,9,10
+  ```js {7,8,9,10}
   oldVNodeChildren:
     A,
     B,
@@ -210,7 +210,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 
   However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
 
-  ```js highlight="7"
+  ```js {7}
   oldVNodeChildren:
     A,
     B,
@@ -238,7 +238,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   );
   ```
 
-  ```js highlight="8"
+  ```js {8}
   {
     tag: 'div',
     children: [
@@ -264,7 +264,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   );
   ```
 
-  ```js highlight="4"
+  ```js {4}
   {
     tag: 'div',
     children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
@@ -298,7 +298,7 @@ import { m, Delta } from 'million';
 const vnode = m('div', undefined, ['Hello World'], undefined, [Delta.INSERT(0), Delta.UPDATE(0)]);
 ```
 
-```js highlight="5,6"
+```js {5,6}
 {
   tag: 'div',
   children: ['Hello World'],
