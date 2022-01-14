@@ -3,12 +3,10 @@ import { useRouter } from 'next/router';
 
 const FEEDBACK_LINK_WITH_TRANSLATIONS = {
   'en-US': 'Question? Give us feedback →',
-  'zh-CN': '有疑问？给我们反馈 →',
 };
 
 const TITLE_WITH_TRANSLATIONS = {
   'en-US': "<1kb compiler-augmented virtual DOM. It's fast!",
-  'zh-CN': '<1kb 专注于编译器的虚拟 DOM - 速度非常快！ ',
 };
 
 export default {
@@ -26,21 +24,6 @@ export default {
   darkMode: true,
   footerText: ({ locale }) => {
     switch (locale) {
-      case 'zh-CN':
-        return (
-          <a
-            rel="noopener"
-            className="w-full inline-flex items-center no-underline text-current font-semibold grayscale opacity-75 hover:opacity-100"
-            href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
-            target="_blank"
-          >
-            <span className="mr-1">由</span>
-            <span>
-              <Vercel />
-            </span>{' '}
-            驱动
-          </a>
-        );
       default:
         return (
           <>
@@ -81,8 +64,6 @@ export default {
   },
   footerEditLink: ({ locale }) => {
     switch (locale) {
-      case 'zh-CN':
-        return '在 GitHub 上编辑本页 →';
       default:
         return 'Edit this page on GitHub →';
     }
@@ -99,8 +80,5 @@ export default {
       />
     </>
   ),
-  i18n: [
-    { locale: 'en-US', text: 'English' },
-    { locale: 'zh-CN', text: '中文' },
-  ],
+  i18n: [{ locale: 'en-US', text: 'English' }],
 };
