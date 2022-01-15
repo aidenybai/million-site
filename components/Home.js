@@ -11,38 +11,38 @@ import copy from 'copy-to-clipboard';
 import Head from 'next/head';
 import Link from 'next/link';
 import toast, { Toaster } from 'react-hot-toast';
-import { Container } from './Container';
+import Container from './Container';
 import Vercel from './Vercel';
 
 const features = [
   {
     name: 'Lightweight',
-    description: `Million ships <1kb brotli bundles after tree shaking and minification, meaning fast load times.`,
+    description: `Million ships <1kb brotli bundles after tree shaking and minification. Get fast bundle load times!`,
     icon: PaperAirplaneIcon,
   },
   {
-    name: 'Optimized for speed',
-    description: `Million uses the latest runtime performance optimizations while leveraging the compiler to supercharge rendering.`,
+    name: 'Performance',
+    description: `Million uses the latest performance optimizations for the compiler to supercharge runtime rendering.`,
     icon: LightningBoltIcon,
   },
   {
     name: 'Compiler-first',
-    description: `Million has direct awareness of the compiler, allowing you to ergonomically create compilers around Million`,
+    description: `Million supports full-class support for compiler optimizations, allowing you to ergonomically create your own compiler over Million.`,
     icon: EyeIcon,
   },
   {
     name: 'Sensible API',
-    description: `Million's API is simple to use and packed with best practices by default.`,
+    description: `Million's API is simple to use with batteries-included. Best practices by default!`,
     icon: CodeIcon,
   },
   {
     name: 'Library Agnostic',
-    description: `Million doesn't make decisions on your libraries design (API, state, components), so you can build it however you want.`,
+    description: `Million doesn't make decisions on library design, meaning your can build your own opinionated abstractions.`,
     icon: CursorClickIcon,
   },
   {
     name: 'Decoupled + Composable',
-    description: `Million is extensible in features, so you can build up increasing complexity with ease (like legos!)`,
+    description: `Million is extensible in features, so you can build up complexity and features with ease (like Legos!)`,
     icon: AdjustmentsIcon,
   },
 ];
@@ -70,8 +70,8 @@ export default function Page() {
           Million is a lightweight, compiler-augmented virtual DOM. It's fast!
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
-          <div className="rounded-md ">
-            <Link href="/docs/essentials/getting-started">
+          <div className="rounded-md">
+            <Link href="/docs/getting-started">
               <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                 Get started →
               </a>
@@ -136,7 +136,7 @@ export default function Page() {
         <Container>
           <div className="max-w-sm py-16 mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
             <div className="space-y-4 sm:space-y-0 sm:mx-auto ">
-              <Link href="/docs/essentials/getting-started">
+              <Link href="/docs/getting-started">
                 <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                   Get Started →
                 </a>

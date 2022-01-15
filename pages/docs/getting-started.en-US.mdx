@@ -1,0 +1,50 @@
+---
+title: Installation
+---
+
+import Counter from '../../components/Counter';
+
+# Getting Started
+
+## Installation
+
+Inside your project directory, run the following command:
+
+```sh
+npm install million
+```
+
+Or with `yarn`:
+
+```sh
+yarn add million
+```
+
+## Quick Start
+
+For a normal JavaScript project, you'll first need to import Million's basic functions:
+
+```js
+import { m, createElement, patch } from 'million';
+```
+
+Then, you can start building your app (e.g. Counter app):
+
+```js
+import { m, createElement, patch } from 'million';
+
+const view = (seconds) => m('p', undefined, [`Time elapsed: ${seconds}`]);
+
+const el = createElement(view(0));
+
+let seconds = 0;
+
+setInterval(() => {
+  patch(el, view(seconds));
+  seconds++;
+}, 1000);
+
+document.body.appendChild(el);
+```
+
+<Counter />
