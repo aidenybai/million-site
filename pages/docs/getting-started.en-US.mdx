@@ -2,7 +2,9 @@
 title: Installation
 ---
 
+import Callout from 'nextra-theme-docs/callout';
 import Counter from '../../components/Counter';
+import Link from 'next/link';
 
 # Getting Started
 
@@ -27,6 +29,12 @@ For a normal JavaScript project, you'll first need to import Million's basic fun
 ```js
 import { m, createElement, patch } from 'million';
 ```
+
+<Callout>
+  If you want to use a templating language like JSX,{' '}
+  <Link href="/docs/advanced/using-jsx">read more here</Link> about using JSX
+  with Million
+</Callout>
 
 Then, you can start building your app (e.g. Counter app):
 
