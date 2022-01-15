@@ -1,0 +1,32 @@
+---
+title: entity
+---
+
+# `entity`
+
+**Syntax:** `entity(data, resolve)`\
+**Example:** `entity({}, () => m('div'))`
+
+It is recommended that you use `entity` to create a Entity. It accepts data as a object, and a resolver that returns a vnode.
+
+You can use `entity` to create components. For instance, a reference to the component function and props can be passed into data. Additionally, you can resolve the component in the resolver function.
+
+```js
+import { m } from 'million';
+
+const data = { message: 'Hello World' };
+const entity1 = entity(data, () => m('div', { id: 'app' }, [data.message]));
+```
+
+```js
+{
+  data: { message: 'Hello World' },
+  resolve: () => ({
+    tag: 'div',
+    props: {
+      id: 'app'
+    },
+    children: ['Hello World'],
+  })
+}
+```
