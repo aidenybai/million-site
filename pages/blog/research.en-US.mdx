@@ -2,8 +2,35 @@
 title: Research
 ---
 
+import Head from 'next/head';
+
+<Head>
+  <meta name="og:title" content="Million.js" />
+  <meta
+    name="og:description"
+    content={`Less-than-1kb compiler-augmented virtual DOM. It's fast!`}
+  />
+  <title>Million.js</title>
+</Head>
+
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
 # Research
 
-- [View research](https://aidenybai.com/work/million-js)
-- [View benchmarker](https://million.aidenybai.com)
-- [View official benchmarks](https://docs.google.com/spreadsheets/d/e/2PACX-1vS-zBSBzc0LW1V6BoPEw-V98P4_gox4qC0wZuQT5Yls_NDTDwM612aIYL_U988gfp4Xbl0ed7_9uYly/pubhtml?widget=true&headers=false)
+### Less-than-1kb compiler-augmented virtual DOM. It's fast!
+
+Current Virtual DOM implementations are inadequate—Ranging from overcomplicated to abandoned, most are unusable without sacrificing raw performance and size. Million aims to fix this, providing a library-agnostic Virtual DOM to serve as the core for Javascript libraries that focus on precompilation and static analysis.
+
+## Project Assets
+
+- [Documentation](https://million.js.org)
+- [GitHub](https://github.com/aidenybai/million)
+- [Research Paper](https://www.overleaf.com/read/sztmjdmfzykx)
+- [Conference Slides](https://docs.google.com/presentation/d/e/2PACX-1vQ5ChzziKq1rgjKP0PvMVjJwd4x8_H0EdNbeUQmMzG7k8k3AloQRm86D9aEuvwzz2GtPW6JCiRTx_9P/pub?start=false&loop=false&delayms=3000)
+- [Benchmarker](https://million.aidenybai.com)
+- [Video](https://youtu.be/ak4oJvWU0bY)
+
+## Presentation
+
+<LiteYouTubeEmbed id="ak4oJvWU0bY" title="Million.js Video" />
