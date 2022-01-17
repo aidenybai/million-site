@@ -12,10 +12,9 @@ The `schedule` function is used as a deferred commit function to prevent main th
 Scheduling is generally used to induce incremental rendering, or the ability to split rendering work into chunks and spread it out over multiple frames. Generally, you want to use it if you are repeating a certain patches many times, or you want to debounce an operation.
 
 ```js
-import { m, props, children, schedule, createElement } from 'million';
+import { m, diff, schedule, createElement } from 'million';
 
 const patch = (el, newVNode, oldVNode, effects = []): DOMNode => {
-  const diff = node([children(), props()]);
   // async rendering
   const data = diff(el, newVNode, oldVNode, effects, schedule);
   for (let i = 0; i < effects.length; i++) {

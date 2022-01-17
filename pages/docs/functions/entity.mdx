@@ -15,7 +15,9 @@ You can use `entity` to create components. For instance, a reference to the comp
 import { m } from 'million';
 
 const data = { message: 'Hello World' };
-const entity1 = entity(data, () => m('div', { id: 'app' }, [data.message]));
+const customEntity = entity(data, () =>
+  m('div', { id: 'app' }, [data.message]),
+);
 ```
 
 ```js
