@@ -1,8 +1,8 @@
 ---
-title: patch
+title: patch()
 ---
 
-# `patch`
+# `patch()`
 
 **Syntax:** `patch(element, newVnode, prevVNode?, effects = [], commit = (callback) => callback())`\
 **Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
@@ -39,7 +39,14 @@ You can use drivers to create your own custom patch functions. The `useNode()` d
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
 
 ```js
-import { m, useNode, useChildren, useProps, createElement, flush } from 'million';
+import {
+  m,
+  useNode,
+  useChildren,
+  useProps,
+  createElement,
+  flush,
+} from 'million';
 
 const myCustomPatch = (el, newVNode, oldVNode, effects = [], commit) => {
   const diff = useNode([useChildren(), useProps()]);

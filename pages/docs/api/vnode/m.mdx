@@ -1,0 +1,135 @@
+---
+title: m()
+---
+
+# `m()`
+
+**Syntax:** `m(tag, props?, children?, flag?, delta?)`\
+**Example:** `m('div', { id: 'app' }, ['Hello World'])`
+
+It is recommended that you use `m` to create a VNode. It accepts a tag as a string, an optional props object, an optional array of children, and an optional flag.
+
+```js
+import { m } from 'million';
+
+const vnode = m('div', { id: 'app' }, ['Hello World']);
+```
+
+```js
+{
+  tag: 'div',
+  props: {
+    id: 'app'
+  },
+  children: ['Hello World'],
+}
+```
+
+## Optimization via keys
+
+Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`Flags.ONLY_KEYED_CHILDREN`](#flags).
+
+```js
+import { m } from 'million';
+
+const vnode = m('div', { key: 'foo' }, ['Hello World']);
+```
+
+```js {5}
+{
+  tag: 'div',
+  props: {},
+  children: ['Hello World'],
+  key: 'foo',
+}
+```
+
+## `className` and `style` props helpers
+
+The `className` and `style` props need to be preprocessed using the `className` and `style` functions to convert objects to strings. The class object syntax allows for you to toggle classes based on a boolean value. The style object syntax allows you to set styles in a clean format.
+
+```js
+import { m, className, style } from 'million';
+
+const vnode = m(
+  'div',
+  {
+    className: className({ class1: true, class2: false, class3: 1 + 1 === 2 }),
+    style: style({ color: 'black', 'font-weight': 'bold' }),
+  },
+  ['Hello World'],
+);
+```
+
+```js {4,5}
+{
+  tag: 'div',
+  props: {
+    className: 'class1 class3',
+    style: 'color:black;font-weight:bold'
+  },
+  children: ['Hello World'],
+}
+```
+
+## `kebab` props helper
+
+Generally, the values of `className` and `style` props are objects in kebab-case. However, if you want to use camelCase for the keys of these props, you can use the `kebab` function to convert the keys from camelCase to kebab-case.
+
+```js
+import { m, style, kebab } from 'million';
+
+const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
+```
+
+```js {4}
+{
+  tag: 'div',
+  props: {
+    style: 'color:black;font-weight:bold'
+  },
+  children: ['Hello World'],
+}
+```
+
+## SVG support
+
+SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
+
+```js
+import { m, svg } from 'million';
+
+const vnode = svg(m('svg'));
+```
+
+```js {4}
+{
+  tag: 'svg',
+  props: {
+    ns: 'http://www.w3.org/2000/svg'
+  },
+}
+```
+
+## `toVNode` SSR helper
+
+The `toVNode` function converts an HTMLElement or Text to a VNode. This is generally used to rehydrate HTML from SSR.
+
+```js
+import { m, toVNode, patch } from 'million';
+
+const el = document.querySelector('#app');
+const vnode = m(
+  'div',
+  { id: 'app' },
+  ['Hello World'],
+  Flags.ONLY_TEXT_CHILDREN,
+);
+const oldVNode = toVNode(el);
+
+patch(el, vnode, oldVNode);
+```
+
+```html
+<div id="app">Hello World</div>
+```

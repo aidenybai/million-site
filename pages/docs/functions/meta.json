@@ -1,8 +1,0 @@
-{
-  "m": "m",
-  "createElement": "createElement",
-  "patch": "patch",
-  "schedule": "schedule",
-  "entity": "entity",
-  "toVNode": "toVNode"
-}

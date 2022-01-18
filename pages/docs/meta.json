@@ -1,6 +1,7 @@
 {
   "getting-started": "Getting Started",
-  "functions": "Functions",
+  "crash-course": "Crash Course",
+  "api": "API",
   "advanced": "Advanced",
   "benchmarks": "Benchmarks"
 }

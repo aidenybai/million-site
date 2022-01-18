@@ -1,8 +1,8 @@
 ---
-title: createElement
+title: createElement()
 ---
 
-# `createElement`
+# `createElement()`
 
 **Syntax:** `createElement(vnode, attachField = true)`\
 **Example:** `createElement(m('div'))`
@@ -12,7 +12,12 @@ The `createElement` function converts a VNode into a HTMLElement or Text. It acc
 ```js
 import { m, createElement, Flags } from 'million';
 
-const vnode = m('div', { id: 'app' }, ['Hello World'], Flags.ONLY_TEXT_CHILDREN);
+const vnode = m(
+  'div',
+  { id: 'app' },
+  ['Hello World'],
+  Flags.ONLY_TEXT_CHILDREN,
+);
 const el = createElement(vnode);
 
 document.body.appendChild(el);
