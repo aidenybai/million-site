@@ -25,6 +25,8 @@ const vnode = m('div', { id: 'app' }, ['Hello World']);
 }
 ```
 
+The `tagName` is stored under the `tag`, `attributes` and properties are stored under `props`, and the children are stored under `children`.
+
 ## Optimization via keys
 
 Most of the time, the diffing and patching process is fast enough, but when dealing with a large amount of children, it is best to provide runtime hints through keys. You can attach a `key` under props. When patched, it will only diff props and children if the `key` is changed. For more advanced runtime diffing using keys, check out [`Flags.ONLY_KEYED_CHILDREN`](#flags).
