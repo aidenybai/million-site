@@ -29,6 +29,24 @@ patch(el, vnode2);
 // document.body.innerHTML = '<div id="app">Hello World</div>' -> '<div id="app">Goodbye World</div>'
 ```
 
+## Commit & effects
+
+Sometimes, we want to do apply our own functionality across the entire VNode tree, yet we want to keep the API usage very simple. There are two areas where you can do this:
+
+- **VNode-by-VNode diffing:** You can pass a callback into the `commit` parameter (see `patch`) syntax to deal with each VNode (excluding special diffing). You can construct a `commit` callback like this:
+
+  ```js
+  patch(el, newVNode, oldVNode, [], (callback, data) => callback());
+  ```
+
+  You can now access the `callback`, which you execute, and the `data` to get the context of the execution.
+
+- **Operation-by-Operation patching:** Once diffing is completed, you can deal with effects, or DOM operations. Normally, effects are batched all at once, but if you want to modify this, you can check out [custom patch functions](#custom-patch-functions). If you want to add your own custom effects, you can pass callbacks into the `effects` parameter like this:
+
+  ```js
+  patch(el, newVNode, oldVNode, [() => console.log('Hello World!')]);
+  ```
+
 ## Custom patch functions
 
 You can use drivers to create your own custom patch functions. The `useNode()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
