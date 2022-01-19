@@ -113,21 +113,18 @@ const vnode = svg(m('svg'));
 
 ## `toVNode` SSR helper
 
-The `toVNode` function converts an HTMLElement or Text to a VNode. This is generally used to rehydrate HTML from SSR.
+The `toVNode` function converts an HTMLElement or Text or HTML string to a VNode. This is generally used to rehydrate HTML from SSR.
 
 ```js
 import { m, toVNode, patch } from 'million';
 
-const el = document.querySelector('#app');
-const vnode = m(
-  'div',
-  { id: 'app' },
-  ['Hello World'],
-  Flags.ONLY_TEXT_CHILDREN,
-);
-const oldVNode = toVNode(el);
+// HTML string
+const vnode1 = toVNode('<div>Hello World</div>'); // holds <div>Hello World</div> in VNode form
 
-patch(el, vnode, oldVNode);
+// HTMLElement
+const el = document.createElement('div');
+el.textContent = 'Hello World';
+const vnode2 = toVNode(el); // holds <div>Hello World</div> in VNode form
 ```
 
 ```html

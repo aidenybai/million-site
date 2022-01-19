@@ -12,7 +12,7 @@ import Callout from 'nextra-theme-docs/callout';
 Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
 
 <Callout emoji="ℹ️">
-  Flags will be ignored if the generated vnode is provided as the previous vnode
+  Flags will be ignored if the generated VNode is provided as the previous VNode
   during a `patch` call.
 </Callout>
 
@@ -34,7 +34,7 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   ```
 
 - **`Flags.REPLACE_NODE`**\
-  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a vnode.
+  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a VNode.
 
   ```js
   import { m, Flags } from 'million';
