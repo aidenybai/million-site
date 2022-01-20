@@ -62,7 +62,7 @@ export default function Page() {
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
-          <span className="future inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500 via-red-500">
+          <span className="future inline-block text-transparent bg-clip-text bg-gradient-radial from-color2 to-color2 via-color1">
             into the future.
           </span>{' '}
         </h1>
@@ -109,7 +109,8 @@ export default function Page() {
           Why Million?
         </p>
         <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
-          Million is designed to be modern and easy to use while being lean and insanely performant.
+          Million is designed to be modern and easy to use while being lean and
+          insanely performant.
         </p>
         <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
           {features.map((feature) => (
@@ -124,7 +125,9 @@ export default function Page() {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-lg font-medium dark:text-white">{feature.name}</h3>
+                <h3 className="text-lg font-medium dark:text-white">
+                  {feature.name}
+                </h3>
                 <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
                   {feature.description}
                 </p>

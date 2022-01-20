@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       fontFamily: {
         sans: [`"Inter"`, 'sans-serif'],
         mono: [
@@ -31,6 +34,8 @@ module.exports = {
         green: colors.green,
         red: colors.red,
         yellow: colors.yellow,
+        color1: '#ED9CA2',
+        color2: '#A96FDC',
       },
       screens: {
         sm: '640px',
