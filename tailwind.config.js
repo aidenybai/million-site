@@ -13,6 +13,21 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
+      animation: {
+        'gradient-x': 'gradient-x 10s ease infinite',
+      },
+      keyframes: {
+        'gradient-x': {
+          '0%, 100%': {
+            'background-size': '150% 150%',
+            'background-position': 'bottom',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'top',
+          },
+        },
+      },
       fontFamily: {
         sans: [`"Inter"`, 'sans-serif'],
         mono: [
