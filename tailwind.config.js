@@ -19,7 +19,7 @@ module.exports = {
       keyframes: {
         'gradient-x': {
           '0%, 100%': {
-            'background-size': '150% 150%',
+            'background-size': '100% 100%',
             'background-position': 'bottom',
           },
           '50%': {
