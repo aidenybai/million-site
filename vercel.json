@@ -1,12 +1,5 @@
 {
   "github": {
     "silent": true
-  },
-  "redirects": [
-    {
-      "source": "/benchmarks",
-      "destination": "https://million.aidenybai.com",
-      "permanent": true
-    }
-  ]
+  }
 }
