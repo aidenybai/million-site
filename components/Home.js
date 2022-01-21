@@ -17,32 +17,63 @@ import Vercel from './Vercel';
 const features = [
   {
     name: 'Lightweight',
-    description: `Million ships <1kb brotli bundles after tree shaking and minification. Get fast bundle load times!`,
+    description: (
+      <>
+        Million ships <b>&lt;1kb</b> brotli bundles after tree shaking and
+        minification. Get <b>fast bundle</b> load times!
+      </>
+    ),
     icon: PaperAirplaneIcon,
   },
   {
     name: 'Performance',
-    description: `Million uses the latest performance optimizations for the compiler to supercharge runtime rendering.`,
+    description: (
+      <>
+        Million uses the <b>latest performance optimizations</b> for the
+        compiler to <b>supercharge runtime</b> rendering.
+      </>
+    ),
     icon: LightningBoltIcon,
   },
   {
     name: 'Compiler-first',
-    description: `Million supports full-class support for compiler optimizations, allowing you to ergonomically create your own compiler over Million.`,
+    description: (
+      <>
+        Million supports <b>full-class support for compiler</b> optimizations,
+        allowing you to <b>ergonomically</b> create your own compiler over
+        Million.
+      </>
+    ),
     icon: EyeIcon,
   },
   {
     name: 'Sensible API',
-    description: `Million's API is simple to use with batteries-included. Best practices by default!`,
+    description: (
+      <>
+        Million's API is <b>simple to use with batteries-included</b>. Best
+        practices by default!
+      </>
+    ),
     icon: CodeIcon,
   },
   {
     name: 'Library Agnostic',
-    description: `Million doesn't make decisions on library design, meaning your can build your own opinionated abstractions.`,
+    description: (
+      <>
+        Million doesn't make decisions on library design, meaning your can build
+        your own opinionated abstractions.
+      </>
+    ),
     icon: CursorClickIcon,
   },
   {
     name: 'Decoupled + Composable',
-    description: `Million is extensible in features, so you can build up complexity and features with ease (like Legos!)`,
+    description: (
+      <>
+        Million is <b>extensible</b> in features, so you can build up complexity
+        and features with ease (<i>like Legos!</i>)
+      </>
+    ),
     icon: AdjustmentsIcon,
   },
 ];
@@ -57,7 +88,7 @@ export default function Page() {
       <Head>
         <title>Million</title>
       </Head>
-      <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white ">
+      <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
           Virtual DOM
           <br />
@@ -66,9 +97,18 @@ export default function Page() {
             into the future.
           </span>{' '}
         </h1>
-        <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-4xl sm:text-2xl md:text-3xl lg:text-4xl">
-          Million is a <b>lightweight (&lt;1kb)</b>, compiler-augmented virtual
-          DOM. It's fast!
+        <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-2xl md:text-3xl lg:text-3xl">
+          Million is a{' '}
+          <b>
+            lightweight (<i>&lt;1kb</i>)
+          </b>
+          , compiler-augmented virtual DOM. It's{' '}
+          <a href="https://million.js.org/benchmarks" className="text-gray-400">
+            <b>
+              <i>fast</i>
+            </b>
+          </a>
+          !
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">
@@ -121,12 +161,12 @@ export default function Page() {
             >
               <div>
                 <feature.icon
-                  className="h-8 w-8 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
+                  className="h-10 w-10 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
                   aria-hidden="true"
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-lg font-medium dark:text-white">
+                <h3 className="text-xl font-bold dark:text-white">
                   {feature.name}
                 </h3>
                 <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
