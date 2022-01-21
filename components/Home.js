@@ -103,10 +103,11 @@ export default function Page() {
             lightweight (<i>&lt;1kb</i>)
           </b>
           , compiler-augmented virtual DOM. It's{' '}
-          <a href="https://million.js.org/benchmarks" className="text-gray-400">
-            <b>
-              <i>fast</i>
-            </b>
+          <a
+            href="https://million.js.org/benchmarks"
+            className="italic font-bold no-underline"
+          >
+            fast
           </a>
           !
         </p>

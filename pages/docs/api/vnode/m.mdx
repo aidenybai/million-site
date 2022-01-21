@@ -96,7 +96,7 @@ const vnode = style(kebab({ color: 'black', fontWeight: 'bold' }));
 
 ## SVG support
 
-SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
+SVGs are handled by default, but sometimes you need to attach SVG namespaces. SVGs are processed using the `svg` function to add `ns` props to the element and all of the children of that element.
 
 ```js
 import { m, svg } from 'million';
