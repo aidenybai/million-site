@@ -53,16 +53,4 @@ export default {
   footerEditLink: () => {
     return 'Edit this page on GitHub →';
   },
-  head: (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="<1kb virtual DOM - it's fast!" />
-      <meta name="og:title" content="Million" />
-      <link
-        rel="icon"
-        type="image/svg+xml"
-        href="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/icon.svg"
-      />
-    </>
-  ),
 };
