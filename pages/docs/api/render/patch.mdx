@@ -4,7 +4,7 @@ title: patch()
 
 # `patch()`
 
-**Syntax:** `patch(element, newVnode, prevVNode?, effects = [], commit = (callback) => callback())`\
+**Syntax:** `patch(element, newVNode, prevVNode?, effects = [], commit = (callback) => callback())`\
 **Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
 
 The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode. It also returns the resulting HTMLElement or Text.

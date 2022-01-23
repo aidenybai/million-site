@@ -1,4 +1,5 @@
 {
+  "render": "render()",
   "createElement": "createElement()",
   "patch": "patch()",
   "schedule": "schedule()"
