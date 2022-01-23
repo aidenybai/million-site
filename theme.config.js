@@ -41,11 +41,8 @@ export default {
           style={{ height: '2em' }}
           src="/icon.svg"
         />
-        <span className="ml-2 mr-2 font-extrabold hidden md:inline">
+        <span className="ml-2 mr-2 font-extrabold hidden text-xl md:inline">
           Million
-        </span>
-        <span className="text-gray-600 font-normal hidden md:inline">
-          &lt;1kb compiler-augmented virtual DOM. It's fast!
         </span>
       </>
     );

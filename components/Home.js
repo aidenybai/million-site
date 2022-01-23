@@ -90,7 +90,7 @@ export default function Page() {
         <title>Million</title>
       </Head>
       <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
-        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
+        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-5xl lg:text-9xl xl:text-9xl">
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
@@ -115,7 +115,7 @@ export default function Page() {
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">
             <Link href="/docs/getting-started">
-              <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
+              <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                 Get started →
               </a>
             </Link>
@@ -124,7 +124,7 @@ export default function Page() {
           <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
             <button
               onClick={onClick}
-              className="flex items-center justify-center w-full px-8 py-3 font-mono text-sm font-medium text-gray-600 bg-black border border-transparent border-gray-200 rounded-md bg-opacity-5 dark:bg-white dark:text-gray-300 dark:border-gray-700 dark:bg-opacity-5 betterhover:hover:bg-gray-50 betterhover:dark:hover:bg-gray-900 md:py-3 md:text-base md:leading-6 md:px-10"
+              className="flex items-center justify-center w-full px-8 py-3 font-mono text-md font-medium text-gray-600 bg-black border border-transparent border-gray-200 rounded-md bg-opacity-5 dark:bg-white dark:text-gray-300 dark:border-gray-700 dark:bg-opacity-5 betterhover:hover:bg-gray-50 betterhover:dark:hover:bg-gray-900 md:py-3 md:text-base md:leading-6 md:px-10"
             >
               npm install million
               <DuplicateIcon className="w-6 h-6 ml-2 -mr-3 text-gray-400" />
@@ -151,19 +151,19 @@ export default function Page() {
         <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white">
           Why Million?
         </p>
-        <p className="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
+        <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
           Million is designed to be <b>modern and easy</b> to use while being{' '}
           <b>lean and insanely performant</b>.
         </p>
         <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
           {features.map((feature) => (
             <div
-              className="p-10 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
+              className="p-9 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
               key={feature.name}
             >
               <div>
                 <feature.icon
-                  className="h-10 w-10 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
+                  className="h-9 w-9 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
                   aria-hidden="true"
                 />
               </div>
@@ -171,7 +171,7 @@ export default function Page() {
                 <h3 className="text-xl font-bold dark:text-white">
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-md font-medium text-gray-500 dark:text-gray-400">
                   {feature.description}
                 </p>
               </div>
@@ -183,7 +183,7 @@ export default function Page() {
           <div className="max-w-sm py-16 mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
             <div className="space-y-4 sm:space-y-0 sm:mx-auto ">
               <Link href="/docs/getting-started">
-                <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
+                <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                   Get Started →
                 </a>
               </Link>
