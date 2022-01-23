@@ -90,7 +90,7 @@ export default function Page() {
         <title>Million</title>
       </Head>
       <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
-        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-5xl lg:text-9xl xl:text-9xl">
+        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
@@ -98,7 +98,7 @@ export default function Page() {
             into the future.
           </span>{' '}
         </h1>
-        <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-2xl md:text-3xl lg:text-3xl">
+        <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
           Million is a{' '}
           <b>
             lightweight (<i>&lt;1kb</i>)
