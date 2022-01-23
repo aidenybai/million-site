@@ -60,8 +60,9 @@ const features = [
     name: 'Library Agnostic',
     description: (
       <>
-        Million doesn't make decisions on library design, meaning your can build
-        your own opinionated abstractions.
+        Million doesn't make decisions on library design, meaning you can
+        leverage Million's generalized API to build your own opinionated
+        abstractions.
       </>
     ),
     icon: CursorClickIcon,
