@@ -72,7 +72,7 @@ const features = [
     description: (
       <>
         Million is <b>extensible</b> in features, so you can build up complexity
-        and features with ease (<i>like Legos!</i>)
+        and features with ease (<i>like Legos!</i>).
       </>
     ),
     icon: AdjustmentsIcon,
