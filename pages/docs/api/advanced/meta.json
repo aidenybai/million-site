@@ -1,6 +1,8 @@
 {
-  "render": "render()",
   "createElement": "createElement()",
   "patch": "patch()",
+  "flags": "Flags",
+  "delta": "Delta",
+  "entity": "entity()",
   "schedule": "schedule()"
 }

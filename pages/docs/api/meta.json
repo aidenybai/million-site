@@ -1,4 +1,4 @@
 {
-  "vnode": "VNode",
-  "render": "Render"
+  "basics": "Basics",
+  "advanced": "Advanced"
 }
