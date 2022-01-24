@@ -7,8 +7,8 @@ import Counter from '../../../../components/Counter';
 
 # `render()`
 
-**Syntax:** `render(parentElement, vnode)`\
-**Example:** `render(document.body, m('div'), m('div', undefined, ['Hello World']))`
+**Syntax:** `render(parentElement, newVNode?, prevVNode?)`\
+**Example:** `render(document.body, m('div'))`
 
 The `render` function is a combonation of the `patch()` and `createElement()` functions. It takes a parent element and a vnode and returns a DOM node, and renders the vnode into the DOM.
 
