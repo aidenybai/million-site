@@ -2,7 +2,9 @@
 title: SSG/SSR
 ---
 
-# Server-Side Generation (SSG)
+# SSG/SSR
+
+## Server-Side Generation (SSG)
 
 Million.js is intended to be the Virtual DOM runtime for your application. It's primarily designed to be augmented by a compiler which can produce optimizations and code generation for Million.js. However, Million.js doesn't provide a compiler by default, as static analysis and code generation are difficult to pull off well without knowledge of the library (state, components, etc.).
 
@@ -10,7 +12,7 @@ However, Million.js does provide example implementations for virtual node `h` fu
 
 If you are considering writing a compiler for your Million.js library, consider taking a look at the implemenation of [`vite-plugin-million`](https://github.com/aidenybai/vite-plugin-million). Additionally, you should look into [recast](https://github.com/benjamn/recast) and [ast-types](https://github.com/benjamn/ast-types), both great options for JavaScript AST traversal for static analysis.
 
-# Server-Side Rendering (SSR)
+## Server-Side Rendering (SSR)
 
 Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example implementation of HMR replacement can be seen here:
 
