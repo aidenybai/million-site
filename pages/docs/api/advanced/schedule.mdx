@@ -17,9 +17,12 @@ import { m, diff, schedule, createElement } from 'million';
 const patch = (el, newVNode, oldVNode, effects = []): DOMNode => {
   // async rendering
   const data = diff(el, newVNode, oldVNode, effects, schedule);
-  for (let i = 0; i < effects.length; i++) {
-    effects[i]();
-  }
+  setTimeout(() => {
+    for (let i = 0; i < effects.length; i++) {
+      effects[i]();
+    }
+  });
+
   return data.el;
 };
 
