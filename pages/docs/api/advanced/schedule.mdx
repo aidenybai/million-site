@@ -15,13 +15,13 @@ Scheduling is generally used to induce incremental rendering, or the ability to 
 import { m, diff, schedule, createElement } from 'million';
 
 const patch = (el, newVNode, oldVNode, effects = []): DOMNode => {
-  // async rendering
-  const data = diff(el, newVNode, oldVNode, effects, schedule);
-  setTimeout(() => {
+  const scheduledCommit = (work: () => void) => {
     for (let i = 0; i < effects.length; i++) {
       effects[i]();
     }
-  });
+    schedule(work);
+  };
+  const data = diff(el, newVNode, oldVNode, effects, scheduledCommit);
 
   return data.el;
 };
