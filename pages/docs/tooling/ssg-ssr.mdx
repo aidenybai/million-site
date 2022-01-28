@@ -20,7 +20,14 @@ Million.js is a great choice if you want to implement Hot Module Replacement (HM
 import { refresh } from 'million/refresh';
 
 refresh(`
-  <p>Hello World</p>
-  <p>Goodbye World</p>
+  <html>
+    <head>
+      <title>World</title>
+    </head>
+    <body>
+      <p>Hello World</p>
+      <p>Goodbye World</p>
+    </body>
+  </html>
 `);
 ```
