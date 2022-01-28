@@ -14,12 +14,13 @@ If you are considering writing a compiler for your Million.js library, consider 
 
 ## Server-Side Rendering (SSR)
 
-Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example implementation of HMR replacement can be seen here:
+Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example usage of HMR `refresh` function can be seen here:
 
 ```js
-import { toVNode, render } from 'million';
+import { refresh } from 'million/refresh';
 
-const update = (html) => {
-  render(document.body, toVNode(html));
-};
+refresh(`
+  <p>Hello World</p>
+  <p>Goodbye World</p>
+`);
 ```
