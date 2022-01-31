@@ -114,7 +114,7 @@ export default function Page() {
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">
-            <Link href="/docs/getting-started">
+            <Link href="/docs/start-here">
               <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                 Get started →
               </a>
@@ -182,7 +182,7 @@ export default function Page() {
         <Container>
           <div className="max-w-sm py-16 mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
             <div className="space-y-4 sm:space-y-0 sm:mx-auto ">
-              <Link href="/docs/getting-started">
+              <Link href="/docs/start-here">
                 <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                   Get Started →
                 </a>

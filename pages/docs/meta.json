@@ -1,6 +1,6 @@
 {
-  "getting-started": "Getting Started",
-  "guide": "Guide",
+  "start-here": "Start Here",
+  "installation": "Installation",
   "api": "API",
   "tooling": "Tooling",
   "benchmarks": "Benchmarks"

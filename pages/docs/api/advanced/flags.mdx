@@ -16,162 +16,168 @@ Flags allow for the `patch` function to optimize condition branches. They are op
   during a `patch` call.
 </Callout>
 
-- **`Flags.IGNORE_NODE`**\
-  This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
+## `Flags.IGNORE_NODE`
 
-  ```js
-  import { m, Flags } from 'million';
+This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
 
-  const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
-  ```
+```js
+import { m, Flags } from 'million';
 
-  ```js {4}
-  {
-    tag: 'div',
-    children: ['Please ignore me'],
-    flag: /* Flags.IGNORE_NODE */,
-  }
-  ```
+const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
+```
 
-- **`Flags.REPLACE_NODE`**\
-  If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a VNode.
+```js {4}
+{
+  tag: 'div',
+  children: ['Please ignore me'],
+  flag: /* Flags.IGNORE_NODE */,
+}
+```
 
-  ```js
-  import { m, Flags } from 'million';
+## `Flags.REPLACE_NODE`
 
-  const vnode = m(
-    'div',
-    undefined,
-    ['Please hard replace me'],
-    Flags.REPLACE_NODE,
-  );
-  ```
+If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a VNode.
 
-  ```js {4}
-  {
-    tag: 'div',
-    children: ['Please hard replace me'],
-    flag: /* Flags.REPLACE_NODE */,
-  }
-  ```
+```js
+import { m, Flags } from 'million';
 
-- **`Flags.NO_CHILDREN`**\
-  If your element has no children, you can set this flag to skip the children diffing entirely.
+const vnode = m(
+  'div',
+  undefined,
+  ['Please hard replace me'],
+  Flags.REPLACE_NODE,
+);
+```
 
-  ```js
-  import { m, Flags } from 'million';
+```js {4}
+{
+  tag: 'div',
+  children: ['Please hard replace me'],
+  flag: /* Flags.REPLACE_NODE */,
+}
+```
 
-  const vnode = m('div', undefined, [], Flags.NO_CHILDREN);
-  ```
+## `Flags.NO_CHILDREN`
 
-  ```js {4}
-  {
-    tag: 'div',
-    children: [],
-    flag: /* Flags.NO_CHILDREN */,
-  }
-  ```
+If your element has no children, you can set this flag to skip the children diffing entirely.
 
-- **`Flags.ONLY_TEXT_CHILDREN`**\
-  If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
+```js
+import { m, Flags } from 'million';
 
-  ```js
-  import { m, Flags } from 'million';
+const vnode = m('div', undefined, [], Flags.NO_CHILDREN);
+```
 
-  const vnode = m(
-    'div',
-    undefined,
-    ['Hello ', 'World!'],
-    Flags.ONLY_TEXT_CHILDREN,
-  );
-  ```
+```js {4}
+{
+  tag: 'div',
+  children: [],
+  flag: /* Flags.NO_CHILDREN */,
+}
+```
 
-  ```js {4}
-  {
-    tag: 'div',
-    children: ['Hello ', 'World!'],
-    flag: /* Flags.ONLY_TEXT_CHILDREN */,
-  }
-  ```
+## `Flags.ONLY_TEXT_CHILDREN`
 
-- **`Flags.ONLY_KEYED_CHILDREN`**\
-  If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
+If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
 
-  For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
+```js
+import { m, Flags } from 'million';
 
-  ```js {7,8,9,10}
-  oldVNodeChildren:
-    A,
-    B,
-    C,
+const vnode = m(
+  'div',
+  undefined,
+  ['Hello ', 'World!'],
+  Flags.ONLY_TEXT_CHILDREN,
+);
+```
 
-  newVNodeChildren:
-    X,
-    A,
-    B,
-    C,
-  ```
+```js {4}
+{
+  tag: 'div',
+  children: ['Hello ', 'World!'],
+  flag: /* Flags.ONLY_TEXT_CHILDREN */,
+}
+```
 
-  However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
+## `Flags.ONLY_KEYED_CHILDREN`
 
-  ```js {7}
-  oldVNodeChildren:
-    A,
-    B,
-    C,
+If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
-  newVNodeChildren:
-    X,
-    A,
-    B,
-    C,
-  ```
+For example, without keyed diffing, each node is linearly diffed, resulting sometimes in unnecessary modifications. As seen below, we insert an `X` child at the start of the `newVNodeChildren`, but all nodes are modified because the first 3 are diffed and updated, and the last is appended. This could be much more efficient if only the `X` was inserted at the start.
 
-  So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
+```js {7,8,9,10}
+oldVNodeChildren:
+  A,
+  B,
+  C,
 
-  ```js
-  import { m, Flags } from 'million';
+newVNodeChildren:
+  X,
+  A,
+  B,
+  C,
+```
 
-  const list = ['foo', 'bar', 'baz'];
+However, with keyed diffing, we can see more performant results. As you can see, only the `X` is modified and inserted at the start, with the other nodes being ignored during diffing.
 
-  const vnode = m(
-    'div',
-    undefined,
-    list.map((item) => m('p', { key: item }, [item])),
-    Flags.ONLY_KEYED_CHILDREN,
-  );
-  ```
+```js {7}
+oldVNodeChildren:
+  A,
+  B,
+  C,
 
-  ```js {8}
-  {
-    tag: 'div',
-    children: [
-      m('p', { key: 'foo' }, ['foo']),
-      m('p', { key: 'bar' }, ['bar']),
-      m('p', { key: 'foo' }, ['baz']),
-    ],
-    flag: /* Flags.ONLY_KEYED_CHILDREN */,
-  }
-  ```
+newVNodeChildren:
+  X,
+  A,
+  B,
+  C,
+```
 
-- **`Flags.ANY_CHILDREN`**\
-  If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
+So, how do you enable this? Generally, you should if you have unique content in your values. Never supply the index of the item in the array or non-unique keys into the VNode.
 
-  ```js
-  import { m, Flags } from 'million';
+```js
+import { m, Flags } from 'million';
 
-  const vnode = m(
-    'div',
-    undefined,
-    ['Here is my button: ', m('button', undefined, ['Hi!'])],
-    Flags.ANY_CHILDREN,
-  );
-  ```
+const list = ['foo', 'bar', 'baz'];
 
-  ```js {4}
-  {
-    tag: 'div',
-    children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-    flag: /* Flags.ANY_CHILDREN */,
-  }
-  ```
+const vnode = m(
+  'div',
+  undefined,
+  list.map((item) => m('p', { key: item }, [item])),
+  Flags.ONLY_KEYED_CHILDREN,
+);
+```
+
+```js {8}
+{
+  tag: 'div',
+  children: [
+    m('p', { key: 'foo' }, ['foo']),
+    m('p', { key: 'bar' }, ['bar']),
+    m('p', { key: 'foo' }, ['baz']),
+  ],
+  flag: /* Flags.ONLY_KEYED_CHILDREN */,
+}
+```
+
+## `Flags.ANY_CHILDREN`
+
+If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
+
+```js
+import { m, Flags } from 'million';
+
+const vnode = m(
+  'div',
+  undefined,
+  ['Here is my button: ', m('button', undefined, ['Hi!'])],
+  Flags.ANY_CHILDREN,
+);
+```
+
+```js {4}
+{
+  tag: 'div',
+  children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
+  flag: /* Flags.ANY_CHILDREN */,
+}
+```
