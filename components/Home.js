@@ -136,7 +136,7 @@ export default function Page() {
       <div className="py-16">
         <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
           <p className="text-sm font-semibold tracking-wide text-center text-gray-400 text-opacity-50 uppercase dark:text-gray-500">
-            Powered by
+            Sponsored by
           </p>
 
           <div className="mt-6">
@@ -148,10 +148,10 @@ export default function Page() {
       </div>
 
       <div className="px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
-        <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white">
+        <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
           Why Million?
         </p>
-        <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
+        <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl text-center">
           Million is designed to be <b>modern and easy</b> to use while being{' '}
           <b>lean and insanely performant</b>.
         </p>
