@@ -2,6 +2,7 @@ import Vercel from './components/Vercel';
 
 export default {
   projectLink: 'https://github.com/aidenybai/million',
+  projectChatLink: 'https://discord.gg/X9yFbcV2rF',
   docsRepositoryBase: 'https://github.com/aidenybai/docs',
   titleSuffix: ' – Million',
   feedbackLink: () => {
