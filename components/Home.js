@@ -124,7 +124,7 @@ export default function Page() {
           <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
             <button
               onClick={onClick}
-              className="flex items-center justify-center w-full px-8 py-3 font-mono text-md font-medium text-gray-600 bg-black border border-transparent border-gray-200 rounded-md bg-opacity-5 dark:bg-white dark:text-gray-300 dark:border-gray-700 dark:bg-opacity-5 betterhover:hover:bg-gray-50 betterhover:dark:hover:bg-gray-900 md:py-3 md:text-base md:leading-6 md:px-10"
+              className="flex items-center justify-center w-full px-8 py-3 font-mono text-md font-medium text-gray-600 bg-gray-100 border border-transparent border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700  betterhover:hover:bg-gray-50 betterhover:dark:hover:bg-gray-900 md:py-3 md:text-base md:leading-6 md:px-10"
             >
               npm install million
               <DuplicateIcon className="w-6 h-6 ml-2 -mr-3 text-gray-400" />
@@ -154,7 +154,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="w-full bg-white dark:bg-dark px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
+      <div className="w-full bg-gray-100 dark:bg-gray-900 px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
         <div className="mx-auto lg:max-w-7xl">
           <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
             Why Million?

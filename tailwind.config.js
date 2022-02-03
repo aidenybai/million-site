@@ -51,6 +51,8 @@ module.exports = {
         yellow: colors.yellow,
         color1: '#ED9CA2',
         color2: '#A96FDC',
+        night1: '#1f1738',
+        night2: '#6128a4',
       },
       screens: {
         sm: '640px',
