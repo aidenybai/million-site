@@ -131,6 +131,13 @@ export default function Page() {
             </button>
           </div>
         </div>
+
+        <div className="grid-light dark:grid-dark">
+          <div class="base-light dark:base-dark"></div>
+          {Array.from({ length: 10 }, (_, i) => (
+            <div class="line" style={{ '--i': i }} />
+          ))}
+        </div>
       </div>
 
       <div className="py-16">
@@ -147,36 +154,38 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
-        <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
-          Why Million?
-        </p>
-        <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl text-center">
-          Million is designed to be <b>modern and easy</b> to use while being{' '}
-          <b>lean and insanely performant</b>.
-        </p>
-        <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
-          {features.map((feature) => (
-            <div
-              className="p-9 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
-              key={feature.name}
-            >
-              <div>
-                <feature.icon
-                  className="h-9 w-9 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
-                  aria-hidden="true"
-                />
+      <div className="w-full bg-white dark:bg-dark px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
+        <div className="mx-auto lg:max-w-7xl">
+          <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
+            Why Million?
+          </p>
+          <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl text-center">
+            Million is designed to be <b>modern and easy</b> to use while being{' '}
+            <b>lean and insanely performant</b>.
+          </p>
+          <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
+            {features.map((feature) => (
+              <div
+                className="p-9 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
+                key={feature.name}
+              >
+                <div>
+                  <feature.icon
+                    className="h-9 w-9 dark:text-white rounded-full p-1.5 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-5 text-black"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-xl font-bold dark:text-white">
+                    {feature.name}
+                  </h3>
+                  <p className="text-md font-medium text-gray-500 dark:text-gray-400">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-              <div className="mt-4">
-                <h3 className="text-xl font-bold dark:text-white">
-                  {feature.name}
-                </h3>
-                <p className="text-md font-medium text-gray-500 dark:text-gray-400">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <Container>
