@@ -136,7 +136,7 @@ body {
     );
   }
 
-  .line {
+  .grid-line {
     --n-start: calc((var(--i) + 1) / var(--len));
     --n-end: calc((var(--i) + 2) / var(--len));
     --ty-start: calc(
