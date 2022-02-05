@@ -154,7 +154,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-dark border-t-[0.2rem] border-gray-50 dark:border-gray-900 border-solid px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
+      <div className="bg-white dark:bg-dark border-t-[0.2rem] border-gray-100 dark:border-gray-900 border-solid px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
         <div className="mx-auto lg:max-w-7xl">
           <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
             Why Million?
