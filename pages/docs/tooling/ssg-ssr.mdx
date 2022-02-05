@@ -19,15 +19,26 @@ Million.js is a great choice if you want to implement Hot Module Replacement (HM
 ```js
 import { refresh } from 'million/refresh';
 
-refresh(`
-  <html>
-    <head>
-      <title>World</title>
-    </head>
-    <body>
-      <p>Hello World</p>
-      <p>Goodbye World</p>
-    </body>
-  </html>
-`);
+refresh(
+  `<head>
+    <title>World</title>
+  </head>`,
+  `<body>
+    <p>Hello World</p>
+    <p>Goodbye World</p>
+  </body>`,
+);
+```
+
+If you're dealing with components, you can attach a `ignore` prop to the component's attributes. This will prevent the component from being re-rendered when the `refresh` function is called.
+
+```js
+import { refresh } from 'million/refresh';
+
+refresh(
+  undefined,
+  `<body>
+    <p ignore>Not rendered</p>
+  </body>`,
+);
 ```
