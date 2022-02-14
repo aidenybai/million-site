@@ -1,0 +1,17 @@
+---
+title: block()
+---
+
+# `block()`
+
+**Syntax:** `createElement(html)`\
+**Example:** `createElement('<div>Hello World</div>')`
+
+The `block` function creates an Entity from an HTML string, and is a way you can optimize diffing chunks of the DOM that have a high likelyhood of changing and with deep trees. It accepts a HTML string.
+
+```js
+import { render } from 'million';
+import { block } from 'million/block';
+
+render(document.body, block('<div>Hello World</div>'));
+```
