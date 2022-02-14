@@ -4,5 +4,6 @@
   "flags": "Flags",
   "delta": "Delta",
   "entity": "entity()",
+  "block": "block()",
   "schedule": "schedule()"
 }
