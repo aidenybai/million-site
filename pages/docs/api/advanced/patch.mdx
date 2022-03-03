@@ -4,7 +4,7 @@ title: patch()
 
 # `patch()`
 
-**Syntax:** `patch(element, newVNode?, prevVNode?, effects = [], commit = (callback) => callback())`\
+**Syntax:** `patch(element, newVNode?, prevVNode?, hook = (el?, newVNode?, oldVNode?) => boolean, effects = [])`\
 **Example:** `patch(el, m('div'), m('div', undefined, ['Hello World']))`
 
 The `patch` function updates the DOM content by determing pinpoint changes through diffing a new VNode with an old VNode. It accepts an HTMLElement or Text, a new VNode, and an optional previous VNode. It also returns the resulting HTMLElement or Text.
@@ -29,22 +29,24 @@ patch(el, vnode2);
 // document.body.innerHTML = '<div id="app">Hello World</div>' -> '<div id="app">Goodbye World</div>'
 ```
 
-## Commit & effects
+## Hook & effects
 
 Sometimes, we want to do apply our own functionality across the entire VNode tree, yet we want to keep the API usage very simple. There are two areas where you can do this:
 
-- **VNode-by-VNode diffing:** You can pass a callback into the `commit` parameter (see `patch`) syntax to deal with each VNode (excluding special diffing). You can construct a `commit` callback like this:
+- **VNode-by-VNode diffing:** You can pass a callback into the `hook` parameter (see `patch`) syntax to deal with each VNode (excluding special diffing). You can construct a `commit` callback like this:
 
   ```js
-  patch(el, newVNode, oldVNode, [], (callback, data) => callback());
+  patch(el, newVNode, oldVNode, (el, newVNode, oldVNode) => true, []);
   ```
 
-  You can now access the `callback`, which you execute, and the `data` to get the context of the execution.
+  You can return `true` to indicate that the VNode should be committed, or `false` to indicate that the VNode should be skipped.
 
 - **Operation-by-Operation patching:** Once diffing is completed, you can deal with effects, or DOM operations. Normally, effects are batched all at once, but if you want to modify this, you can check out [custom patch functions](#custom-patch-functions). If you want to add your own custom effects, you can pass callbacks into the `effects` parameter like this:
 
   ```js
-  patch(el, newVNode, oldVNode, [() => console.log('Hello World!')]);
+  patch(el, newVNode, oldVNode, () => true, [
+    () => console.log('Hello World!'),
+  ]);
   ```
 
 ## Custom patch functions
@@ -52,7 +54,7 @@ Sometimes, we want to do apply our own functionality across the entire VNode tre
 You can use drivers to create your own custom patch functions. The `useNode()` driver accepts an array of drivers, which runs after the sweeping modifications of an element is patched and more pinpoint modifications may be necessary.
 
 **Driver Syntax:** `useNode([useChildren(), useProps(), useDriver([useAnotherDriver()])])`\
-**`Driver` Signature:** `(el, newVNode, oldVNode, effects, commit, driver) => { ...; return { el, newVNode, oldVNode, effects, commit, driver } }`
+**`Driver` Signature:** `(el, newVNode, oldVNode, commit, effects, driver) => { ...; return { el, newVNode, oldVNode, commit, effects, driver } }`
 
 If you use a IDE like [VSCode](https://code.visualstudio.com/), you can look into the implementations of how to create a `Driver` and create your own drivers.
 
@@ -61,8 +63,8 @@ import { m, useNode, useChildren, useProps, createElement } from 'million';
 
 const diff = useNode([useChildren(), useProps()]);
 
-const customPatch = (el, newVNode, oldVNode, effects = [], commit) => {
-  const data = diff(el, newVNode, oldVNode, effects, commit);
+const customPatch = (el, newVNode, oldVNode, commit, effects = []) => {
+  const data = diff(el, newVNode, oldVNode, commit, effects);
   for (let i = 0; i < effects.length; i++) {
     effects[i]();
   }
@@ -87,11 +89,11 @@ import { createElement } from 'million';
 
 const useNodeReplace =
   (drivers = []) =>
-  (el, newVNode, oldVNode, effects = [], commit, driver) => {
+  (el, newVNode, oldVNode, commit, effects = [], driver) => {
     /**
      * `drivers` can add another optional layer of composibility, you can run the drivers
-     * by passing the same `drivers[i](el, newVNode, oldVNode, effects, commit, driver)`, or a manipulated
-     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, effects, commit, driver)`.
+     * by passing the same `drivers[i](el, newVNode, oldVNode, commit, effects, driver)`, or a manipulated
+     * version downstream `drivers[i](el.childNodes[j], newVNode.children[j], undefined, commit, effects, driver)`.
      * The great thing about sub-drivers is you can run them anywhere you want inside the driver!
      */
     const data = {
