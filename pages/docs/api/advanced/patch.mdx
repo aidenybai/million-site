@@ -36,7 +36,16 @@ Sometimes, we want to do apply our own functionality across the entire VNode tre
 - **VNode-by-VNode diffing:** You can pass a callback into the `hook` parameter (see `patch`) syntax to deal with each VNode (excluding special diffing). You can construct a `commit` callback like this:
 
   ```js
-  patch(el, newVNode, oldVNode, (el, newVNode, oldVNode) => true, []);
+  patch(
+    el,
+    newVNode,
+    oldVNode,
+    (el, newVNode, oldVNode) => {
+      console.log('Currently diffing:', el);
+      return true;
+    },
+    [],
+  );
   ```
 
   You can return `true` to indicate that the VNode should be committed, or `false` to indicate that the VNode should be skipped.
