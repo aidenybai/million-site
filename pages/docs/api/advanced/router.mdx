@@ -4,10 +4,16 @@ title: router()
 
 # `router()`
 
-**Syntax:** `router()`\
+**Syntax:** `router(routes)`\
 **Example:** `router()`
 
 The `router` function initiates Single Page Application (SPA) like routing functionality. This removes the necessity for page navigations and makes the application more responsive. Imagine [Turbo Drive](https://turbo.hotwired.dev/reference/drive), but powered by Million.
+
+It accepts a `routes` parameter, which skips fetching if you have predefined content. For example:
+
+```js
+{ '/index': 'Hello World!' }
+```
 
 ```js
 import { router } from 'million/router';
