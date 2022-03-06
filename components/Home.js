@@ -133,9 +133,9 @@ export default function Page() {
         </div>
 
         <div className="grid-light dark:grid-dark">
-          <div class="base-light dark:base-dark"></div>
+          <div className="base-light dark:base-dark"></div>
           {Array.from({ length: 10 }, (_, i) => (
-            <div class="grid-line" style={{ '--i': i }} />
+            <div className="grid-line" style={{ '--i': i }} />
           ))}
         </div>
       </div>

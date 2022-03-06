@@ -33,7 +33,7 @@ body {
 @layer utilities {
   .grid-dark {
     --len: 10;
-    --time: 1s;
+    --time: 5s;
     --grid-size-inline: 5em;
     --grid-size-block: 2.5em;
     --grid-color: #000;
@@ -52,7 +52,7 @@ body {
 
   .grid-light {
     --len: 10;
-    --time: 1s;
+    --time: 5s;
     --grid-size-inline: 5em;
     --grid-size-block: 2.5em;
     --grid-color: #000;

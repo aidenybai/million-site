@@ -18,7 +18,7 @@ export default {
       <>
         <a
           rel="noopener"
-          className="w-full inline-flex items-center no-underline text-current font-semibold grayscale opacity-75 hover:opacity-100"
+          className="w-full inline-flex items-center no-underline text-current font-semibold grayscale"
           href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
           target="_blank"
         >
@@ -27,6 +27,25 @@ export default {
             <Vercel />
           </span>
         </a>
+        <p>
+          <small>
+            Million is{' '}
+            <a
+              href="https://github.com/aidenybai/million/blob/main/LICENSE"
+              target="_blank"
+            >
+              MIT-licensed
+            </a>{' '}
+            open-source software and{' '}
+            <a href="https://arxiv.org/abs/2202.08409" target="_blank">
+              research project
+            </a>{' '}
+            by{' '}
+            <a href="https://aidenybai.com" target="_blank">
+              Aiden Bai
+            </a>
+          </small>
+        </p>
       </>
     );
   },
