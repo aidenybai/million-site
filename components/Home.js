@@ -2,17 +2,18 @@ import {
   AdjustmentsIcon,
   CodeIcon,
   CursorClickIcon,
-  DuplicateIcon,
   EyeIcon,
   LightningBoltIcon,
   PaperAirplaneIcon,
+  PlayIcon,
 } from '@heroicons/react/outline';
-import copy from 'copy-to-clipboard';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import toast, { Toaster } from 'react-hot-toast';
 import Container from './Container';
 import Vercel from './Vercel';
+const ModalVideo = dynamic(() => import('react-modal-video'), { ssr: false });
 
 const features = [
   {
@@ -80,15 +81,19 @@ const features = [
 ];
 
 export default function Page() {
-  const onClick = () => {
-    copy('npm install million');
-    toast.success('Copied to clipboard');
-  };
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <>
       <Head>
         <title>Million</title>
       </Head>
+      <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId="ak4oJvWU0bY"
+        onClose={() => setOpen(false)}
+      />
       <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
           Virtual DOM
@@ -114,21 +119,20 @@ export default function Page() {
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">
+            <button
+              onClick={() => setOpen(true)}
+              className="flex items-center justify-center w-full px-8 py-3 text-md text-white no-underline border border-transparent rounded-md bg-gradient-radial from-color2 to-color2 via-color1 animate-gradient-x bg-repeat dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6 font-bold"
+            >
+              <PlayIcon className="w-5" />
+              Why Million
+            </button>
+          </div>
+          <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
             <Link href="/docs/start-here">
-              <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
+              <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-black no-underline bg-gray-200 border border-transparent rounded-md dark:bg-gray-800 dark:text-white betterhover:dark:hover:bg-gray-700 betterhover:hover:bg-gray-300 md:py-3 md:text-lg md:px-10 md:leading-6">
                 Get started →
               </a>
             </Link>
-          </div>
-
-          <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
-            <button
-              onClick={onClick}
-              className="flex items-center justify-center w-full px-8 py-3 font-mono text-md font-medium text-gray-600 bg-gray-100 border border-transparent border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700  betterhover:hover:bg-gray-50 betterhover:dark:hover:bg-gray-900 md:py-3 md:text-base md:leading-6 md:px-10"
-            >
-              npm install million
-              <DuplicateIcon className="w-6 h-6 ml-2 -mr-3 text-gray-400" />
-            </button>
           </div>
         </div>
 
@@ -200,7 +204,6 @@ export default function Page() {
           </div>
         </Container>
       </div>
-      <Toaster position="bottom-right" />
     </>
   );
 }
