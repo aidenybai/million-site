@@ -47,12 +47,19 @@ export default {
           </small>
         </p>
         <p>
-          <script
-            async
-            type="text/javascript"
-            src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
-            id="_carbonads_js"
-          ></script>
+          <div class="carbon-shoutout">
+            <script
+              async
+              type="text/javascript"
+              src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
+              id="_carbonads_js"
+            ></script>
+            <div class="carbon-blurb">
+              Hey! My name is Aiden Bai. Working on this project and hosting
+              this website doesn't come for free, and your support is extremely
+              appreciated.
+            </div>
+          </div>
         </p>
       </>
     );
