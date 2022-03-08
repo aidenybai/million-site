@@ -166,7 +166,7 @@ export default function Page() {
               >
                 <div>
                   <feature.icon
-                    className="h-9 w-9 rounded-full p-1.5 bg-gradient-to-r from-color1 to-color2 bg-opacity-50 text-white"
+                    className="h-9 w-9 rounded-full p-1.5 bg-gradient-to-r from-color1 to-color2 bg-opacity-50 text-white dark:text-black"
                     aria-hidden="true"
                   />
                 </div>
