@@ -155,9 +155,10 @@ body {
     border: var(--grid-stroke) solid var(--grid-color);
     transform: scaleY(var(--sy-start)) translateY(var(--ty-start));
     animation: move var(--time) infinite linear;
+    animation-play-state: paused;
   }
   @media (prefers-reduced-motion: reduce) {
-    .line {
+    .grid-line {
       animation-play-state: paused;
     }
   }
