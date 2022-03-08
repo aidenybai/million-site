@@ -16,17 +16,27 @@ export default {
   footerText: () => {
     return (
       <>
-        <a
-          rel="noopener"
-          className="w-full inline-flex items-center no-underline text-current font-semibold grayscale"
-          href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
-          target="_blank"
-        >
-          <span className="mr-1">Powered By</span>
-          <span>
-            <Vercel />
-          </span>
-        </a>
+        <p>
+          <script
+            async
+            type="text/javascript"
+            src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
+            id="_carbonads_js"
+          ></script>
+        </p>
+        <p>
+          <a
+            rel="noopener"
+            className="w-full inline-flex items-center no-underline text-current font-semibold grayscale"
+            href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
+            target="_blank"
+          >
+            <span className="mr-1">Powered By</span>
+            <span>
+              <Vercel />
+            </span>
+          </a>
+        </p>
         <p>
           <small>
             Million is{' '}
@@ -45,21 +55,6 @@ export default {
               Aiden Bai
             </a>
           </small>
-        </p>
-        <p>
-          <div class="carbon-shoutout">
-            <script
-              async
-              type="text/javascript"
-              src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
-              id="_carbonads_js"
-            ></script>
-            <div class="carbon-blurb">
-              Hey! My name is Aiden Bai. Working on this project and hosting
-              this website doesn't come for free, and your support is extremely
-              appreciated.
-            </div>
-          </div>
         </p>
       </>
     );
