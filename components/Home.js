@@ -95,7 +95,7 @@ export default function Page() {
         onClose={() => setOpen(false)}
       />
       <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
-        <h1 className="text-center text-7xl font-extrabold tracking-tighter leading-[1.1] sm:text-8xl lg:text-9xl xl:text-9xl">
+        <h1 className="text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
           Virtual DOM
           <br />
           <br className="hidden lg:block" />
@@ -103,19 +103,8 @@ export default function Page() {
             into the future.
           </span>{' '}
         </h1>
-        <p className="max-w-lg mx-auto mt-6 text-3xl font-medium leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
-          Million is a{' '}
-          <b>
-            lightweight (<i>&lt;1kb</i>)
-          </b>
-          , compiler-augmented virtual DOM. It's{' '}
-          <a
-            href="https://million.js.org/benchmarks"
-            className="italic font-bold no-underline"
-          >
-            fast
-          </a>
-          !
+        <p className="max-w-lg mx-auto mt-6 text-3xl leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
+          Million is a lightweight, compiler-augmented virtual DOM.
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">
@@ -160,10 +149,10 @@ export default function Page() {
 
       <div className="bg-white dark:bg-dark border-t-[0.2rem] border-gray-100 dark:border-gray-900 border-solid px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
         <div className="mx-auto lg:max-w-7xl">
-          <p className="text-5xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
+          <p className="text-5xl font-bold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
             Why Million?
           </p>
-          <p className="mx-auto mt-4 text-xl font-medium text-gray-400 lg:max-w-3xl lg:text-xl text-center">
+          <p className="mx-auto mt-4 text-xl text-gray-500 lg:max-w-3xl lg:text-xl text-center">
             Million is designed to be <b>modern and easy</b> to use while being{' '}
             <b>lean and insanely performant</b>.
           </p>
