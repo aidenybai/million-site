@@ -66,8 +66,14 @@ Basically, the `m()` function is how you construct what you want the UI to look 
 
 Now that we've seen some basic functionality, let's see how we can build a search input with more complex features.
 
-````js
-import { m, render, schedule, style, Flags } from 'https://cdn.skypack.dev/million';
+```js
+import {
+  m,
+  render,
+  schedule,
+  style,
+  Flags,
+} from 'https://cdn.skypack.dev/million';
 import { compareTwoStrings } from 'https://cdn.skypack.dev/string-similarity';
 
 const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
@@ -87,7 +93,9 @@ const search = (query = '') => {
     entries.map((entry) => {
       // Compare two strings returns a float based off of similarity
       // Ex: 0.8 means high similarity, 0.2 means low similarity
-      const shouldShow = compareTwoStrings(entry.toLowerCase(), query.trim().toLowerCase()) > 0.5;
+      const shouldShow =
+        compareTwoStrings(entry.toLowerCase(), query.trim().toLowerCase()) >
+        0.5;
 
       return m(
         'li',
