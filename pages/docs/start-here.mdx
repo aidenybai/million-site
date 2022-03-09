@@ -66,36 +66,47 @@ Basically, the `m()` function is how you construct what you want the UI to look 
 
 Now that we've seen some basic functionality, let's see how we can build a search input with more complex features.
 
-```js
-import { m, render, schedule, Flags } from 'https://cdn.skypack.dev/million';
+````js
+import { m, render, schedule, style, Flags } from 'https://cdn.skypack.dev/million';
+import { compareTwoStrings } from 'https://cdn.skypack.dev/string-similarity';
 
 const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
 
-const update = (filteredEntries) => {
+const update = (highlightedEntries) => {
   const vnode = m('div', undefined, [
     m('input', { onInput: ({ target }) => search(target.value) }, []),
-    m(
-      'ul',
-      undefined,
-      filteredEntries.map((entry) => m('li', { key: entry }, [entry])),
-      Flags.ONLY_KEYED_CHILDREN,
-    ),
+    m('ul', undefined, highlightedEntries, Flags.ONLY_KEYED_CHILDREN),
   ]);
   schedule(() => {
     render(document.body, vnode);
   });
 };
 
-const search = (query) => {
-  update(entries.filter((entry) => entry.toLowerCase().includes(query)));
+const search = (query = '') => {
+  update(
+    entries.map((entry) => {
+      // Compare two strings returns a float based off of similarity
+      // Ex: 0.8 means high similarity, 0.2 means low similarity
+      const shouldShow = compareTwoStrings(entry.toLowerCase(), query.trim().toLowerCase()) > 0.5;
+
+      return m(
+        'li',
+        {
+          key: `${entry}-${shouldShow}`,
+          style: style({ color: shouldShow ? undefined : 'gray' }),
+        },
+        [entry],
+      );
+    }),
+  );
 };
 
-update(entries);
+search();
 ```
 
 <Search />
 
-By default, all of the "entries" (Apple, Banana, Grape, Orange, Strawberry) will be shown on the page, but you can filter them by typing into the text input. As you type, the list of entries will change to reflect what you're searching for.
+By default, all of the "entries" (Apple, Banana, Grape, Orange, Strawberry) will be listed, but you can highlight them by typing into the text input. As you type, the list of entries will change to reflect what you're searching for.
 
 Now there's quite a bit happening here, so let's go through this snippet piece by piece.
 
@@ -123,3 +134,4 @@ Happy Coding!
   "Start Here" is heavily inspired by [Alpine.js
   Docs](https://alpinejs.dev/start-here)
 </small>
+````

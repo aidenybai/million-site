@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Wrapper from './Wrapper';
+import { compareTwoStrings } from 'string-similarity';
 
 const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
 
@@ -14,11 +15,21 @@ export default function Search() {
           className="p-2 rounded border border-gray-400 dark:border-gray-600 dark:bg-black"
         />
         <ul>
-          {entries
-            .filter((entry) => entry.toLowerCase().includes(query))
-            .map((entry) => (
-              <li key={entry}>{entry}</li>
-            ))}
+          {entries.map((entry) => {
+            const shouldShow =
+              compareTwoStrings(
+                entry.toLowerCase(),
+                query.trim().toLowerCase(),
+              ) > 0.5;
+            return (
+              <li
+                style={{ color: shouldShow ? undefined : 'gray' }}
+                key={entry}
+              >
+                {entry}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </Wrapper>
