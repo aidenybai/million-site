@@ -72,6 +72,7 @@ import {
   render,
   schedule,
   style,
+  kebab,
   Flags,
 } from 'https://cdn.skypack.dev/million';
 import { compareTwoStrings } from 'https://cdn.skypack.dev/string-similarity';
@@ -95,13 +96,15 @@ const search = (query = '') => {
       // Ex: 0.8 means high similarity, 0.2 means low similarity
       const shouldShow =
         compareTwoStrings(entry.toLowerCase(), query.trim().toLowerCase()) >
-        0.5;
+        0.25;
 
       return m(
         'li',
         {
           key: `${entry}-${shouldShow}`,
-          style: style({ color: shouldShow ? undefined : 'gray' }),
+          style: shouldShow
+            ? style(kebab({ textDecoration: 'underline', fontWeight: 'bold' }))
+            : undefined,
         },
         [entry],
       );
@@ -121,6 +124,7 @@ Now there's quite a bit happening here, so let's go through this snippet piece b
 - VNode props (the second parameter in the `m()` function) reflect the props and attributes on a real DOM node. Just like real DOM nodes, we can use `onInput` to bind an event handler to the input element. The handler calls the `search` function, which takes a query and determines the entries that match the query.
 - We can use the `<Array>.map()` function to help us construct VNodes from a non-VNode array.
 - The `key` property on the `<li>` element and the `Flags.ONLY_KEYED_CHILDREN` flags allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
+- The `style` function converts a style object into a string, and `kebab` converts camelCase properties to kebab-case.
 - We can use the `schedule()` function to schedule a task to be run on the next animation frame, to ensure over 60 FPS.
 
 ## Recap
@@ -140,6 +144,5 @@ Happy Coding!
 
 <small>
   "Start Here" is heavily inspired by [Alpine.js
-  Docs](https://alpinejs.dev/start-here)
+  Docs](https://alpinejs.dev/start-here).
 </small>
-````

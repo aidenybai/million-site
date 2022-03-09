@@ -20,10 +20,13 @@ export default function Search() {
               compareTwoStrings(
                 entry.toLowerCase(),
                 query.trim().toLowerCase(),
-              ) > 0.5;
+              ) > 0.25;
             return (
               <li
-                style={{ color: shouldShow ? undefined : 'gray' }}
+                style={{
+                  fontWeight: shouldShow ? 'bold' : undefined,
+                  textDecoration: shouldShow ? 'underline' : undefined,
+                }}
                 key={entry}
               >
                 {entry}
