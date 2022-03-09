@@ -17,7 +17,7 @@ Using a text editor, fill the file with these contents:
   <head></head>
   <body>
     <script type="module">
-      import { m, render } from 'https://cdn.skypack.dev/million';
+      import { render } from 'https://cdn.skypack.dev/million';
       render(document.body, 'You won $$$!');
     </script>
   </body>
@@ -40,12 +40,12 @@ Let's start with a simple "counter" example to demonstrate the basics of renderi
 Insert the following into the `<script>` tag:
 
 ```js
-import { m, render } from 'https://cdn.skypack.dev/million';
+import { _, m, render } from 'https://cdn.skypack.dev/million';
 
 let seconds = 0;
 
 setInterval(() => {
-  render(document.body, m('p', undefined, [`Time elapsed: ${seconds}`]));
+  render(document.body, m('p', _, [`Time elapsed: ${seconds}`]));
   seconds++;
 }, 1000);
 ```
@@ -68,6 +68,7 @@ Now that we've seen some basic functionality, let's see how we can build a searc
 
 ```js
 import {
+  _,
   m,
   render,
   schedule,
@@ -80,9 +81,9 @@ import { compareTwoStrings } from 'https://cdn.skypack.dev/string-similarity';
 const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
 
 const update = (highlightedEntries) => {
-  const vnode = m('div', undefined, [
+  const vnode = m('div', _, [
     m('input', { onInput: ({ target }) => search(target.value) }, []),
-    m('ul', undefined, highlightedEntries, Flags.ONLY_KEYED_CHILDREN),
+    m('ul', _, highlightedEntries, Flags.ONLY_KEYED_CHILDREN),
   ]);
   schedule(() => {
     render(document.body, vnode);

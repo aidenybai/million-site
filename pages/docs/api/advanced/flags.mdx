@@ -21,9 +21,9 @@ Flags allow for the `patch` function to optimize condition branches. They are op
 This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
 
 ```js
-import { m, Flags } from 'million';
+import { _, m, Flags } from 'million';
 
-const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
+const vnode = m('div', _, ['Please ignore me'], Flags.IGNORE_NODE);
 ```
 
 ```js {4}
@@ -39,14 +39,9 @@ const vnode = m('div', undefined, ['Please ignore me'], Flags.IGNORE_NODE);
 If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a VNode.
 
 ```js
-import { m, Flags } from 'million';
+import { _, m, Flags } from 'million';
 
-const vnode = m(
-  'div',
-  undefined,
-  ['Please hard replace me'],
-  Flags.REPLACE_NODE,
-);
+const vnode = m('div', _, ['Please hard replace me'], Flags.REPLACE_NODE);
 ```
 
 ```js {4}
@@ -62,9 +57,9 @@ const vnode = m(
 If your element has no children, you can set this flag to skip the children diffing entirely.
 
 ```js
-import { m, Flags } from 'million';
+import { _, m, Flags } from 'million';
 
-const vnode = m('div', undefined, [], Flags.NO_CHILDREN);
+const vnode = m('div', _, _, Flags.NO_CHILDREN);
 ```
 
 ```js {4}
@@ -82,12 +77,7 @@ If your element has only text children, you can set this flag to skip the childr
 ```js
 import { m, Flags } from 'million';
 
-const vnode = m(
-  'div',
-  undefined,
-  ['Hello ', 'World!'],
-  Flags.ONLY_TEXT_CHILDREN,
-);
+const vnode = m('div', _, ['Hello ', 'World!'], Flags.ONLY_TEXT_CHILDREN);
 ```
 
 ```js {4}
@@ -141,7 +131,7 @@ const list = ['foo', 'bar', 'baz'];
 
 const vnode = m(
   'div',
-  undefined,
+  _,
   list.map((item) => m('p', { key: item }, [item])),
   Flags.ONLY_KEYED_CHILDREN,
 );
@@ -168,8 +158,8 @@ import { m, Flags } from 'million';
 
 const vnode = m(
   'div',
-  undefined,
-  ['Here is my button: ', m('button', undefined, ['Hi!'])],
+  _,
+  ['Here is my button: ', m('button', _, ['Hi!'])],
   Flags.ANY_CHILDREN,
 );
 ```

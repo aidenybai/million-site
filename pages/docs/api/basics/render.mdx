@@ -20,12 +20,12 @@ The `render` function is a combonation of the `patch()` and `createElement()` fu
 Here's an example Counter app using `render()`:
 
 ```js
-import { m, render } from 'million';
+import { _, m, render } from 'million';
 
 let seconds = 0;
 
 setInterval(() => {
-  render(document.body, m('p', undefined, [`Time elapsed: ${seconds}`]));
+  render(document.body, m('p', _, [`Time elapsed: ${seconds}`]));
   seconds++;
 }, 1000);
 ```

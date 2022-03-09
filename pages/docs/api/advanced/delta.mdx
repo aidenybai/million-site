@@ -26,9 +26,9 @@ There are three types of delta operations: `Delta.INSERT`, `Delta.UPDATE`, and `
 You can load these operations into a delta, or an array. You can pass them inside the `m` function.
 
 ```js
-import { m, Delta } from 'million';
+import { _, m, Delta } from 'million';
 
-const vnode = m('div', undefined, ['Hello World'], undefined, [
+const vnode = m('div', _, ['Hello World'], _, [
   Delta.INSERT(0),
   Delta.UPDATE(0),
 ]);
