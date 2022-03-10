@@ -2,6 +2,8 @@
 title: m()
 ---
 
+import VNodeViz from '../../../../components/examples/VNodeViz';
+
 # `m()`
 
 **Syntax:** `m(tag, props?, children?, flag?, delta?)`\
@@ -26,6 +28,12 @@ const vnode = m('div', { id: 'app' }, ['Hello World']);
 ```
 
 The `tagName` is stored under the `tag`, `attributes` and properties are stored under `props`, and the children are stored under `children`.
+
+## REPL
+
+You can enter HTML and it will automatically convert to a VNode if you are confused on how the raw data representation looks.
+
+<VNodeViz />
 
 ## Optimization via keys
 
