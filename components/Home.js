@@ -104,7 +104,7 @@ export default function Page() {
               into the future.
             </span>{' '}
           </h1>
-          <p className="max-w-lg mx-auto mt-6 text-3xl leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
+          <p className="max-w-lg mx-auto mt-6 text-2xl leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
             Million is a lightweight, compiler-augmented virtual DOM.
           </p>
           <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
@@ -151,7 +151,7 @@ export default function Page() {
 
       <div className="bg-white dark:bg-dark border-t-[0.2rem] border-gray-100 dark:border-gray-900 border-solid px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
         <div className="mx-auto lg:max-w-7xl">
-          <p className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl lg:text-center dark:text-white text-center">
+          <p className="text-5xl font-bold tracking-tight lg:text-6xl xl:text-7xl lg:text-center dark:text-white text-center">
             Why Million?
           </p>
           <p className="mx-auto mt-4 text-xl text-gray-500 lg:max-w-3xl lg:text-xl text-center">
@@ -161,12 +161,12 @@ export default function Page() {
           <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
             {features.map((feature) => (
               <div
-                className="p-9 w-auto bg-white shadow-lg rounded-xl dark:bg-opacity-5 "
+                className="p-9 w-auto bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-800 border shadow-sm rounded-xl"
                 key={feature.name}
               >
                 <div>
                   <feature.icon
-                    className="h-9 w-9 rounded-full p-1.5 bg-gradient-to-r from-color1 to-color2 bg-opacity-50 text-white dark:text-black"
+                    className="h-9 w-9 rounded-full p-1.5 bg-gradient-to-r from-color1 to-color0 bg-opacity-50 text-white dark:text-black"
                     aria-hidden="true"
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function Page() {
           <div className="max-w-sm py-16 mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
             <div className="space-y-4 sm:space-y-0 sm:mx-auto ">
               <Link href="/docs/start-here">
-                <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
+                <a className="flex items-center justify-center w-full px-8 py-3 text-md font-medium text-white no-underline bg-gradient-radial from-color2 to-color2 via-color1 animate-gradient-x bg-repeat border border-transparent rounded-md dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
                   Get Started →
                 </a>
               </Link>

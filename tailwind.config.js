@@ -49,6 +49,7 @@ module.exports = {
         green: colors.green,
         red: colors.red,
         yellow: colors.yellow,
+        color0: '#ffcfc3',
         color1: '#ED9CA2',
         color2: '#A96FDC',
         night1: '#1f1738',
