@@ -1,0 +1,39 @@
+---
+title: Shared Utilities
+---
+
+# Shared Utilities
+
+## `fromDomNodeToVNode()`
+
+**Syntax:** `fromDomNodeToVNode(node)`\
+**Example:** `fromDomNodeToVNode(document.createElement('div'))`
+
+The `fromDomNodeToVNode` function creates a VNode from DOM node. It accepts a DOM node.
+
+```js
+import { render } from 'million';
+import { block } from 'million/block';
+
+fromStringToDomNode(document.createElement('div'));
+```
+
+```js
+{
+  tag: 'div';
+}
+```
+
+## `fromStringToDomNode()`
+
+**Syntax:** `fromStringToDomNode(html)`\
+**Example:** `fromStringToDomNode('<div>Hello World</div>')`
+
+The `fromStringToDomNode` function creates an DOM node from an HTML string using `DOMParser`. It accepts a HTML string.
+
+```js
+import { render } from 'million';
+import { fromStringToDomNode } from 'million/shared';
+
+fromStringToDomNode('<div>Hello World</div>').innerHTML; // -> <div>Hello World</div>
+```
