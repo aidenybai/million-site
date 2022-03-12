@@ -4,7 +4,7 @@ title: morph()
 
 # `morph()`
 
-**Syntax:** `morph(newDOMNode, prevDOMNode, hook = (el?, newVNode?, oldVNode?) => boolean, effects = [])`\
+**Syntax:** `morph(newDOMNode, prevDOMNode, hook = (el?, newVNode?, oldVNode?) => boolean)`\
 **Example:** `morph('<div>Hello World</div>', document.createElement('div'))`
 
 The `morph` function updates the DOM content by determing pinpoint changes through diffing a new DOM node with an old DOM node. It accepts two HTMLElement or Text. It also returns the resulting HTMLElement or Text.
