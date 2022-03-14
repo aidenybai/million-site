@@ -95,7 +95,7 @@ customPatch(el, vnode1);
 Below is an implementation of a rudimentary virtual DOM with reference-based diffing of an existing `el`.
 
 ```js
-import { createElement } from 'million';
+import { createElement, EffectTypes } from 'million';
 
 const useNodeReplace =
   (drivers = []) =>
@@ -117,9 +117,15 @@ const useNodeReplace =
 
     commit(() => {
       if (!newVNode) {
-        effects.push(() => el.remove());
+        effects.push({
+          type: EffectTypes.REMOVE,
+          flush: () => el.remove(),
+        });
       } else if (oldVNode !== newVNode) {
-        effects.push(() => el.replaceWith(createElement(newVNode)));
+        effects.push({
+          type: EffectTypes.REPLACE,
+          flush: () => el.replaceWith(createElement(newVNode)),
+        });
       }
     }, data);
 
