@@ -2,7 +2,7 @@
   "createElement": "createElement()",
   "patch": "patch()",
   "flags": "Flags",
-  "delta": "Delta",
+  "delta": "Deltas",
   "entity": "entity()",
   "schedule": "schedule()"
 }

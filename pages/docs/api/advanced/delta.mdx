@@ -1,36 +1,36 @@
 ---
-title: Delta
+title: Deltas
 ---
 
-# `Delta`
+# `Deltas`
 
-**Syntax:** `Delta.OPERATION(index)`\
-**Example:** `Delta.INSERT(0)`
+**Syntax:** `Deltas.OPERATION(index)`\
+**Example:** `Deltas.INSERT(0)`
 
 Deltas are a way for the compile-time to optimize runtime operations by providing a set of predefined operations. This is useful for cases where you are performing consistent, predictable operations at a high interval, low payload situation.
 
-There are three types of delta operations: `Delta.INSERT`, `Delta.UPDATE`, and `Delta.DELETE`. You can provide a specified index to select the position of the VNode's children to be inserted, updated, or deleted.
+There are three types of delta operations: `Deltas.INSERT`, `Deltas.UPDATE`, and `Deltas.DELETE`. You can provide a specified index to select the position of the VNode's children to be inserted, updated, or deleted.
 
-- `Delta.INSERT` is used to add children at a selected index.\
-  **Syntax:** `Delta.INSERT(index)`\
-  **Example:** `IDelta.NSERT(0)`
+- `Deltas.INSERT` is used to add children at a selected index.\
+  **Syntax:** `Deltas.INSERT(index)`\
+  **Example:** `Deltas.INSERT(0)`
 
-- `Delta.UPDATE` is used to replace children at a selected index.\
-  **Syntax:** `Delta.UPDATE(index)`\
-  **Example:** `Delta.UPDATE(0)`
+- `Deltas.UPDATE` is used to replace children at a selected index.\
+  **Syntax:** `Deltas.UPDATE(index)`\
+  **Example:** `Deltas.UPDATE(0)`
 
-- `Delta.DELETE` is used to remove children at a selected index.\
-  **Syntax:** `Delta.DELETE(index)`\
-  **Example:** `Delta.DELETE(0)`
+- `Deltas.DELETE` is used to remove children at a selected index.\
+  **Syntax:** `Deltas.DELETE(index)`\
+  **Example:** `Deltas.DELETE(0)`
 
 You can load these operations into a delta, or an array. You can pass them inside the `m` function.
 
 ```js
-import { _, m, Delta } from 'million';
+import { _, m, Deltas } from 'million';
 
 const vnode = m('div', _, ['Hello World'], _, [
-  Delta.INSERT(0),
-  Delta.UPDATE(0),
+  Deltas.INSERT(0),
+  Deltas.UPDATE(0),
 ]);
 ```
 
