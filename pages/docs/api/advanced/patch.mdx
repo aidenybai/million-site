@@ -75,7 +75,8 @@ const diff = useNode([useChildren(), useProps()]);
 const customPatch = (el, newVNode, oldVNode, commit, effects = []) => {
   const data = diff(el, newVNode, oldVNode, commit, effects);
   for (let i = 0; i < effects.length; i++) {
-    effects[i]();
+    // Effect -> { type, flush() }
+    effects[i].flush();
   }
   return data.el;
 };
