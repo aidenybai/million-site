@@ -17,7 +17,7 @@ If you are considering writing a compiler for your Million library, consider tak
 Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example usage of HMR `refresh` function can be seen here:
 
 ```js
-import { refresh } from 'million/refresh';
+import { refresh } from 'million/ssr';
 
 refresh(
   `<head>
@@ -33,7 +33,7 @@ refresh(
 If you're dealing with components, you can attach a `ignore` prop to the component's attributes. This will prevent the component from being re-rendered when the `refresh` function is called.
 
 ```js
-import { refresh } from 'million/refresh';
+import { refresh } from 'million/ssr';
 
 refresh(
   undefined,
