@@ -83,7 +83,7 @@ const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
 const update = (highlightedEntries) => {
   const vnode = m('div', _, [
     m('input', { onInput: ({ target }) => search(target.value) }, []),
-    m('ul', _, highlightedEntries, Flags.ONLY_KEYED_CHILDREN),
+    m('ul', _, highlightedEntries, Flags.ELEMENT_KEYED_CHILDREN),
   ]);
   schedule(() => {
     render(document.body, vnode);
@@ -124,7 +124,7 @@ Now there's quite a bit happening here, so let's go through this snippet piece b
 
 - VNode props (the second parameter in the `m()` function) reflect the props and attributes on a real DOM node. Just like real DOM nodes, we can use `onInput` to bind an event handler to the input element. The handler calls the `search` function, which takes a query and determines the entries that match the query.
 - We can use the `<Array>.map()` function to help us construct VNodes from a non-VNode array.
-- The `key` property on the `<li>` element and the `Flags.ONLY_KEYED_CHILDREN` flags allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
+- The `key` property on the `<li>` element and the `ELEMENT.ONLY_KEYED_CHILDREN` flags allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
 - The `style` function converts a style object into a string, and `kebab` converts camelCase properties to kebab-case.
 - We can use the `schedule()` function to schedule a task to be run on the next animation frame, to ensure over 60 FPS.
 
@@ -134,7 +134,7 @@ If you've made it this far, you've been exposed to the following features of Mil
 
 - [`m()`](/docs/api/basics/m)
 - [`render()`](/docs/api/basics/render)
-- [`Flags.ONLY_KEYED_CHILDREN`](/docs/api/advanced/flags#flagsonly_keyed_children)
+- [`Flags.ELEMENT_KEYED_CHILDREN`](/docs/api/advanced/flags#flagselement_keyed_children)
 - [`schedule()`](/docs/api/advanced/schedule)
 
 That's a great start, however, there are many more features to sink your teeth into. The best way to absorb Million is to read through this documentation. No need to comb over every word, but if you at least glance through every page you will be MUCH more effective when creating libraries or applications with Million.

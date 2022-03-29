@@ -7,88 +7,92 @@ import Callout from 'nextra-theme-docs/callout';
 # `Flags`
 
 **Syntax:** `Flags.FLAG_NAME`\
-**Example:** `Flags.IGNORE_NODE`
+**Example:** `Flags.ELEMENT`
 
-Flags allow for the `patch` function to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
+Flags allow for the `patch` function primarily to identify data and to optimize condition branches. They are optional, but are **highly recommended**, as they make time complexity much more efficient and can be precomputed during compile-time.
 
 <Callout emoji="ℹ️">
   Flags will be ignored if the generated VNode is provided as the previous VNode
   during a `patch` call.
 </Callout>
 
-## `Flags.IGNORE_NODE`
+## `Flags.ELEMENT` and `Flags.ENTITY`
+
+These flags are the required default flags. They help identify the type of object provided and invoke the default diffing algorithms.
+
+## `Flags.ELEMENT_IGNORE`
 
 This flag should be used when you know for sure that you don't need to perform any patching on a node. This is useful for optimizing static regions within interactive regions.
 
 ```js
 import { _, m, Flags } from 'million';
 
-const vnode = m('div', _, ['Please ignore me'], Flags.IGNORE_NODE);
+const vnode = m('div', _, ['Please ignore me'], Flags.ELEMENT_IGNORE);
 ```
 
 ```js {4}
 {
   tag: 'div',
   children: ['Please ignore me'],
-  flag: /* Flags.IGNORE_NODE */,
+  flag: /* Flags.ELEMENT_IGNORE */,
 }
 ```
 
-## `Flags.REPLACE_NODE`
+## `Flags.ELEMENT_SKIP_DIFF`
 
 If you need to add group functionality, using this flag allows you to skip diffing entirely and hard replace a VNode.
 
 ```js
 import { _, m, Flags } from 'million';
 
-const vnode = m('div', _, ['Please hard replace me'], Flags.REPLACE_NODE);
+const vnode = m('div', _, ['Please hard replace me'], Flags.ELEMENT_SKIP_DIFF);
 ```
 
 ```js {4}
 {
   tag: 'div',
   children: ['Please hard replace me'],
-  flag: /* Flags.REPLACE_NODE */,
+  flag: /* Flags.ELEMENT_SKIP_DIFF */,
 }
 ```
 
-## `Flags.NO_CHILDREN`
+## `Flags.ELEMENT_NO_CHILDREN`
 
 If your element has no children, you can set this flag to skip the children diffing entirely.
 
 ```js
 import { _, m, Flags } from 'million';
 
-const vnode = m('div', _, _, Flags.NO_CHILDREN);
+const vnode = m('div', _, _, Flags.ELEMENT_NO_CHILDREN);
 ```
 
 ```js {4}
 {
   tag: 'div',
   children: [],
-  flag: /* Flags.NO_CHILDREN */,
+  flag: /* Flags.ELEMENT_NO_CHILDREN */,
 }
 ```
 
-## `Flags.ONLY_TEXT_CHILDREN`
+## `Flags.ELEMENT_TEXT_CHILDREN`
 
 If your element has only text children, you can set this flag to skip the children diffing and only mutate the `textContent` property of the HTMLElement.
 
 ```js
 import { m, Flags } from 'million';
 
-const vnode = m('div', _, ['Hello ', 'World!'], Flags.ONLY_TEXT_CHILDREN);
+const vnode = m('div', _, ['Hello ', 'World!'], Flags.ELEMENT_TEXT_CHILDREN);
 ```
 
 ```js {4}
 {
   tag: 'div',
   children: ['Hello ', 'World!'],
-  flag: /* Flags.ONLY_TEXT_CHILDREN */,
+  flag: /* Flags.ELEMENT_TEXT_CHILDREN */,
 }
 ```
 
-## `Flags.ONLY_KEYED_CHILDREN`
+## `Flags.ELEMENT_KEYED_CHILDREN`
 
 If your element has only VElement children with keys, you can set this flag to default to enable special diffing. This allows for more performant runtime diffing, since it can leverage the key map to do comparisons for more pinpoint modifications.
 
@@ -133,7 +137,7 @@ const vnode = m(
   'div',
   _,
   list.map((item) => m('p', { key: item }, [item])),
-  Flags.ONLY_KEYED_CHILDREN,
+  Flags.ELEMENT_KEYED_CHILDREN,
 );
 ```
 
@@ -145,29 +149,6 @@ const vnode = m(
     m('p', { key: 'bar' }, ['bar']),
     m('p', { key: 'foo' }, ['baz']),
   ],
-  flag: /* Flags.ONLY_KEYED_CHILDREN */,
-}
-```
-
-## `Flags.ANY_CHILDREN`
-
-If your element has a mix or only VElement children, you can set this flag to default to normal diffing. Generally, you don't need to explicity set this flag, as it is the default behavior.
-
-```js
-import { m, Flags } from 'million';
-
-const vnode = m(
-  'div',
-  _,
-  ['Here is my button: ', m('button', _, ['Hi!'])],
-  Flags.ANY_CHILDREN,
-);
-```
-
-```js {4}
-{
-  tag: 'div',
-  children: ['Here is my button: ', { tag: 'button', children: ['Hi'] }],
-  flag: /* Flags.ANY_CHILDREN */,
+  flag: /* Flags.ELEMENT_KEYED_CHILDREN */,
 }
 ```
