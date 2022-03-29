@@ -18,7 +18,7 @@
     "@mdx-js/react": "^1.6.22",
     "autoprefixer": "^10.4.2",
     "copy-to-clipboard": "^3.3.1",
-    "million": "^1.6.0",
+    "million": "^1.6.2",
     "nextra": "^2.0.0-alpha.24",
     "nextra-theme-docs": "^2.0.0-alpha.23",
     "postcss": "^8.4.5",

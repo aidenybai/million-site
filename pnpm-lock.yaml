@@ -5,7 +5,7 @@ specifiers:
   '@mdx-js/react': ^1.6.22
   autoprefixer: ^10.4.2
   copy-to-clipboard: ^3.3.1
-  million: ^1.6.0
+  million: ^1.6.2
   next: ^12.0.9
   nextra: ^2.0.0-alpha.24
   nextra-theme-docs: ^2.0.0-alpha.23
@@ -29,7 +29,7 @@ devDependencies:
   '@mdx-js/react': 1.6.22_react@17.0.2
   autoprefixer: 10.4.2_postcss@8.4.5
   copy-to-clipboard: 3.3.1
-  million: 1.6.0
+  million: 1.6.2
   nextra: 2.0.0-alpha.24_react@17.0.2
   nextra-theme-docs: 2.0.0-alpha.24_b543ccecfd29856b35e58d884b6ddddd
   postcss: 8.4.5
@@ -1571,8 +1571,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /million/1.6.0:
-    resolution: {integrity: sha512-IEMSr7Yu1tMINlG+Abjwcmx/U/3L/DEqS0asxMCQEDYbniSOx02DRHO+dHmhWHRUrQStLkpcRg72q5I7Gxu9DA==}
+  /million/1.6.2:
+    resolution: {integrity: sha512-c3xJZRXN2HlZY48vy0sK6fpj3Z04xSaH4yYAivjHhYBBNeQNyaKNJ7zENZZeW+Qqkk40FnP64S5sWmVmMRHpiw==}
     dev: true
 
   /minimist/1.2.5:
