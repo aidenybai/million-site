@@ -8,12 +8,17 @@
     "title": "Docs",
     "type": "nav"
   },
+  "research": {
+    "title": "Research",
+    "type": "nav"
+  },
   "benchmarks": {
     "title": "Benchmarks",
     "type": "nav"
   },
   "blog": {
     "title": "Blog",
-    "type": "nav"
+    "type": "nav",
+    "hidden": true
   }
 }

@@ -7,11 +7,6 @@
       "source": "/docs/getting-started",
       "destination": "/docs/start-here",
       "permanent": true
-    },
-    {
-      "source": "/research",
-      "destination": "/blog/research",
-      "permanent": true
     }
   ]
 }
