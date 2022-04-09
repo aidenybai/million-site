@@ -7,16 +7,28 @@ title: router()
 **Syntax:** `router(routes)`\
 **Example:** `router()`
 
-The `router` function initiates Single Page Application (SPA) like routing functionality. This removes the necessity for page navigations and makes the application more responsive. Imagine [Turbo Drive](https://turbo.hotwired.dev/reference/drive), but powered by Million.
+There are two uses for the `router()` function:
 
-It accepts a `routes` parameter, which skips fetching if you have predefined content. For example:
+### 1. Turning a Multi Page Application (MPA) into a Single Page Application (SPA)
 
-```js
-{ '/index': 'Hello World!' }
-```
+The `router()` function initiates SPA like routing functionality for an MPA. This removes the necessity for page navigations and makes the application more responsive, while keeping multiple HTML files. Imagine [Turbo Drive](https://turbo.hotwired.dev/reference/drive), but powered by Million, and significantly more simpler.
 
 ```js
 import { router } from 'million/router';
 
 router();
+```
+
+### 2. Creating client side routes for a SPA
+
+`router()` also accepts a `routes` parameter, which skips fetching if you have predefined virtual nodes. For example:
+
+```js
+import { _, m } from 'million';
+import { router } from 'million/router';
+
+router({
+  '/': m('div', _, ['You are at /', m('a', { href: '/foo' }, ['Go to /foo'])]),
+  '/foo': m('div', _, ['You are at /foo', m('a', { href: '/' }, ['Go to /'])]),
+});
 ```
