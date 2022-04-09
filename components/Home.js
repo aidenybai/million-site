@@ -125,13 +125,6 @@ export default function Page() {
               </Link>
             </div>
           </div>
-
-          <div className="grid-light dark:grid-dark">
-            <div className="base-light dark:base-dark"></div>
-            {Array.from({ length: 10 }, (_, i) => (
-              <div className="grid-line" style={{ '--i': i }} />
-            ))}
-          </div>
         </div>
 
         <div className="py-16">
