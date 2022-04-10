@@ -4,6 +4,6 @@
   "hydrate": "hydrate()",
   "flags": "Flags",
   "delta": "Deltas",
-  "entity": "entity()",
-  "schedule": "schedule()"
+  "startTransition": "startTransition()",
+  "entity": "entity()"
 }

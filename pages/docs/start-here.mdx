@@ -71,7 +71,7 @@ import {
   _,
   m,
   render,
-  schedule,
+  startTransition,
   style,
   kebab,
   Flags,
@@ -85,7 +85,7 @@ const update = (highlightedEntries) => {
     m('input', { onInput: ({ target }) => search(target.value) }, []),
     m('ul', _, highlightedEntries, Flags.ELEMENT_KEYED_CHILDREN),
   ]);
-  schedule(() => {
+  startTransition(() => {
     render(document.body, vnode);
   });
 };
@@ -126,7 +126,7 @@ Now there's quite a bit happening here, so let's go through this snippet piece b
 - We can use the `<Array>.map()` function to help us construct VNodes from a non-VNode array.
 - The `key` property on the `<li>` element and the `ELEMENT.ONLY_KEYED_CHILDREN` flags allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
 - The `style` function converts a style object into a string, and `kebab` converts camelCase properties to kebab-case.
-- We can use the `schedule()` function to schedule a task to be run on the next animation frame, to ensure over 60 FPS.
+- We can use the `startTransition()` function to schedule a task to be run on the next animation frame, to ensure over 60 FPS.
 
 ## Recap
 
@@ -135,7 +135,7 @@ If you've made it this far, you've been exposed to the following features of Mil
 - [`m()`](/docs/api/basics/m)
 - [`render()`](/docs/api/basics/render)
 - [`Flags.ELEMENT_KEYED_CHILDREN`](/docs/api/advanced/flags#flagselement_keyed_children)
-- [`schedule()`](/docs/api/advanced/schedule)
+- [`startTransition()`](/docs/api/advanced/startTransition)
 
 That's a great start, however, there are many more features to sink your teeth into. The best way to absorb Million is to read through this documentation. No need to comb over every word, but if you at least glance through every page you will be MUCH more effective when creating libraries or applications with Million.
 
