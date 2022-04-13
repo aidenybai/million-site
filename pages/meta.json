@@ -1,24 +1,16 @@
 {
+  "*": {
+    "type": "page"
+  },
   "index": {
     "title": "Home",
-    "type": "nav",
-    "hidden": true
+    "hidden": true,
+    "theme": {
+      "layout": "raw"
+    }
   },
-  "docs": {
-    "title": "Docs",
-    "type": "nav"
-  },
-  "research": {
-    "title": "Research",
-    "type": "nav"
-  },
-  "benchmarks": {
-    "title": "Benchmarks",
-    "type": "nav"
-  },
-  "blog": {
-    "title": "Blog",
-    "type": "nav",
-    "hidden": true
-  }
+  "docs": "Docs",
+  "research": "Research",
+  "benchmarks": "Benchmarks",
+  "blog": "Blog"
 }
