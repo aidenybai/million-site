@@ -38,10 +38,17 @@ export default {
           </a>
         </p>
         <p>
-        <div>
-  <a href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss" target="_blank"><img height="44" src="https://raw.githubusercontent.com/aidenybai/million/main/.github/assets/vercel-logo.svg" alt="Vercel"></a>&nbsp;&nbsp;
-  <a href="https://deta.sh/?utm_source=millionjs&utm_campaign=oss" target="_blank"><img height="44" src="https://www.deta.sh/dist/images/deta_logo.svg" alt="Deta"></a>
-</div>
+          <a
+            rel="noopener"
+            className="w-full inline-flex items-center no-underline text-current font-semibold grayscale"
+            href="https://vercel.com/?utm_source=millionjs&utm_campaign=oss"
+            target="_blank"
+          >
+            <span className="mr-1">Powered By</span>
+            <span>
+              <Vercel />
+            </span>
+          </a>
         </p>
         <p>
           <small>
