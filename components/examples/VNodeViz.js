@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { fromDomNodeToVNode, fromStringToDomNode } from 'million/shared';
-import { highlight } from 'sugar-high';
 import Wrapper from './Wrapper';
 
 export default function VNodeViz() {
@@ -33,7 +32,7 @@ export default function VNodeViz() {
           dangerouslySetInnerHTML={{
             __html:
               vnode?.tag !== 'parsererror'
-                ? highlight(JSON.stringify(vnode, null, 2) || '')
+                ? JSON.stringify(vnode, null, 2) || ''
                 : 'Error during parsing',
           }}
         ></code>

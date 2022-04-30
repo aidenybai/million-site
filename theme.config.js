@@ -17,14 +17,6 @@ export default {
     return (
       <>
         <p>
-          <script
-            async
-            type="text/javascript"
-            src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
-            id="_carbonads_js"
-          ></script>
-        </p>
-        <p>
           <a
             rel="noopener"
             className="w-full inline-flex items-center no-underline text-current font-semibold grayscale"
@@ -63,6 +55,20 @@ export default {
   floatTOC: true,
   unstable_stork: false,
   unstable_flexsearch: true,
+  bannerKey: 'mil',
+  banner: function Banner() {
+    return (
+      <a
+        href="https://github.com/aidenybai/million"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-current no-underline"
+        title="Go to the Million GitHub"
+      >
+        Leave a 🌟 on Github →
+      </a>
+    );
+  },
   logo: () => {
     return (
       <>
@@ -152,5 +158,15 @@ export default {
   },
   footerEditLink: () => {
     return 'Edit this page on GitHub →';
+  },
+  tocExtraContent: () => {
+    return (
+      <script
+        async
+        type="text/javascript"
+        src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
+        id="_carbonads_js"
+      ></script>
+    );
   },
 };

@@ -241,24 +241,10 @@ body {
   margin-top: -6px;
 }
 
-.sh__class {
-  color: #79b8ff;
+:root {
+  --nextra-primary-hue: 212deg;
 }
-.sh__identifier {
-  color: #2d333b;
-}
-.sh__sign {
-  color: #d1d1d1;
-}
-.sh__string {
-  color: #4ab74a;
-}
-.sh__keyword {
-  color: #f47067;
-}
-.sh__comment {
-  color: #a19595;
-}
-.sh__jsxliterals {
-  color: #03066e;
+
+.dark {
+  --nextra-primary-hue: 212deg;
 }
