@@ -4,7 +4,7 @@ title: router()
 
 # `router()`
 
-**Syntax:** `router(routes)`\
+**Syntax:** `router(rootSelector)`\
 **Example:** `router()`
 
 There are two uses for the `router()` function:
@@ -17,6 +17,9 @@ The `router()` function initiates SPA like routing functionality for an MPA. Thi
 import { router } from 'million/router';
 
 router();
+
+// to only swap the body:
+router('body');
 ```
 
 ### 2. Creating client side routes for a SPA
@@ -25,10 +28,19 @@ router();
 
 ```js
 import { _, m } from 'million';
-import { router } from 'million/router';
+import { router, createRoute } from 'million/router';
 
-router({
-  '/': m('div', _, ['You are at /', m('a', { href: '/foo' }, ['Go to /foo'])]),
-  '/foo': m('div', _, ['You are at /foo', m('a', { href: '/' }, ['Go to /'])]),
-});
+router()
+  .setRoute(
+    '/',
+    createRoute(
+      m('div', _, ['You are at /', m('a', { href: '/foo' }, ['Go to /foo'])]),
+    ),
+  )
+  .setRoute(
+    '/foo',
+    createRoute(
+      m('div', _, ['You are at /foo', m('a', { href: '/' }, ['Go to /'])]),
+    ),
+  );
 ```
