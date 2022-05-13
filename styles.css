@@ -64,7 +64,7 @@ body {
   overflow: hidden;
 }
 #carbonads .carbon-wrap {
-  display: flex;
+  display: block;
 }
 #carbonads .carbon-img {
   display: block;
