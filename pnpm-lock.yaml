@@ -7,8 +7,8 @@ specifiers:
   copy-to-clipboard: ^3.3.1
   million: ^1.6.2
   next: ^12.0.9
-  nextra: 2.0.0-alpha.50
-  nextra-theme-docs: 2.0.0-alpha.53
+  nextra: 2.0.0-alpha.54
+  nextra-theme-docs: 2.0.0-alpha.54
   postcss: ^8.4.5
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -30,8 +30,8 @@ devDependencies:
   autoprefixer: 10.4.2_postcss@8.4.5
   copy-to-clipboard: 3.3.1
   million: 1.6.2
-  nextra: 2.0.0-alpha.50_react@17.0.2
-  nextra-theme-docs: 2.0.0-alpha.53_wvb4z3h5fgcwwnpfrweew3o53u
+  nextra: 2.0.0-alpha.54_react@17.0.2
+  nextra-theme-docs: 2.0.0-alpha.54_wvb4z3h5fgcwwnpfrweew3o53u
   postcss: 8.4.5
   react-hot-toast: 2.2.0_sfoxds7t5ydpegc3knd667wn6m
   react-lite-youtube-embed: 2.1.3_sfoxds7t5ydpegc3knd667wn6m
@@ -1769,8 +1769,8 @@ packages:
       - babel-plugin-macros
     dev: false
 
-  /nextra-theme-docs/2.0.0-alpha.53_wvb4z3h5fgcwwnpfrweew3o53u:
-    resolution: {integrity: sha512-ZmsuwjFecd49Lv3MgDJbfsLo1FRxjulJKm4fkccLD1BKPlJljDGmAo88fvgxwpXp60ttt7FqstQV4oLbTjGsDQ==}
+  /nextra-theme-docs/2.0.0-alpha.54_wvb4z3h5fgcwwnpfrweew3o53u:
+    resolution: {integrity: sha512-CPpEL9WNXBI+gOZze2582h4y5+/NyVVycRb31CCjBYNcCNhSULCIJ5P6lS79lU2E2w9xgSAigY8sa5+EydMe0g==}
     peerDependencies:
       next: '>=9.5.3'
       react: '>=16.13.1'
@@ -1794,8 +1794,8 @@ packages:
       title: 3.4.3
     dev: true
 
-  /nextra/2.0.0-alpha.50_react@17.0.2:
-    resolution: {integrity: sha512-j+hhaPYDFCsPasXDdNtuKE4+eMozcnHWazoJK3b6YE7aJ844sKWBuon2XCLYx91K6TdsSiBK7uakEDvMcVamrA==}
+  /nextra/2.0.0-alpha.54_react@17.0.2:
+    resolution: {integrity: sha512-8BmCgk12a5i6hsHeWNtLSntCg9NR3TMroA+bBI/RwAXGfPfWybnHg0/xdITJBoN4E8Yu9ImvvA+vzmrCVc7UFQ==}
     peerDependencies:
       react: '>=16.13.1'
     dependencies:
