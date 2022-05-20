@@ -16,9 +16,9 @@ Flags allow for the `patch` function primarily to identify data and to optimize 
   during a `patch` call.
 </Callout>
 
-## `Flags.ELEMENT` and `Flags.ENTITY`
+## `Flags.ELEMENT`
 
-These flags are the required default flags. They help identify the type of object provided and invoke the default diffing algorithms.
+This flags is the default flag. They help identify the type of object provided and invoke the default diffing algorithms.
 
 ## `Flags.ELEMENT_IGNORE`
 
@@ -152,3 +152,7 @@ const vnode = m(
   flag: /* Flags.ELEMENT_KEYED_CHILDREN */,
 }
 ```
+
+## `Flags.ELEMENT_THUNK`
+
+This flag indicates a [Thunk](./thunk).

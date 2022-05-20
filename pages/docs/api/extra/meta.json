@@ -1,7 +1,6 @@
 {
   "html": "HTML Helpers",
   "morph": "morph()",
-  "block": "block()",
   "router": "router()",
-  "shared": "Shared Utilities"
+  "utils": "Shared Utilities"
 }

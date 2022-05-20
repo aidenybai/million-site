@@ -5,5 +5,5 @@
   "flags": "Flags",
   "delta": "Deltas",
   "startTransition": "startTransition()",
-  "entity": "entity()"
+  "thunk": "thunk()"
 }
