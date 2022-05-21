@@ -9,6 +9,8 @@ title: batch()
 
 You can use `batch` to reschedule `requestAnimationFrame` and reduce unnecessary rerenders in short intervals. It accepts a timer as a number and returns a callback queuer function.
 
+> Note that `batch` is should not be abused for every operation. Using it for every operation may delay the rendering of the page. Additionally, functionality **may break** if you specify a custom `oldVNode` for each operation.
+
 `batch` works best when renders occur in rapid succession:
 
 ```js
@@ -16,7 +18,7 @@ import { _, m, batch, render } from 'million';
 
 const queue = batch();
 
-queue(() => render(<div>I'm never rendered</div>));
-queue(() => render(<div>I'm never rendered</div>));
-queue(() => render(<div>I'm rendered!</div>));
+queue(() => render(document.body, <div>I'm not rendered</div>));
+queue(() => render(document.body, <div>I'm not rendered</div>));
+queue(() => render(document.body, <div>I'm rendered!</div>));
 ```
