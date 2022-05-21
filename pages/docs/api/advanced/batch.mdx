@@ -16,9 +16,9 @@ You can use `batch` to reschedule `requestAnimationFrame` and reduce unnecessary
 ```js
 import { _, m, batch, render } from 'million';
 
-const queue = batch();
+const queueRender = batch();
 
-queue(() => render(document.body, <div>I'm not rendered</div>));
-queue(() => render(document.body, <div>I'm not rendered</div>));
-queue(() => render(document.body, <div>I'm rendered!</div>));
+queueRender(() => render(document.body, <div>I'm not rendered</div>));
+queueRender(() => render(document.body, <div>I'm not rendered</div>));
+queueRender(() => render(document.body, <div>I'm rendered!</div>));
 ```
