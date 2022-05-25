@@ -13,7 +13,7 @@ Using a text editor, fill the file with these contents:
   <head></head>
   <body>
     <script type="module">
-      import { render } from 'https://cdn.skypack.dev/million';
+      import { render } from 'https://unpkg.com/million';
       render(document.body, 'You won $$$!');
     </script>
   </body>
@@ -36,7 +36,7 @@ Let's start with a simple "counter" example to demonstrate the basics of renderi
 Insert the following into the `<script>` tag:
 
 ```js
-import { _, m, render } from 'https://cdn.skypack.dev/million';
+import { _, m, render } from 'https://unpkg.com/million';
 
 let seconds = 0;
 
@@ -63,24 +63,19 @@ Basically, the `m()` function is how you construct what you want the UI to look 
 Now that we've seen some basic functionality, let's see how we can build a search input with more complex features.
 
 ```js
-import {
-  _,
-  m,
-  render,
-  startTransition,
-  style,
-  kebab,
-  Flags,
-} from 'https://cdn.skypack.dev/million';
-import { compareTwoStrings } from 'https://cdn.skypack.dev/string-similarity';
+import { render, startTransition } from 'https://unpkg.com/million';
+import { html } from 'https://unpkg.com/million/dist/html.mjs';
+import { compareTwoStrings } from 'https://unpkg.com/string-similarity';
 
 const entries = ['Apple', 'Banana', 'Grape', 'Orange', 'Strawberry'];
 
 const update = (highlightedEntries) => {
-  const vnode = m('div', _, [
-    m('input', { onInput: ({ target }) => search(target.value) }, []),
-    m('ul', _, highlightedEntries, Flags.ELEMENT_KEYED_CHILDREN),
-  ]);
+  const vnode = html`<div>
+    <input onInput=${({ target }) => search(target.value)} />
+    <ul>
+      ${highlightedEntries}
+    </ul>
+  </div>`;
   startTransition(() => {
     render(document.body, vnode);
   });
@@ -95,16 +90,14 @@ const search = (query = '') => {
         compareTwoStrings(entry.toLowerCase(), query.trim().toLowerCase()) >
         0.25;
 
-      return m(
-        'li',
-        {
-          key: `${entry}-${shouldShow}`,
-          style: shouldShow
-            ? style(kebab({ textDecoration: 'underline', fontWeight: 'bold' }))
-            : undefined,
-        },
-        [entry],
-      );
+      return html`<li
+        key=${`${entry}-${shouldShow}`}
+        style=${shouldShow
+          ? style(kebab({ textDecoration: 'underline', fontWeight: 'bold' }))
+          : undefined}
+      >
+        ${entry}
+      </li>`;
     }),
   );
 };
@@ -118,10 +111,9 @@ By default, all of the "entries" (Apple, Banana, Grape, Orange, Strawberry) will
 
 Now there's quite a bit happening here, so let's go through this snippet piece by piece.
 
-- VNode props (the second parameter in the `m()` function) reflect the props and attributes on a real DOM node. Just like real DOM nodes, we can use `onInput` to bind an event handler to the input element. The handler calls the `search` function, which takes a query and determines the entries that match the query.
+- Note that we aren't using the `m()` function here. Instead, we use `html` to write HTML strings. This makes it easier for us to automatically create VNodes. Just like real DOM nodes, we can use `onInput` to bind an event handler to the input element. The handler calls the `search` function, which takes a query and determines the entries that match the query.
 - We can use the `<Array>.map()` function to help us construct VNodes from a non-VNode array.
-- The `key` property on the `<li>` element and the `ELEMENT.ONLY_KEYED_CHILDREN` flags allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
-- The `style` function converts a style object into a string, and `kebab` converts camelCase properties to kebab-case.
+- The `key` property on the `<li>` element allows Million to shortcut to an optimized fast path. Every element inside the `<ul>` tag is unique and non-changing, which is why we can used the keyed diffing algorithm.
 - We can use the `startTransition()` function to schedule a task to be run on the next animation frame, to ensure over 60 FPS.
 
 ## Recap
@@ -130,7 +122,6 @@ If you've made it this far, you've been exposed to the following features of Mil
 
 - [`m()`](/docs/api/basics/m)
 - [`render()`](/docs/api/basics/render)
-- [`Flags.ELEMENT_KEYED_CHILDREN`](/docs/api/advanced/flags#flagselement_keyed_children)
 - [`startTransition()`](/docs/api/advanced/startTransition)
 
 That's a great start, however, there are many more features to sink your teeth into. The best way to absorb Million is to read through this documentation. No need to comb over every word, but if you at least glance through every page you will be MUCH more effective when creating libraries or applications with Million.
