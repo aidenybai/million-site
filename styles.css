@@ -1,5 +1,13 @@
 @tailwind utilities;
 
+:root {
+  --nextra-primary-hue: 16deg;
+}
+
+.dark {
+  --nextra-primary-hue: 16deg;
+}
+
 .full {
   width: 100%;
   height: 100%;
