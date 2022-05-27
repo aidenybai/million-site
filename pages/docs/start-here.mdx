@@ -8,7 +8,7 @@ Create a blank HTML file somewhere on your computer with a name like: `mega-mill
 
 Using a text editor, fill the file with these contents:
 
-```html
+```html filename="mega-millions.html"
 <html>
   <head></head>
   <body>
@@ -35,7 +35,7 @@ Let's start with a simple "counter" example to demonstrate the basics of renderi
 
 Insert the following into the `<script>` tag:
 
-```js
+```js filename="counter.html"
 import { _, m, render } from 'https://unpkg.com/million';
 
 let seconds = 0;
@@ -62,7 +62,7 @@ Basically, the `m()` function is how you construct what you want the UI to look 
 
 Now that we've seen some basic functionality, let's see how we can build a search input with more complex features.
 
-```js
+```js filename="search.html"
 import { render, startTransition } from 'https://unpkg.com/million';
 import { html } from 'https://unpkg.com/million/dist/html.mjs';
 import { compareTwoStrings } from 'https://unpkg.com/string-similarity';
