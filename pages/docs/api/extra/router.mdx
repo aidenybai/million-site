@@ -45,7 +45,7 @@ router()
   );
 ```
 
-## `reload()` and `million:navigate` event
+## `apply()` and `million:navigate` event
 
 You can use a global event handler to listen on the `million:navigate` event.
 
@@ -55,12 +55,12 @@ window.addEventListener('million:navigate', (event) => {
 });
 ```
 
-If you have client side scripts that run DOM modifications upon load, you can use the `reload()` function.
+If you have client side scripts that run DOM modifications upon load, you can use the `aply()` function.
 
 ```js
-import { reload } from 'million/router';
+import { apply } from 'million/router';
 
-reload(() => {
-  document.title += ' - reloaded';
+apply((doc) => {
+  doc.title += ' - reloaded';
 });
 ```
