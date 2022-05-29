@@ -6,32 +6,16 @@ title: SSG/SSR
 
 ## Server-Side Rendering (SSR)
 
-Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example usage of HMR `refresh` function can be seen here:
+Million.js is a great choice if you want to implement Hot Module Replacement (HMR) for your framework. An example implementation of HMR refresh can be seen here:
 
 ```js
-import { refresh } from 'million/ssr';
+import { morph } from 'million/morph';
 
-refresh(
-  `<head>
-    <title>World</title>
-  </head>`,
+morph(
   `<body>
-    <p>Hello World</p>
-    <p>Goodbye World</p>
+    Hello World!
   </body>`,
-);
-```
-
-If you're dealing with components, you can attach a `ignore` prop to the component's attributes. This will prevent the component from being re-rendered when the `refresh` function is called.
-
-```js
-import { refresh } from 'million/ssr';
-
-refresh(
-  undefined,
-  `<body>
-    <p ignore>Not rendered</p>
-  </body>`,
+  document.body,
 );
 ```
 
