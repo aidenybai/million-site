@@ -13,9 +13,9 @@ The `fromDomNodeToVNode` function creates a VNode from DOM node. It accepts a DO
 
 ```js
 import { render } from 'million';
-import { block } from 'million/block';
+import { fromDomNodeToVNode } from 'million/utils';
 
-fromStringToDomNode(document.createElement('div'));
+fromDomNodeToVNode(document.createElement('div'));
 ```
 
 ```js
@@ -33,7 +33,21 @@ The `fromStringToDomNode` function creates an DOM node from an HTML string using
 
 ```js
 import { render } from 'million';
-import { fromStringToDomNode } from 'million/shared';
+import { fromStringToDomNode } from 'million/utils';
 
 fromStringToDomNode('<div>Hello World</div>').innerHTML; // -> <div>Hello World</div>
+```
+
+## `fromVNodeToString()`
+
+**Syntax:** `fromVNodeToString(vnode)`\
+**Example:** `fromVNodeToString({ tag: 'div' })`
+
+The `fromVNodeToString` function creates an HTML string from an VNode. It accepts a VNode.
+
+```js
+import { m, _, render } from 'million';
+import { fromVNodeToString } from 'million/utils';
+
+fromStringToDomNode(m('div', _, ['Hello World'])) // -> <div>Hello World</div>
 ```
