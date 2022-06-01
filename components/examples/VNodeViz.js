@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { fromDomNodeToVNode, fromStringToDomNode } from 'million/shared';
+import { fromStringToVNode } from 'million/utils';
 import Wrapper from './Wrapper';
 
 export default function VNodeViz() {
@@ -9,8 +9,7 @@ export default function VNodeViz() {
 
   useEffect(() => {
     try {
-      const node = fromStringToDomNode(html);
-      if (html) setVNode(fromDomNodeToVNode(node));
+      if (html) setVNode(fromStringToVNode(html));
       else setVNode('');
     } catch (e) {}
   }, [html]);
