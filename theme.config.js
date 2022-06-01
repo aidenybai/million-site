@@ -169,7 +169,7 @@ export default {
   },
   tocExtraContent: () => {
     return (
-      <a href="https://github.com/aidenybai/million-react-compat" target="_blank">Check out the new experimental React compat!</a>
+      <a href="https://github.com/aidenybai/million-react-compat" target="_blank">Check out the new experimental React compat →</a>
     );
   },
 };
