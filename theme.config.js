@@ -16,6 +16,12 @@ export default {
   footerText: () => {
     return (
       <>
+        <script
+          async
+          type="text/javascript"
+          src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
+          id="_carbonads_js"
+        ></script>
         <p>
           <a
             rel="noopener"
