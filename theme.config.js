@@ -16,12 +16,14 @@ export default {
   footerText: () => {
     return (
       <>
-        <script
-          async
-          type="text/javascript"
-          src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
-          id="_carbonads_js"
-        ></script>
+        <p>
+          <script
+            async
+            type="text/javascript"
+            src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
+            id="_carbonads_js"
+          ></script>
+        </p>
         <p>
           <a
             rel="noopener"
@@ -167,12 +169,7 @@ export default {
   },
   tocExtraContent: () => {
     return (
-      <script
-        async
-        type="text/javascript"
-        src="//cdn.carbonads.com/carbon.js?serve=CEAI427W&placement=millionjsorg"
-        id="_carbonads_js"
-      ></script>
+      <a href="https://github.com/aidenybai/million-react-compat" target="_blank">Check out the new experimental React compat!</a>
     );
   },
 };
