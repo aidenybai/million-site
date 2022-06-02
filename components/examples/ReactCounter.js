@@ -7,8 +7,19 @@ export default function Counter({ init }) {
   return (
     <Wrapper>
       <div>Counter: {value}</div>
-      <button onClick={() => setValue(value + 1)}>Increment</button>&nbsp;
-      <button onClick={() => setValue(value - 1)}>Decrement</button>
+      <button
+        className="py-1 px-3 bg-green-800 border border-green-700 rounded-md"
+        onClick={() => setValue(value + 1)}
+      >
+        Increment
+      </button>
+      &nbsp;
+      <button
+        className="py-1 px-3 bg-red-800 border border-red-700 rounded-md"
+        onClick={() => setValue(value - 1)}
+      >
+        Decrement
+      </button>
     </Wrapper>
   );
 }
