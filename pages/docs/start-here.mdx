@@ -11,8 +11,7 @@ Open this [StackBlitz](https://stackblitz.com/github/aidenybai/million-react-com
 
 Navigate to `script.jsx` and you should see this:
 
-```jsx filename="script.jsx" {1, 19-24}
-import { compat } from 'million/react';
+```jsx filename="script.jsx"
 import { useState } from 'react';
 import { createRoot } from 'react-dom';
 
@@ -30,9 +29,7 @@ function Counter({ init }) {
 
 const root = createRoot(document.querySelector('#app'));
 
-compat(() => {
-  root.render(<Counter init={0} />);
-});
+root.render(<Counter init={0} />);
 ```
 
 <ReactCounter init={0} />
@@ -40,18 +37,6 @@ compat(() => {
 Open the StackBlitz preview (should be at `XXXXXXXXXXX-local.webcontainer.io`), if you see content and you're able to interact with it, you're ready to rumble!
 
 Within the `script.jsx` file, you can write any React code with some [limitations](https://github.com/aidenybai/million-react-compat#limitations). If you are unfamiliar with React, you can learn more about it [here](https://reactjs.org/docs/getting-started.html).
-
-There is one caveat though: the `compat()` function. All component instantiations must be wrapped within the `compat()` function.
-
-```jsx
-// ✅ Good
-compat(() => {
-  root.render(<MyComponent />);
-});
-
-// ❌ Error
-root.render(<MyComponent />);
-```
 
 Now that you're all set up to play around, let's look at a couple practical examples as a foundation for teaching you the basics of Million. By the end of this exercise, you should be more than equipped to start building stuff on your own.
 
