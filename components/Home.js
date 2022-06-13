@@ -94,7 +94,7 @@ export default function Page() {
         videoId="28SMGi-6mNc"
         onClose={() => setOpen(false)}
       />
-      <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
+      <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white w-screen">
         <h1 className="text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
           Virtual DOM
           <br />
@@ -104,7 +104,12 @@ export default function Page() {
           </span>{' '}
         </h1>
         <p className="max-w-lg mx-auto mt-6 text-2xl leading-tight text-center text-gray-400 sm:max-w-3xl sm:text-3xl md:text-3xl lg:text-3xl">
-          Million is a lightweight, compiler-augmented virtual DOM.
+          Million is a lightweight <code className="bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-800 border shadow-sm rounded-lg p-1">&lt;1kb</code> Virtual DOM. It's{' '}
+          <a href="https://millionjs.org/benchmarks">
+            <em>
+              <b>really fast</b>
+            </em>
+          </a>.
         </p>
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md">

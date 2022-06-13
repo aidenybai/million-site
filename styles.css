@@ -256,3 +256,10 @@ body {
 .dark {
   --nextra-primary-hue: 212deg;
 }
+
+.nextra-body.full {
+  margin: 0 auto;
+}
+code {
+  @apply text-sm;
+}
