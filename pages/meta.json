@@ -4,9 +4,8 @@
   },
   "index": {
     "title": "Home",
-    "hidden": true,
     "theme": {
-      "layout": "raw"
+      "layout": "full"
     }
   },
   "docs": "Docs",

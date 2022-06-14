@@ -94,7 +94,7 @@ export default function Page() {
         videoId="28SMGi-6mNc"
         onClose={() => setOpen(false)}
       />
-      <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white w-screen">
+      <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
         <h1 className="text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
           Virtual DOM
           <br />
