@@ -178,7 +178,7 @@ const secondHook = {
   },
 };
 
-const finalBossHook = mergeHooks(firstHook, secondHook);
+const finalBossHook = mergeHooks([firstHook, secondHook]);
 ```
 
 As a result, `finalBossHook` becomes:
