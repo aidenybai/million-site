@@ -121,20 +121,38 @@ const vnode = svg(m('svg'));
 }
 ```
 
-## `toVNode` SSR helper
+## Lifecycle `hook` properties
 
-The `toVNode` function converts an HTMLElement or Text or HTML string to a VNode. This is generally used to rehydrate HTML from SSR.
+The lifecycle `hook` properties allows you to "hook in" to the diffing and patching process. There are four hooks: `'create'`, `'update'`, `'remove'`, and one `'diff'` control flow hook. Every hook, if defined, must return a boolean, which will determine whether the code runs of not (`true` runs, `false` doesn't run).
 
 ```js
-import { m, toVNode, patch } from 'million';
+import { _, m } from 'million';
 
-// HTML string
-const vnode1 = toVNode('<div>Hello World</div>'); // holds <div>Hello World</div> in VNode form
-
-// HTMLElement
-const el = document.createElement('div');
-el.textContent = 'Hello World';
-const vnode2 = toVNode(el); // holds <div>Hello World</div> in VNode form
+const vnode = m(
+  'div',
+  _ /* props */,
+  _ /* children */,
+  _ /* flag */,
+  _ /* delta */,
+  {
+    create: () => {
+      console.log('create was called!')
+      return true;
+    },
+    update: () => {
+      console.log('update was called!')
+      return true;
+    },
+    remove: () => {
+      console.log('remove was called!')
+      return true;
+    },
+    diff: () => {
+      console.log('diff was called!')
+      return true;
+    },
+  },
+);
 ```
 
 ```html
