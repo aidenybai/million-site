@@ -135,26 +135,64 @@ const vnode = m(
   _ /* flag */,
   _ /* delta */,
   {
-    create: () => {
-      console.log('create was called!')
+    create: (el, newVNode, oldVNode) => {
+      console.log('create was called!', el);
       return true;
     },
-    update: () => {
-      console.log('update was called!')
+    update: (el, newVNode, oldVNode) => {
+      console.log('update was called!', el);
       return true;
     },
-    remove: () => {
-      console.log('remove was called!')
+    remove: (el, newVNode, oldVNode) => {
+      console.log('remove was called!', el);
       return true;
     },
-    diff: () => {
-      console.log('diff was called!')
+    diff: (el, newVNode, oldVNode) => {
+      console.log('diff was called!', el);
       return true;
     },
   },
 );
 ```
 
-```html
-<div id="app">Hello World</div>
+If you have multiple hooks, you can merge them easily with the `mergeHooks` function:
+
+```js
+import { mergeHooks } from 'million';
+
+const firstHook = {
+  create: () => {
+    console.log(1);
+    return true;
+  },
+};
+
+const secondHook = {
+  create: () => {
+    console.log(2);
+    return true;
+  },
+  update: () => {
+    console.log('Hello World!');
+    return true;
+  },
+};
+
+const mergeHooks = mergeHooks(firstHook, secondHook);
+```
+
+As a result, `mergeHooks` becomes:
+
+```js
+const mergeHooks = {
+  create: () => {
+    console.log(1);
+    console.log(2);
+    return true;
+  },
+  update: () => {
+    console.log('Hello World!');
+    return true;
+  },
+};
 ```
