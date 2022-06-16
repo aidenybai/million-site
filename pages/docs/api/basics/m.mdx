@@ -178,20 +178,20 @@ const secondHook = {
   },
 };
 
-const mergeHooks = mergeHooks(firstHook, secondHook);
+const finalBossHook = mergeHooks(firstHook, secondHook);
 ```
 
-As a result, `mergeHooks` becomes:
+As a result, `finalBossHook` becomes:
 
 ```js
-const mergeHooks = {
+const finalBossHook = {
   create: () => {
-    console.log(1);
-    console.log(2);
+    console.log(1); // From firstHook
+    console.log(2); // From secondHook
     return true;
   },
   update: () => {
-    console.log('Hello World!');
+    console.log('Hello World!'); // from secondHook
     return true;
   },
 };
