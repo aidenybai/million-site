@@ -91,7 +91,7 @@ export default function Page() {
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}
-        videoId="28SMGi-6mNc"
+        videoId="KgnSM9NbV2s"
         onClose={() => setOpen(false)}
       />
       <div className="px-4 pt-20 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
