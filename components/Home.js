@@ -118,7 +118,7 @@ export default function Page() {
               className="flex items-center justify-center w-full px-8 py-3 text-md text-white no-underline border border-transparent rounded-md bg-gradient-radial from-color2 to-color2 via-color1 animate-gradient-x bg-repeat dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6 font-bold"
             >
               <PlayIcon className="w-5" />
-              Why Million
+              Watch Video
             </button>
           </div>
           <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
