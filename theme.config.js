@@ -169,7 +169,7 @@ export default {
   },
   tocExtraContent: () => {
     return (
-      <a className="text-xs font-medium no-underline block text-gray-500 mb-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100" target="_blank" rel="noreferrer" href="https://github.com/aidenybai/million-react-compat">Check out the new experimental React compat →</a>
+      <a className="text-xs font-medium no-underline block text-gray-500 mb-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100" target="_blank" rel="noreferrer" href="https://github.com/aidenybai/million-react-compat">Become a sponsor 💝 →</a>
     );
   },
 };

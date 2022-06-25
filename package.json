@@ -20,7 +20,7 @@
     "copy-to-clipboard": "^3.3.1",
     "million": "^1.10.0",
     "nextra": "2.0.0-alpha.56",
-    "nextra-theme-docs": "2.0.0-alpha.58",
+    "nextra-theme-docs": "2.0.0-alpha.59",
     "postcss": "^8.4.5",
     "react-hot-toast": "^2.2.0",
     "react-lite-youtube-embed": "^2.1.3",

@@ -8,7 +8,7 @@ specifiers:
   million: ^1.10.0
   next: ^12.0.9
   nextra: 2.0.0-alpha.56
-  nextra-theme-docs: 2.0.0-alpha.58
+  nextra-theme-docs: 2.0.0-alpha.59
   postcss: ^8.4.5
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -31,7 +31,7 @@ devDependencies:
   copy-to-clipboard: 3.3.1
   million: 1.10.0
   nextra: 2.0.0-alpha.56_react@17.0.2
-  nextra-theme-docs: 2.0.0-alpha.58_wvb4z3h5fgcwwnpfrweew3o53u
+  nextra-theme-docs: 2.0.0-alpha.59_wvb4z3h5fgcwwnpfrweew3o53u
   postcss: 8.4.5
   react-hot-toast: 2.2.0_sfoxds7t5ydpegc3knd667wn6m
   react-lite-youtube-embed: 2.1.3_sfoxds7t5ydpegc3knd667wn6m
@@ -1756,8 +1756,8 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
 
-  /nextra-theme-docs/2.0.0-alpha.58_wvb4z3h5fgcwwnpfrweew3o53u:
-    resolution: {integrity: sha512-G295Fti63VlInA2pHJoyYN3VxWVzHUDY5KwW2pmCx118Jq90MHjj+D+n9OHHckIc5fahGyUnTlHMfb0p9WOxIw==}
+  /nextra-theme-docs/2.0.0-alpha.59_wvb4z3h5fgcwwnpfrweew3o53u:
+    resolution: {integrity: sha512-X5/YZAJaX/TDDBEaUoAdsZ3gjnanRv2Q+1wKwtHsEa8QCz8z5BjgFqcIIXf6A8NK6vtaYS7R1paFga+wpFhpCg==}
     peerDependencies:
       next: '>=9.5.3'
       react: '>=16.13.1'
